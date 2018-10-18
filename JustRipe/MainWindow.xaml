@@ -8,6 +8,7 @@
         Icon="Images/justripe.ico"
         Title="Just Ripe" Height="450" Width="800">
     <Grid>
-       
+        <DataGrid HorizontalAlignment="center" Height="auto" Width="auto" VerticalAlignment="center" />
+
     </Grid>
 </Window>

@@ -59,5 +59,6 @@ namespace JustRipe.Properties {
                 resourceCulture = value;
             }
         }
+
     }
 }
