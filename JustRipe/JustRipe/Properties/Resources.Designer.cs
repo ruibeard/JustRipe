@@ -60,15 +60,6 @@ namespace JustRipe.Properties {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _99662986_crops_word_or_text_with_green_leaf_handwritten_lettering_suitable_for_label_logo_badge_sticker_or_ic {
-            get {
-                object obj = ResourceManager.GetObject("99662986-crops-word-or-text-with-green-leaf-handwritten-lettering-suitable-for-la" +
-                        "bel-logo-badge-sticker-or-ic", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
+      
     }
 }

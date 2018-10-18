@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JustRipe"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Icon="Images/justripe.ico"
+        Title="Just Ripe" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid HorizontalAlignment="center" Height="auto" Width="auto" VerticalAlignment="center" />
+
     </Grid>
 </Window>
