@@ -11,9 +11,10 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Height="450" Width="800" 
-        ResizeMode="NoResize" 
-        WindowStartupLocation="CenterScreen">
+       
+        Title="Dashboard" Height="450" Width="800">
+
+
     <!-- Colors
 $primary-color-dark:   #303F9F
 $primary-color:        #3F51B5
@@ -24,10 +25,38 @@ $primary-text-color:   #212121
 $secondary-text-color: #757575
 $divider-color:        #BDBDBD
     -->
-    
-    
-    
-    
+    <DockPanel>
+        <Menu>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Cut" Command="Cut">
+                    <materialDesign:PackIcon Kind="ContentCut"/>
+                </MenuItem>
+                <MenuItem Header="_Copy" Command="Copy">
+                    <materialDesign:PackIcon Kind="ContentCopy"/>
+                </MenuItem>
+                <MenuItem Header="_Paste" Command="Paste">
+                    <materialDesign:PackIcon Kind="ContentPaste"/>
+                </MenuItem>
+            </MenuItem>
+            
+        </Menu>
+
+        
+        
+        <Grid VerticalAlignment="Top" Margin="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1"  Margin="8 0 0 0" VerticalAlignment="Center">Name:</TextBlock>
+            <TextBox Grid.Column="2" Margin="8 0 0 0" VerticalAlignment="Center"></TextBox>
+            <Button Grid.Column="3" Margin="8 0 0 0">SUBMIT</Button>
+        </Grid>
+    </DockPanel>
     
     
 </Window>
