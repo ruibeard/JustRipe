@@ -11,9 +11,7 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-       
-        Title="Dashboard" Height="450" Width="800">
-
+        Title="Dashboard" Height="708" Width="606" WindowStartupLocation="CenterScreen" WindowState="Maximized">
 
     <!-- Colors
 $primary-color-dark:   #303F9F
@@ -25,38 +23,51 @@ $primary-text-color:   #212121
 $secondary-text-color: #757575
 $divider-color:        #BDBDBD
     -->
-    <DockPanel>
-        <Menu>
-            <MenuItem Header="_Edit">
-                <MenuItem Header="_Cut" Command="Cut">
-                    <materialDesign:PackIcon Kind="ContentCut"/>
-                </MenuItem>
-                <MenuItem Header="_Copy" Command="Copy">
-                    <materialDesign:PackIcon Kind="ContentCopy"/>
-                </MenuItem>
-                <MenuItem Header="_Paste" Command="Paste">
-                    <materialDesign:PackIcon Kind="ContentPaste"/>
-                </MenuItem>
-            </MenuItem>
-            
-        </Menu>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
 
-        
-        
-        <Grid VerticalAlignment="Top" Margin="16">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0" Background="{StaticResource PrimaryHueMidBrush}" >
 
-            <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center"/>
-            <TextBlock Grid.Column="1"  Margin="8 0 0 0" VerticalAlignment="Center">Name:</TextBlock>
-            <TextBox Grid.Column="2" Margin="8 0 0 0" VerticalAlignment="Center"></TextBox>
-            <Button Grid.Column="3" Margin="8 0 0 0">SUBMIT</Button>
+            <Grid  Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="180"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0">
+                    <Image Source="pack://application:,,,/Images/logo.png" />
+                    <ToggleButton Foreground="{DynamicResource SecondaryAccentBrush}" Style="{DynamicResource MaterialDesignHamburgerToggleButton}"  />
+                </StackPanel>
+                <StackPanel Grid.Row="1" >
+                    <Button Content="Crops" Padding="20 0 0 0"
+                            HorizontalContentAlignment="Left"
+                            Style="{DynamicResource MaterialDesignFlatButton}" 
+                             
+                            HorizontalAlignment="Stretch"
+                            />
+                </StackPanel>
+
+            </Grid>
+        </StackPanel>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="180" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal"  Background="{StaticResource PrimaryHueDarkBrush}">
+
+                <materialDesign:PackIcon Kind="User" Height="60" Width="60" VerticalAlignment="Center" />
+            </StackPanel>
+
+            <Frame Grid.Row="1" Background="{StaticResource SecondaryAccentBrush}"></Frame>
         </Grid>
-    </DockPanel>
-    
-    
+
+    </Grid>
+
 </Window>
