@@ -23,5 +23,12 @@ namespace JustRipe.Pages
         {
             InitializeComponent();
         }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            Dashboard dash = new Dashboard();
+            dash.Show();
+            this.Close();
+        }
     }
 }
