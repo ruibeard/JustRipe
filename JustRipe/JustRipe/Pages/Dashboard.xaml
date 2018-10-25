@@ -53,7 +53,7 @@
             </StackPanel>
             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22">Dahsboard</TextBlock>
         </Grid>
-        <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="{StaticResource Accent200}">
+        <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="{StaticResource PrimaryHueDarkBrush}">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE" />
             </Grid.Effect>
