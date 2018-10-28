@@ -26,8 +26,8 @@ namespace JustRipe.Pages
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            Dashboard dash = new Dashboard();
-            dash.Show();
+            Main MainWindow = new Main();
+            MainWindow.Show();
             this.Close();
         }
     }
