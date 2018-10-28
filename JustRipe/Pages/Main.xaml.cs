@@ -101,9 +101,15 @@ namespace JustRipe
         private void ListViewItem_Selected(object sender, RoutedEventArgs e)
         {
 
+
             var item= sender as ListViewItem;
 
             MessageBox.Show(item.Name);
+
+            TextBlock txt = new TextBlock();
+            txt.Text = "omg";
+            ContentArea.Content = txt;
+
         }
     }
 }
