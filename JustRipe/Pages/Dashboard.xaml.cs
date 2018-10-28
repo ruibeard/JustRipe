@@ -24,33 +24,41 @@ namespace JustRipe
             InitializeComponent();
         }
 
-        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
-            ButtonCloseMenu.Visibility = Visibility.Visible;
-            ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            Application.Current.Shutdown(); 
         }
 
-        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ButtonCloseMenu.Visibility = Visibility.Collapsed;
-            ButtonOpenMenu.Visibility = Visibility.Visible;
+            DragMove();
         }
+ 
 
-        private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+  
+        /// <summary>
+        /// Maximize Current Windows
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonMaxmize_Click(object sender, RoutedEventArgs e)
         {
-            UserControl usc = null;
-            GridMain.Children.Clear();
-
-            switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
-            {
-                case "ItemHome":
-                    break;
-                case "ItemCreate":
-                    break;
-                default:
-                    break;
-            }
+            SystemCommands.MaximizeWindow(this);
+            ButtonMaxmize.Visibility = Visibility.Collapsed;
+            ButtonMinimize.Visibility = Visibility.Visible ;
         }
+        /// <summary>
+        /// Minimize current Window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            SystemCommands.MinimizeWindow(this);
 
+            ButtonMaxmize.Visibility = Visibility.Visible;
+            ButtonMinimize.Visibility = Visibility.Hidden;
+
+        }
     }
 }
