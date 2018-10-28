@@ -30,16 +30,6 @@ namespace JustRipe
             Application.Current.Shutdown();
         }
 
-        private void ContentControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            if (WindowState == WindowState.Maximized)
-                WindowState = WindowState.Normal;
-            //this.MinimizeWindow();
-            else
-                this.MaximizeWindow();
-
-        }
-
         private void ButtonMaxmize_Click(object sender, RoutedEventArgs e)
         {
             MaximizeWindow();
@@ -84,6 +74,13 @@ namespace JustRipe
                     ButtonRestore.Visibility = Visibility.Collapsed;
                     break;
             }
+        }
+
+        private void ContentControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+                WindowState = WindowState.Normal;
+
         }
     }
 }

@@ -12,24 +12,24 @@
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="Dashboard" Height="708" Width="606" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
-    <Grid Background="#FFEEEE" >
+    <Grid Background="{DynamicResource MaterialDesignPaper}">
         <StackPanel >
             <ContentControl MouseDoubleClick="ContentControl_MouseDoubleClick">
-                <Grid Background="{StaticResource PrimaryHueMidBrush}" Height="30" MouseDown="Grid_MouseDown" >
+                <Grid  Background="{DynamicResource PrimaryHueLightBrush}" Height="30" MouseDown="Grid_MouseDown" >
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" >
 
-                        <Button  x:Name="ButtonMinimize" Click="ButtonMinimize_Click"  Width="30" Height="30" Padding="0" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueLightBrush}" >
+                        <Button  x:Name="ButtonMinimize" Click="ButtonMinimize_Click"  Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueDarkBrush}" >
                             <materialDesign:PackIcon Kind="WindowMinimize"  />
                         </Button>
-                        
-                        <Button  x:Name="ButtonRestore" Click="ButtonRestore_Click" Visibility="Collapsed" Width="30" Height="30" Padding="0" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueLightBrush}" >
+
+                        <Button  x:Name="ButtonRestore" Click="ButtonRestore_Click" Visibility="Collapsed" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueDarkBrush}" >
                             <materialDesign:PackIcon Kind="WindowRestore"  />
                         </Button>
 
-                        <Button x:Name="ButtonMaxmize" Click="ButtonMaxmize_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueLightBrush}">
+                        <Button x:Name="ButtonMaxmize" Click="ButtonMaxmize_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueDarkBrush}">
                             <materialDesign:PackIcon Kind="WindowMaximize"  />
                         </Button>
-                        <Button x:Name="ButtonClose" Click="ButtonClose_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueLightBrush}" >
+                        <Button x:Name="ButtonClose" Click="ButtonClose_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueDarkBrush}" >
                             <materialDesign:PackIcon Kind="Power"/>
                         </Button>
 
@@ -39,32 +39,35 @@
         </StackPanel>
 
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF222222">
-            <ListView Margin="0 100" Foreground="LightGray" >
-                <ListViewItem Height="60" >
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Start" FontSize="22" VerticalAlignment="Center" Margin="20 0"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem Height="60" >
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="FoodForkDrink" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Start" FontSize="22" VerticalAlignment="Center" Margin="20 0"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem Height="60" >
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="TruckDelivery" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Start" FontSize="22" VerticalAlignment="Center" Margin="20 0"/>
-                    </StackPanel>
-                </ListViewItem>
-                <ListViewItem Height="60" >
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
-                        <TextBlock Text="Start" FontSize="22" VerticalAlignment="Center" Margin="20 0"/>
-                    </StackPanel>
-                </ListViewItem>
-            </ListView>
+            <StackPanel>
+                <Image Margin="0 30" Source="/Images/logo.png" />
+                <ListView  Foreground="LightGray" >
+                    <ListViewItem Height="60" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Start" FontSize="22" VerticalAlignment="Center" Margin="20 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FoodForkDrink" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Start" FontSize="22" VerticalAlignment="Center" Margin="20 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="TruckDelivery" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Start" FontSize="22" VerticalAlignment="Center" Margin="20 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" >
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Home" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                            <TextBlock Text="Start" FontSize="22" VerticalAlignment="Center" Margin="20 0"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
         </Grid>
     </Grid>
 </Window>
