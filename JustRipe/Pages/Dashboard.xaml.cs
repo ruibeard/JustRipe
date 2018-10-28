@@ -21,8 +21,13 @@ namespace JustRipe
     {
         public Dashboard()
         {
+
             InitializeComponent();
+
+
+            //this line prevents from window covers taskbar when maximized
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -79,8 +84,18 @@ namespace JustRipe
         private void ContentControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (WindowState == WindowState.Maximized)
+            {
                 WindowState = WindowState.Normal;
 
+                ButtonMaxmize.Visibility = Visibility.Visible;
+                ButtonRestore.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                WindowState = WindowState.Maximized;
+                ButtonMaxmize.Visibility = Visibility.Collapsed;
+                ButtonRestore.Visibility = Visibility.Visible;
+            }
         }
     }
 }
