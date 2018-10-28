@@ -22,43 +22,68 @@ namespace JustRipe
         public Dashboard()
         {
             InitializeComponent();
+            this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown(); 
+            Application.Current.Shutdown();
+        }
+
+        private void ContentControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (WindowState == WindowState.Maximized)
+                WindowState = WindowState.Normal;
+            //this.MinimizeWindow();
+            else
+                this.MaximizeWindow();
+
+        }
+
+        private void ButtonMaxmize_Click(object sender, RoutedEventArgs e)
+        {
+            MaximizeWindow();
+        }
+
+        private void ButtonRestore_Click(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Normal;
+            ButtonMaxmize.Visibility = Visibility.Visible;
+            ButtonRestore.Visibility = Visibility.Collapsed;
+
+        }
+
+        private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
+        {
+            SystemCommands.MinimizeWindow(this);
+        }
+
+        private void MaximizeWindow()
+        {
+            SystemCommands.MaximizeWindow(this);
+            ButtonMaxmize.Visibility = Visibility.Collapsed;
+            ButtonRestore.Visibility = Visibility.Visible;
         }
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
- 
 
-  
-        /// <summary>
-        /// Maximize Current Windows
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ButtonMaxmize_Click(object sender, RoutedEventArgs e)
+        private void Window_StateChanged(object sender, EventArgs e)
         {
-            SystemCommands.MaximizeWindow(this);
-            ButtonMaxmize.Visibility = Visibility.Collapsed;
-            ButtonMinimize.Visibility = Visibility.Visible ;
-        }
-        /// <summary>
-        /// Minimize current Window
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ButtonMinimize_Click(object sender, RoutedEventArgs e)
-        {
-            SystemCommands.MinimizeWindow(this);
+            switch (this.WindowState)
+            {
+                case WindowState.Maximized:
+                    ButtonMaxmize.Visibility = Visibility.Collapsed;
+                    ButtonMinimize.Visibility = Visibility.Visible;
+                    break;
 
-            ButtonMaxmize.Visibility = Visibility.Visible;
-            ButtonMinimize.Visibility = Visibility.Hidden;
-
+                case WindowState.Normal:
+                    ButtonMaxmize.Visibility = Visibility.Visible;
+                    ButtonRestore.Visibility = Visibility.Collapsed;
+                    break;
+            }
         }
     }
 }

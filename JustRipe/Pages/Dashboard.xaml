@@ -11,29 +11,31 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Title="Dashboard" Height="708" Width="606" WindowStartupLocation="CenterScreen" WindowStyle="None">
+        Title="Dashboard" Height="708" Width="606" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Grid Background="#FFEEEE" >
         <StackPanel >
-            <Grid Background="#FF0069C0" Height="30"  MouseDown="Grid_MouseDown">
-                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal"  >
+            <ContentControl MouseDoubleClick="ContentControl_MouseDoubleClick">
+                <Grid Background="{StaticResource PrimaryHueMidBrush}" Height="30" MouseDown="Grid_MouseDown" >
+                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" >
 
-                    <Button Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
-                        <materialDesign:PackIcon Kind="FacebookBox" />
-                    </Button>
+                        <Button  x:Name="ButtonMinimize" Click="ButtonMinimize_Click"  Width="30" Height="30" Padding="0" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueLightBrush}" >
+                            <materialDesign:PackIcon Kind="WindowMinimize"  />
+                        </Button>
+                        
+                        <Button  x:Name="ButtonRestore" Click="ButtonRestore_Click" Visibility="Collapsed" Width="30" Height="30" Padding="0" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueLightBrush}" >
+                            <materialDesign:PackIcon Kind="WindowRestore"  />
+                        </Button>
 
-                    <Button  x:Name="ButtonMinimize" Click="ButtonMinimize_Click" Visibility="Hidden" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Margin="0 0 10 0">
-                        <materialDesign:PackIcon Kind="WindowMinimize"  />
-                    </Button>
+                        <Button x:Name="ButtonMaxmize" Click="ButtonMaxmize_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueLightBrush}">
+                            <materialDesign:PackIcon Kind="WindowMaximize"  />
+                        </Button>
+                        <Button x:Name="ButtonClose" Click="ButtonClose_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueLightBrush}" >
+                            <materialDesign:PackIcon Kind="Power"/>
+                        </Button>
 
-                    <Button x:Name="ButtonMaxmize" Click="ButtonMaxmize_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray" Margin="0 0 10 0">
-                        <materialDesign:PackIcon Kind="WindowMaximize"  />
-                    </Button>
-                    <Button x:Name="ButtonClose" Click="ButtonClose_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Gray">
-                        <materialDesign:PackIcon Kind="Power"/>
-                    </Button>
-
-                </StackPanel>
-            </Grid>
+                    </StackPanel>
+                </Grid>
+            </ContentControl>
         </StackPanel>
 
         <Grid Width="250" HorizontalAlignment="Left" Background="#FF222222">
