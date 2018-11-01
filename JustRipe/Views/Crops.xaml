@@ -8,16 +8,25 @@
       Title="Crops">
 
 
-    <Grid>
-        <DataGrid HorizontalAlignment="Left"   VerticalAlignment="Top" Width="613" Height="634"/>
-        <Label Content="Crop Name" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Width="75" AutomationProperties.Name="lolfd"/>
-        <Label Content="Fertiliser" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top" Width="55" Height="34"/>
-        <Label Content="Labour Assigned" HorizontalAlignment="Left" Margin="140,0,0,0" VerticalAlignment="Top" Height="34" Width="115"/>
-        <Label Content="Crop Status" HorizontalAlignment="Left" Margin="243,0,0,0" VerticalAlignment="Top" Height="34" Width="88"/>
-        <Label Content="Vehicle Needed" HorizontalAlignment="Left" Margin="318,0,0,0" VerticalAlignment="Top" Height="34" Width="115"/>
-        <Label Content="Storage Required" HorizontalAlignment="Left" Margin="421,0,0,0" VerticalAlignment="Top" Height="34" Width="108"/>
-        <Button Content="Remove Crop" HorizontalAlignment="Left" Margin="633,530,0,0" VerticalAlignment="Top" Width="121" Background="#FFBBC1BA"/>
-        <Button Content="Add Crop" HorizontalAlignment="Left" Margin="633,584,0,0" VerticalAlignment="Top" Width="121" Background="#FFBBC1BA"/>
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
+        <StackPanel Orientation="Horizontal" Grid.Column="0">
+           
+            <Label Content="Crop Name" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Width="75" AutomationProperties.Name="lolfd"/>
+            <Label Content="Fertiliser" HorizontalAlignment="Left" VerticalAlignment="Top" Width="55" Height="34"/>
+            <Label Content="Labour Assigned" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Width="115"/>
+            <Label Content="Crop Status" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Width="88"/>
+            <Label Content="Vehicle Needed" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Width="115"/>
+            <Label Content="Storage Required" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Width="108"/>
+
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <Button Content="Remove Crop" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Background="#FFBBC1BA"/>
+            <Button Content="Add Crop" HorizontalAlignment="Left" VerticalAlignment="Top" Width="121" Background="#FFBBC1BA"/>
+        </StackPanel>
     </Grid>
 </Page>
