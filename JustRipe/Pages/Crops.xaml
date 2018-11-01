@@ -5,11 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:JustRipe.Pages"
       mc:Ignorable="d" 
+      d:DesignHeight="634" d:DesignWidth="774"
       Title="Crops">
-
 
     <Grid>
         <DataGrid HorizontalAlignment="Left"   VerticalAlignment="Top" Width="613" Height="634"/>
+        <Rectangle Fill="#FFFEFEFF" HorizontalAlignment="Left" Height="634" Margin="613,0,0,0" Stroke="Black" VerticalAlignment="Top" Width="161" StrokeThickness="0"/>
         <Label Content="Crop Name" HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Width="75" AutomationProperties.Name="lolfd"/>
         <Label Content="Fertiliser" HorizontalAlignment="Left" Margin="80,0,0,0" VerticalAlignment="Top" Width="55" Height="34"/>
         <Label Content="Labour Assigned" HorizontalAlignment="Left" Margin="140,0,0,0" VerticalAlignment="Top" Height="34" Width="115"/>
