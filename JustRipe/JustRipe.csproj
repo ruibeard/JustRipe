@@ -84,6 +84,9 @@
     </ApplicationDefinition>
     <Compile Include="Class1.cs" />
     <Compile Include="IPageViewModel.cs" />
+    <Compile Include="Models\Crops.cs" />
+    <Compile Include="Models\Dispatch.cs" />
+    <Compile Include="Models\ObservableObject.cs" />
     <Compile Include="Views\Crops.xaml.cs">
       <DependentUpon>Crops.xaml</DependentUpon>
     </Compile>
@@ -183,7 +186,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Folder Include="SQL-Schema\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

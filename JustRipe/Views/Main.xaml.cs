@@ -27,7 +27,7 @@ namespace JustRipe
 
             //this line prevents from window covers taskbar when maximized
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            
+
         }
 
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
@@ -100,15 +100,9 @@ namespace JustRipe
 
         private void ListViewItem_Selected(object sender, RoutedEventArgs e)
         {
-
-
-            var item= sender as ListViewItem;
+            var item = sender as ListViewItem;
 
             MessageBox.Show(item.Name);
-
-            TextBlock txt = new TextBlock();
-            txt.Text = "omg";
-            ContentArea.Content = txt;
 
         }
     }
