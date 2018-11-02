@@ -82,9 +82,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\Crops.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Crop.cs" />
     <Compile Include="Models\Dispatch.cs" />
+    <Compile Include="Models\Harvest.cs" />
     <Compile Include="Models\ObservableObject.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Pages\Crops.xaml.cs">
       <DependentUpon>Crops.xaml</DependentUpon>
     </Compile>
@@ -227,7 +232,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="SQL-Schema\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
