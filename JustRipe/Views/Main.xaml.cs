@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JustRipe.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -103,7 +104,10 @@ namespace JustRipe.Views
 
             var item = sender as ListViewItem;
 
+
+            DataContext = new CropViewModel();
             MessageBox.Show(item.Name);
+
 
         }
     }

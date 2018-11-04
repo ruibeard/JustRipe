@@ -8,5 +8,7 @@ namespace JustRipe.Models
 {
    public class Category : ObservableObject
     {
+
+
     }
 }
