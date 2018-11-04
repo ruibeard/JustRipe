@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JustRipe.Models;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -9,37 +10,21 @@ namespace JustRipe.ViewModels
 {
     class ViewModelCrop : ViewModelBase
     {
-        //public ObservableCollection<Person> People { get; set; }
-
-        /// <summary>
-        /// SelectedItem is an object instead of a Person, only because we are allowing "CanUserAddRows=true" 
-        /// NewItemPlaceHolder represents a new row, and this is not the same as Person class
-        /// 
-        /// Change 'object' to 'Person', and you will see the following:
-        /// 
-        /// System.Windows.Data Error: 23 : Cannot convert '{NewItemPlaceholder}' from type 'NamedObject' to type 'MvvmExample.Model.Person' for 'en-US' culture with default conversions; consider using Converter property of Binding. NotSupportedException:'System.NotSupportedException: TypeConverter cannot convert from MS.Internal.NamedObject.
-        ///   at System.ComponentModel.TypeConverter.GetConvertFromException(Object value)
-        ///   at System.ComponentModel.TypeConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
-        ///   at MS.Internal.Data.DefaultValueConverter.ConvertHelper(Object o, Type destinationType, DependencyObject targetElement, CultureInfo culture, Boolean isForward)'
-        ///System.Windows.Data Error: 7 : ConvertBack cannot convert value '{NewItemPlaceholder}' (type 'NamedObject'). BindingExpression:Path=SelectedPerson; DataItem='ViewModelCrop' (HashCode=47403907); target element is 'DataGrid' (Name=''); target property is 'SelectedItem' (type 'Object') NotSupportedException:'System.NotSupportedException: TypeConverter cannot convert from MS.Internal.NamedObject.
-        ///   at MS.Internal.Data.DefaultValueConverter.ConvertHelper(Object o, Type destinationType, DependencyObject targetElement, CultureInfo culture, Boolean isForward)
-        ///   at MS.Internal.Data.ObjectTargetConverter.ConvertBack(Object o, Type type, Object parameter, CultureInfo culture)
-        ///   at System.Windows.Data.BindingExpression.ConvertBackHelper(IValueConverter converter, Object value, Type sourceType, Object parameter, CultureInfo culture)'
-        /// </summary>
-
-        object _SelectedPerson;
-        public object SelectedPerson
+        public ObservableCollection<Crops> Crop { get; set; }
+        
+        object _SelectedCrop;
+        public object SelectedCrop
         {
             get
             {
-                return _SelectedPerson;
+                return _SelectedCrop;
             }
             set
             {
-                if (_SelectedPerson != value)
+                if (_SelectedCrop != value)
                 {
-                    _SelectedPerson = value;
-                    RaisePropertyChanged("SelectedPerson");
+                    _SelectedCrop = value;
+                    RaisePropertyChanged("SelectedCrop");
                 }
             }
         }
@@ -65,11 +50,11 @@ namespace JustRipe.ViewModels
 
         public ViewModelCrop()
         {
-            People = new ObservableCollection<Person>
+            Crop = new ObservableCollection<Crop>
             {
-                new Person { FirstName="Tom", LastName="Jones", Age=80 },
-                new Person { FirstName="Dick", LastName="Tracey", Age=40 },
-                new Person { FirstName="Harry", LastName="Hill", Age=60 },
+                new Crop { FirstName="Tom", LastName="Jones", Age=80 },
+                new Crop { FirstName="Dick", LastName="Tracey", Age=40 },
+                new Crop { FirstName="Harry", LastName="Hill", Age=60 },
             };
             TextProperty1 = "Type here";
 
@@ -81,7 +66,7 @@ namespace JustRipe.ViewModels
         void AddUser(object parameter)
         {
             if (parameter == null) return;
-            People.Add(new Person { FirstName = parameter.ToString(), LastName = parameter.ToString(), Age = DateTime.Now.Second });
+            Crop.Add(new Crop { FirstName = parameter.ToString(), LastName = parameter.ToString(), Age = DateTime.Now.Second });
         }
 
     }
