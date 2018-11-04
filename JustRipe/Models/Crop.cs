@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JustRipe.Models
 {
-    class Crops : ObservableObject
+    public class Crops : ObservableObject
     {
 
         private string _Name;

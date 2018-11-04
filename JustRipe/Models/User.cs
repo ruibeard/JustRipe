@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JustRipe.Models
 {
-    class User : ObservableObject
+    public class User : ObservableObject
     {
     }
 }
