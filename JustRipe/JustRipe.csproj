@@ -108,27 +108,6 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Vehicle.cs" />
-    <Compile Include="Pages\Crops.xaml.cs">
-      <DependentUpon>Crops.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Dashboard.xaml.cs">
-      <DependentUpon>Dashboard.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Labour.xaml.cs">
-      <DependentUpon>Labour.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\LoginPage.xaml.cs">
-      <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Main.xaml.cs">
-      <DependentUpon>Main.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Storage.xaml.cs">
-      <DependentUpon>Storage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="ViewModels\ViewModelCrop.cs" />
     <Compile Include="ViewModels\ViewModelMain.cs" />
@@ -151,34 +130,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\Crops.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Dashboard.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Labour.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Login.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\LoginPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Main.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Storage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\Crops.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
