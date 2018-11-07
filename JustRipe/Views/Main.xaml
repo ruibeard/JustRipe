@@ -24,7 +24,7 @@
         <Grid Grid.Column="0" Width="250" HorizontalAlignment="Left" Background="#FF222222">
             <StackPanel>
                 <Image Margin="0 30" Source="/Images/logo.png" />
-                <ListView  Foreground="LightGray" >
+                <ListView  Foreground="LightGray"  >
                     <ListViewItem x:Name="home" Height="60" Selected="ListViewItem_Selected" >
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Home" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
