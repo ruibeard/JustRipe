@@ -9,20 +9,16 @@ namespace JustRipe.Models
     public class Crop : ObservableObject
     {
 
-        private string _Name;
+        public Crop(string _name)
+        {
+            Name = _name;
+        }
+        private string name;
 
         public string Name
         {
-            get { return _Name; }
-            set
-            {
-                if (_Name != value)
-                {
-                    _Name = value;
-                    RaisePropertyChanged("Name");
-                }
-            }
-
+            get { return name; }
+            set { name = value; }
         }
     }
 }

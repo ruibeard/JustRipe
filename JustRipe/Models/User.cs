@@ -6,7 +6,38 @@ using System.Threading.Tasks;
 
 namespace JustRipe.Models
 {
-    public class User : ObservableObject
+    public class User
     {
+        public User(string _name)
+        {
+            Name = _name;
+        }
+
+        public User()
+        {
+        }
+
+        private string username;
+
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
+        private string password;
+
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+
+        private string name;
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
     }
 }

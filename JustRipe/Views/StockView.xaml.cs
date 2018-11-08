@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace JustRipe.Pages
+namespace JustRipe.Views
 {
     /// <summary>
-    /// Interaction logic for Crops.xaml
+    /// Interaction logic for StockView.xaml
     /// </summary>
-    public partial class Crops : Page
+    public partial class StockView : UserControl
     {
-        public Crops()
+        public StockView()
         {
             InitializeComponent();
         }

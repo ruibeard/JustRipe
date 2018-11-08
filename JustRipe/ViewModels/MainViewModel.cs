@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JustRipe.ViewModels
 {
-    class MainViewModel : BaseViewModel
+    class MainViewModel : IBaseViewModel
     {
         //public ObservableCollection<Crop> Crop { get; set; }
 
@@ -16,6 +16,13 @@ namespace JustRipe.ViewModels
         public MainViewModel()
         {
 
+        }
+        private string pageName;
+
+        public string PageName
+        {
+            get { return pageName; }
+            set { pageName = value; }
         }
     }
 }

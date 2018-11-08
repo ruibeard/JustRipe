@@ -14,7 +14,7 @@ namespace JustRipe.Views
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            Main MainWindow = new Main();
+            _Main MainWindow = new _Main();
             MainWindow.Show();
             this.Close();
         }

@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace JustRipe.Models
 {
-    public class Harvest
+    public class Stock
     {
-
-        public Harvest(string _name)
+        public Stock(string _name)
         {
             Name = _name;
         }

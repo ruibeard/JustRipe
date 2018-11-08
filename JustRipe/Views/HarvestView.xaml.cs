@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace JustRipe.Pages
+namespace JustRipe.Views
 {
     /// <summary>
-    /// Interaction logic for Crops.xaml
+    /// Interaction logic for HarvestView.xaml
     /// </summary>
-    public partial class Dashboard
+    public partial class HarvestView : UserControl
     {
-        public Dashboard()
+        public HarvestView()
         {
             InitializeComponent();
         }

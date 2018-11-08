@@ -1,9 +1,10 @@
-﻿<Window x:Class="JustRipe.Views.Main"
+﻿<Window x:Class="JustRipe.Views._Main"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:JustRipe"
+        xmlns:views="clr-namespace:JustRipe.Views"
+        xmlns:vm="clr-namespace:JustRipe.ViewModels"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -13,6 +14,19 @@
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="Dashboard" Height="708" Width="1024" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
 
+    <Window.Resources>
+        <DataTemplate x:Name="StockViewTemplate" DataType="{x:Type vm:StockViewModel}">
+            <views:StockView DataContext="{Binding}"/>
+        </DataTemplate>
+        <DataTemplate x:Name="CropViewTemplate" DataType="{x:Type vm:CropViewModel}">
+            <views:CropView DataContext="{Binding}" />
+        </DataTemplate>
+        <DataTemplate x:Name="HarvestViewTemplate" DataType="{x:Type vm:HarvestViewModel}">
+            <views:HarvestView DataContext="{Binding}" />
+        </DataTemplate>
+    </Window.Resources>
+    
+    
     <!--Main Grid-->
     <Grid Background="{DynamicResource MaterialDesignPaper}">
         <Grid.ColumnDefinitions>
