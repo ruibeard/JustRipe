@@ -9,9 +9,9 @@ namespace JustRipe.Views
     /// <summary>
     /// Interaction logic for Dashboard.xaml
     /// </summary>
-    public partial class ApplicationView : Window
+    public partial class MainView : Window
     {
-        public ApplicationView()
+        public MainView()
         {
 
             InitializeComponent();

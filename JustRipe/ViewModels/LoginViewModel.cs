@@ -79,10 +79,16 @@ namespace JustRipe.ViewModels
             if (string.IsNullOrWhiteSpace(Username))
                 return;
 
+
+            SqliteDataAccess.CheckUserCredentials(Username, passwordBox.Password);
+
             //Compare creadentials passed from user agains the Users table in database
 
 
+            //IF credentials match open MainView
 
+
+            //Else give error to user
 
 
 
