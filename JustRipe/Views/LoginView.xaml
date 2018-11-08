@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         
-        xmlns:local="clr-namespace:JustRipe.Pages"
+        xmlns:local="clr-namespace:JustRipe.Views"
         mc:Ignorable="d"
         Title="Login" Height="500" Width="350" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
@@ -26,15 +26,23 @@
         <Grid VerticalAlignment="Bottom" Margin="35 80" Height="240">
             <TextBlock Text="Log-In" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18"/>
             <StackPanel VerticalAlignment="Center" Margin="15">
-                <TextBox x:Name="TextUsername" Margin="0,10" materialDesign:HintAssist.Hint="Username/Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                <TextBox x:Name="TextUsername" Text="{Binding Username}" Margin="0,10" materialDesign:HintAssist.Hint="Username/Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
                 <PasswordBox x:Name="TextPassword" Margin="0,10" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
             </StackPanel>
         </Grid>
-        <Button x:Name="LoginButton" Width="150" IsDefault="True" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,65" Content="Log-In"/>
+        <Button x:Name="LoginButton" 
+                Command="{Binding LoginCommand}"
+                CommandParameter="{Binding ElementName=TextPassword}" 
+                Width="150"
+                IsDefault="True"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Margin="0,65" Content="Log-In"/>
+
         <TextBlock Text="Recover Password" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="30" Foreground="Gray" Cursor="Hand"/>
         <Image Source="/JustRipe;component/Images/logo.png" Width="300" VerticalAlignment="Top" Margin="0 20"/>
-        
-        
+
+
 
 
     </Grid>

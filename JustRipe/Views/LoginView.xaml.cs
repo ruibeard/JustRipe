@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using JustRipe.ViewModels;
+using System.Windows;
 
 namespace JustRipe.Views
 {
@@ -10,13 +11,14 @@ namespace JustRipe.Views
         public Login()
         {
             InitializeComponent();
+            DataContext = new LoginViewModel();
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
-        {
-            _Main MainWindow = new _Main();
-            MainWindow.Show();
-            this.Close();
-        }
+        //private void LoginButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    ApplicationView MainWindow = new ApplicationView();
+        //    MainWindow.Show();
+        //    this.Close();
+        //}
     }
 }
