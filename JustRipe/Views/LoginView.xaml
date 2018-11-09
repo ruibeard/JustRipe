@@ -41,9 +41,5 @@
 
         <TextBlock Text="Recover Password" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="30" Foreground="Gray" Cursor="Hand"/>
         <Image Source="/JustRipe;component/Images/logo.png" Width="300" VerticalAlignment="Top" Margin="0 20"/>
-
-
-
-
     </Grid>
 </Window>

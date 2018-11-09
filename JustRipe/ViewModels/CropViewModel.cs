@@ -57,8 +57,8 @@ namespace JustRipe.ViewModels
                 Password = "lazzy"
             };
 
-            var omg = SqliteDataAccess.LoadUsers();
-            MessageBox.Show(omg.ToString());
+            //var omg = SqliteDataAccess.LoadUsers();
+            //MessageBox.Show(omg.ToString());
         }
     }
 

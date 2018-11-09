@@ -16,37 +16,44 @@ namespace JustRipe.Data
 {
     public class SqliteDataAccess
     {
-        public static List<User> LoadUsers()
+
+
+        //SQLiteConnection sqlite_conn;          // Database Connection Object
+        //SQLiteCommand sqlite_cmd;             // Database Command Object
+        //SQLiteDataReader sqlite_datareader;  // Data Reader Object
+
+        private SQLiteConnection conn;
+
+        public SQLiteConnection Connection
         {
-            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
-            {
-                var output = cnn.Query<User>("select * from users", new DynamicParameters());
-                return output.ToList();
-            }
+            get { return new SQLiteConnection(LoadConnectionString()); }
+            set { conn = value; }
         }
 
 
 
-        //This also violates MVVM pattern data layer sholdn't be able to know about windows controls
+
+        //This also violates MVVM pattern data layer shouldn't be able to know about windows controls
         // The password at this moment is as string on memory. its a potenlialy break point to the application
         // this shoulb be implemented using SecureString
+
+
         public static void CheckUserCredentials(string username, string password)
         {
-
-            string query = string.Format("Select * form users where username = {0} and password = {1}", username, password);
+            string query = string.Format("Select * from users where username = '{0}' and password = '{1}'", username, password);
 
             MessageBox.Show(query);
+
 
 
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
 
-                var output = cnn.Query("select * from users where username = @Username and password = @Password");
+                var output = cnn.Query(query);
+
+
                 Debug.Assert(false, output.ToString());
-                
-
             }
-
         }
 
         //public static void SaveUser(User user)
