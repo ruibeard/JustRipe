@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JustRipe.ViewModels
 {
-    class MainViewModel : IBaseViewModel
+    class MainViewModel : ObservableObject, IBaseViewModel
     {
         //public ObservableCollection<Crop> Crop { get; set; }
 

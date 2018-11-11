@@ -26,8 +26,14 @@
         <Grid VerticalAlignment="Bottom" Margin="35 80" Height="240">
             <TextBlock Text="Log-In" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="5" Foreground="Gray" FontSize="18"/>
             <StackPanel VerticalAlignment="Center" Margin="15">
-                <TextBox x:Name="TextUsername" Text="{Binding Username}" Margin="0,10" materialDesign:HintAssist.Hint="Username/Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
-                <PasswordBox x:Name="TextPassword" Margin="0,10" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" FontFamily="Champagne &amp; Limousines" FontSize="18"/>
+                <TextBlock Text="user"/>
+                <TextBlock Text="rtra"/>
+                <TextBox x:Name="TextUsername" Text="{Binding Username , Mode=TwoWay}"  />
+                <TextBlock Text="123456"/>
+                <TextBlock Text="password"/>
+                <PasswordBox x:Name="TextPassword"/>
+
+                <TextBlock Text="{Binding TextMessage}" />
             </StackPanel>
         </Grid>
         <Button x:Name="LoginButton" 
