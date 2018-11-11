@@ -51,12 +51,20 @@ namespace JustRipe.Views
             ButtonMaxmize.Visibility = Visibility.Collapsed;
             ButtonRestore.Visibility = Visibility.Visible;
         }
-
+        /// <summary>
+        /// Handles the drag movement when holding the windows on the title bar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
-
+        /// <summary>
+        /// Togles the buttons of maximize and re-size of the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Window_StateChanged(object sender, EventArgs e)
         {
             switch (this.WindowState)
@@ -72,7 +80,11 @@ namespace JustRipe.Views
                     break;
             }
         }
-
+        /// <summary>
+        /// Togles the window between maximize and normal at double click on the title bar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ContentControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (WindowState == WindowState.Maximized)
@@ -89,13 +101,14 @@ namespace JustRipe.Views
                 ButtonRestore.Visibility = Visibility.Visible;
             }
         }
-
+        /// <summary>
+        /// Just shows a message on wich button of the side bar user clicked 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListViewItem_Selected(object sender, RoutedEventArgs e)
         {
-
             var item = sender as ListViewItem;
-
-
             DataContext = new CropViewModel();
             MessageBox.Show(item.Name);
 

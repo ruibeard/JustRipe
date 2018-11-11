@@ -204,6 +204,7 @@
     <Resource Include="Images\logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\JustRipe.db" />
     <Content Include="_Schema\dbo.Crop.sql" />
   </ItemGroup>
   <ItemGroup>
