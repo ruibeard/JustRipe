@@ -1,4 +1,4 @@
-﻿namespace JustRipe.Models
+﻿namespace JustRipe.Data
 {
     /// <summary>
     /// Models the Pragma Journal_Mode enumeration

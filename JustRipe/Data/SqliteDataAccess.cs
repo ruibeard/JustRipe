@@ -1,7 +1,6 @@
-﻿using JustRipe.Models;
-using System;
-using System.Configuration;
+﻿using System;
 using System.Data.SQLite;
+using System.Windows;
 
 namespace JustRipe.Data
 {
@@ -14,7 +13,6 @@ namespace JustRipe.Data
     {
         #region fields
         private string _DBFilePath = @".\Data\";
-
         private string _DBFileName = "JustRipe.db";
 
         private SQLiteConnection _Connection = null;
@@ -27,10 +25,10 @@ namespace JustRipe.Data
         /// <summary>
         /// Class Constructor
         /// </summary>
-        public SQLiteDatabase(string dbFileName = null, bool enforceForeignKeys = true, bool mutliThreadAccess = false)
+        public SQLiteDatabase(string dbFileName = null,
+                  bool enforceForeignKeys = true,
+                  bool mutliThreadAccess = false)
         {
-
-
             if (string.IsNullOrEmpty(dbFileName) == false)
                 _DBFileName = dbFileName;
 
@@ -178,12 +176,12 @@ namespace JustRipe.Data
             try
             {
                 if (_Connection != null)
-
                 {
                     if (_Connection.State == System.Data.ConnectionState.Open)
                         return;
                 }
                 else
+
                     ConstructConnection(overwriteFile);
 
                 _Connection.Open();
@@ -331,12 +329,13 @@ namespace JustRipe.Data
         {
             var dbFileNamePath = DBFileNamePath;
 
-            //SQLiteConnectionStringBuilder connectString = new SQLiteConnectionStringBuilder();
-            //connectString.DataSource = dbFileNamePath;
-            //connectString.ForeignKeys = EnforceForeignKeys;
-            //connectString.JournalMode = GetJournalMode();
-
-            _Connection = new SQLiteConnection(ConfigurationManager.ConnectionStrings["Default"].ConnectionString);
+            SQLiteConnectionStringBuilder connectString = new SQLiteConnectionStringBuilder
+            {
+                DataSource = dbFileNamePath,
+                ForeignKeys = EnforceForeignKeys,
+                JournalMode = GetJournalMode()
+            };
+            _Connection = new SQLiteConnection(connectString.ToString());
 
             if (System.IO.File.Exists(dbFileNamePath) == false)
             {
@@ -350,12 +349,15 @@ namespace JustRipe.Data
                 if (overWriteFile == false)
                 {
                     Status = "Using exsiting Database.";
+
                 }
                 else
                 {
+
                     // Overwrites a file if it is already there
                     SQLiteConnection.CreateFile(dbFileNamePath);
                 }
+
             }
         }
 
