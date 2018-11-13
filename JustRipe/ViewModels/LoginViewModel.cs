@@ -73,7 +73,7 @@ namespace JustRipe.ViewModels
                 if (_MessageText != value)
                 {
                     _MessageText = value;
-                    //OnPropertyChanged(MessageText);
+                    OnPropertyChanged("MessageText");
                 }
             }
         }
@@ -97,7 +97,6 @@ namespace JustRipe.ViewModels
         private void CheckCredentials(object parameter)
         {
             SQLiteDatabase db = new SQLiteDatabase();
-            string query = string.Empty;
             string queryString = string.Empty;
             var passwordBox = (PasswordBox)parameter;
             _password = passwordBox.Password;
@@ -128,29 +127,23 @@ namespace JustRipe.ViewModels
                 if (count < 1)
                 {
                     MessageBox.Show("Incorrect Credentials");
-                    Username = "";
-                    Password = "";
-
-                    MessageBox.Show(Username);
                 }
 
                 if (count == 1)
                 {
-                    MessageBox.Show("Correct Credentials");
+                    //MessageBox.Show("Correct Credentials");
 
                     var mainView = new Views.MainView();
                     var mainVM = new MainViewModel();
 
                     mainView.DataContext = mainVM;
-                    mainView.ShowDialog();
+                    mainView.Show();
 
                     CloseAction();
                 }
                 if (count > 1)
                 {
                     MessageBox.Show("Duplicate user");
-                    Username = "";
-                    Password = "";
                 }
 
             }

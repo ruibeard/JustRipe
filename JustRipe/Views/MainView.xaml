@@ -25,8 +25,8 @@
             <views:HarvestView DataContext="{Binding}" />
         </DataTemplate>
     </Window.Resources>
-    
-    
+
+
     <!--Main Grid-->
     <Grid Background="{DynamicResource MaterialDesignPaper}">
         <Grid.ColumnDefinitions>
@@ -35,61 +35,63 @@
         </Grid.ColumnDefinitions>
 
         <!--Side Bard Grid-->
-        <Grid Grid.Column="0" Width="250" HorizontalAlignment="Left" Background="#FF222222">
-            <StackPanel>
-                <Image Margin="0 30" Source="/Images/logo.png" />
-                <ListView  Foreground="LightGray"  >
-                    <ListViewItem x:Name="home" Height="60" Selected="ListViewItem_Selected" >
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Home" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Dashboard" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem  x:Name="Crops" Height="60" Selected="ListViewItem_Selected"  >
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Corn" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Crops" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem  x:Name="Fertilizers" Height="60" Selected="ListViewItem_Selected" >
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Medicine" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Fertilizers" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem  x:Name="Vehicles" Height="60" Selected="ListViewItem_Selected" >
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Tractor" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Vehicles" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem  x:Name="Storage" Height="60" Selected="ListViewItem_Selected" >
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="BoxVariant" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Storage" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem  x:Name="Stock" Height="60" Selected="ListViewItem_Selected" >
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Stocking" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Stock" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem  x:Name="Harvesting" Height="60" Selected="ListViewItem_Selected" >
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="LocalAttraction" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Harvesting" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem  x:Name="Labour" Height="60" Selected="ListViewItem_Selected" >
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Users" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
-                            <TextBlock Text="Labour" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                        </StackPanel>
-                    </ListViewItem>
-                </ListView>
-            </StackPanel>
-        </Grid>
+        <materialDesign:ColorZone Mode="Dark" >
+            <Grid Grid.Column="0" Width="250" HorizontalAlignment="Left">
+                <StackPanel>
+                    <Image Margin="0 30" Source="/Images/logo.png" />
+                    <ListView  Foreground="LightGray"  >
+                        <ListViewItem x:Name="home" Height="60" Selected="ListViewItem_Selected" >
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Home" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="Dashboard" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem  x:Name="Crops" Height="60" Selected="ListViewItem_Selected"  >
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Corn" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="Crops" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem  x:Name="Fertilizers" Height="60" Selected="ListViewItem_Selected" >
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Medicine" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="Fertilizers" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem  x:Name="Vehicles" Height="60" Selected="ListViewItem_Selected" >
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Tractor" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="Vehicles" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem  x:Name="Storage" Height="60" Selected="ListViewItem_Selected" >
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="BoxVariant" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="Storage" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem  x:Name="Stock" Height="60" Selected="ListViewItem_Selected" >
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Stocking" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="Stock" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem  x:Name="Harvesting" Height="60" Selected="ListViewItem_Selected" >
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="LocalAttraction" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="Harvesting" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem  x:Name="Labour" Height="60" Selected="ListViewItem_Selected" >
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Users" Width="40" Height="40" VerticalAlignment="Center" Margin="5"/>
+                                <TextBlock Text="Labour" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                            </StackPanel>
+                        </ListViewItem>
+                    </ListView>
+                </StackPanel>
+            </Grid>
+        </materialDesign:ColorZone>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
@@ -106,18 +108,18 @@
                         <Grid  Background="{DynamicResource PrimaryHueMidBrush}" Height="30" MouseDown="Grid_MouseDown" >
                             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" >
 
-                                <Button  x:Name="ButtonMinimize" Click="ButtonMinimize_Click"  Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueDarkBrush}" >
+                                <Button  x:Name="ButtonMinimize" Click="ButtonMinimize_Click"  Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource SecondaryAccentBrush}" >
                                     <materialDesign:PackIcon Kind="WindowMinimize"  />
                                 </Button>
 
-                                <Button  x:Name="ButtonRestore" Click="ButtonRestore_Click" Visibility="Collapsed" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueDarkBrush}" >
+                                <Button  x:Name="ButtonRestore" Click="ButtonRestore_Click" Visibility="Collapsed" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource SecondaryAccentBrush}" >
                                     <materialDesign:PackIcon Kind="WindowRestore"  />
                                 </Button>
 
-                                <Button x:Name="ButtonMaxmize" Click="ButtonMaxmize_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueDarkBrush}">
+                                <Button x:Name="ButtonMaxmize" Click="ButtonMaxmize_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource SecondaryAccentBrush}">
                                     <materialDesign:PackIcon Kind="WindowMaximize"  />
                                 </Button>
-                                <Button x:Name="ButtonClose" Click="ButtonClose_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueDarkBrush}" >
+                                <Button x:Name="ButtonClose" Click="ButtonClose_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource SecondaryAccentBrush}" >
                                     <materialDesign:PackIcon Kind="Power"/>
                                 </Button>
 
@@ -134,7 +136,7 @@
             <Grid x:Name="ContainerX" Grid.Row="1">
                 <StackPanel>
                     <TextBlock Text="Dashboard" Margin="10" FontSize="20"/>
-                    
+
                     <ContentControl x:Name="ContentArea" />
 
                 </StackPanel>
