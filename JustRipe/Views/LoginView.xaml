@@ -24,15 +24,15 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
             <Grid>
-                <materialDesign:ColorZone Mode="PrimaryDark">
+                <materialDesign:ColorZone Mode="Dark">
                     <StackPanel HorizontalAlignment="Right">
-                        <Button x:Name="ButtonClose" Click="ButtonClose_Click"  Width="30" Height="30" Padding="0" >
+                        <Button x:Name="ButtonClose" Click="ButtonClose_Click" Background="{x:Null}" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderBrush="{x:Null}" Width="30" Height="30" Padding="0" >
                             <materialDesign:PackIcon Kind="Power"/>
                         </Button>
                     </StackPanel>
@@ -42,9 +42,9 @@
         </Border>
 
         <Grid Grid.Row="1">
-            <materialDesign:ColorZone Mode="PrimaryMid" Padding="30">
+            <materialDesign:ColorZone Mode="Dark" Padding="10">
                 <StackPanel>
-                    <Image Source="/JustRipe;component/Images/logo.png" Width="200" HorizontalAlignment="Center"/>
+                    <Image Source="/Images/logo_new.png" Width="200" HorizontalAlignment="Center"/>
                     <TextBlock Text="Welcome" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30 30 0 0"/>
                 </StackPanel>
             </materialDesign:ColorZone>
@@ -57,7 +57,7 @@
                     <materialDesign:PackIcon Kind="Account" Foreground="{Binding ElementName=txtUsername, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="5 5"/>
                     <TextBox x:Name="TextUsername" Text="{Binding Username , Mode=TwoWay}"  Width="300" materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.IsFloating="True"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
                     <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=txtUsername, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="5 5"/>
                     <PasswordBox x:Name="TextPassword"  Width="300" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.IsFloating="True"/>
                 </StackPanel>

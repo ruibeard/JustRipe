@@ -34,11 +34,12 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+
         <!--Side Bard Grid-->
-        <materialDesign:ColorZone Mode="Dark" >
+        <materialDesign:ColorZone Mode="Dark" VerticalAlignment="Stretch">
             <Grid Grid.Column="0" Width="250" HorizontalAlignment="Left">
                 <StackPanel>
-                    <Image Margin="0 30" Source="/Images/logo.png" />
+                    <Image Margin="0 30" Source="/Images/logo_new.png" Width="180"/>
                     <ListView  Foreground="LightGray"  >
                         <ListViewItem x:Name="home" Height="60" Selected="ListViewItem_Selected" >
                             <StackPanel Orientation="Horizontal">
@@ -103,23 +104,23 @@
 
                 <ContentControl MouseDoubleClick="ContentControl_MouseDoubleClick">
 
-                    <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth2" materialDesign:ShadowAssist.ShadowEdges="Bottom">
+                    <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth3" materialDesign:ShadowAssist.ShadowEdges="Bottom"  >
 
                         <Grid  Background="{DynamicResource PrimaryHueMidBrush}" Height="30" MouseDown="Grid_MouseDown" >
                             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" >
 
-                                <Button  x:Name="ButtonMinimize" Click="ButtonMinimize_Click"  Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource SecondaryAccentBrush}" >
+                                <Button  x:Name="ButtonMinimize" Click="ButtonMinimize_Click"  Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}"  >
                                     <materialDesign:PackIcon Kind="WindowMinimize"  />
                                 </Button>
 
-                                <Button  x:Name="ButtonRestore" Click="ButtonRestore_Click" Visibility="Collapsed" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource SecondaryAccentBrush}" >
+                                <Button  x:Name="ButtonRestore" Click="ButtonRestore_Click" Visibility="Collapsed" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}"  >
                                     <materialDesign:PackIcon Kind="WindowRestore"  />
                                 </Button>
 
-                                <Button x:Name="ButtonMaxmize" Click="ButtonMaxmize_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource SecondaryAccentBrush}">
+                                <Button x:Name="ButtonMaxmize" Click="ButtonMaxmize_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}"  >
                                     <materialDesign:PackIcon Kind="WindowMaximize"  />
                                 </Button>
-                                <Button x:Name="ButtonClose" Click="ButtonClose_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource SecondaryAccentBrush}" >
+                                <Button x:Name="ButtonClose" Click="ButtonClose_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}"   >
                                     <materialDesign:PackIcon Kind="Power"/>
                                 </Button>
 
