@@ -23,35 +23,41 @@
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" MouseLeftButtonDown="Border_MouseLeftButtonDown" >
-            <StackPanel>
-                <materialDesign:ColorZone Mode="Dark" >
+        <Border Grid.Row="0" Background="Transparent" MouseLeftButtonDown="Border_MouseLeftButtonDown">
+            <Grid>
+                <materialDesign:ColorZone Mode="PrimaryDark">
                     <StackPanel HorizontalAlignment="Right">
-                        <Button x:Name="ButtonClose" Click="ButtonClose_Click" Background="{x:Null}"  BorderBrush="{x:Null}" Width="30" Height="30" Padding="0" >
+                        <Button x:Name="ButtonClose" Click="ButtonClose_Click"  Width="30" Height="30" Padding="0" >
                             <materialDesign:PackIcon Kind="Power"/>
                         </Button>
                     </StackPanel>
                 </materialDesign:ColorZone>
-                <materialDesign:ColorZone Mode="Dark"  materialDesign:ShadowAssist.ShadowDepth="Depth4">
-                    <StackPanel>
-                        <Image Source="/Images/logo_new.png" Width="180" HorizontalAlignment="Center" Margin="0 50"/>
-                        <!--<TextBlock Text="Welcome" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30 30 0 0"/>-->
-                    </StackPanel>
-                </materialDesign:ColorZone>
-            </StackPanel>
+
+            </Grid>
         </Border>
 
         <Grid Grid.Row="1">
+            <materialDesign:ColorZone Mode="PrimaryMid" Padding="30">
+                <StackPanel>
+                    <Image Source="/JustRipe;component/Images/logo.png" Width="200" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Welcome" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30 30 0 0"/>
+                </StackPanel>
+            </materialDesign:ColorZone>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
             <StackPanel Orientation="Vertical" Margin="40 20 40 0">
                 <StackPanel Orientation="Horizontal" FocusManager.FocusedElement="{Binding ElementName=TextUsername}">
                     <materialDesign:PackIcon Kind="Account" Foreground="{Binding ElementName=txtUsername, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="5 5"/>
-                    <TextBox x:Name="TextUsername" Text="{Binding Username, Mode=TwoWay}"  Width="300" materialDesign:HintAssist.Hint="Username"  materialDesign:HintAssist.IsFloating="True"/>
+                    <TextBox x:Name="TextUsername" Text="{Binding Username , Mode=TwoWay}"  Width="300" materialDesign:HintAssist.Hint="Username" materialDesign:HintAssist.IsFloating="True"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Key" Foreground="{Binding ElementName=txtUsername, Path=BorderBrush}" VerticalAlignment="Bottom" Margin="5 5"/>
                     <PasswordBox x:Name="TextPassword"  Width="300" materialDesign:HintAssist.Hint="Password" materialDesign:HintAssist.IsFloating="True"/>
                 </StackPanel>
@@ -59,7 +65,7 @@
                         Command="{Binding LoginCommand}"
                         CommandParameter="{Binding ElementName=TextPassword}" 
                         Content="Log In" Width="80" 
-                        Style="{DynamicResource MaterialDesignRaisedButton}" 
+                        Style="{DynamicResource MaterialDesignRaisedAccentButton}" 
                         HorizontalAlignment="Right" Margin="0 30 20 0"
                         IsDefault="True"
                         Click="ButtonLogin_Click"/>

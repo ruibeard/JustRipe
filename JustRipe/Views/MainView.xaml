@@ -136,20 +136,20 @@
                 <StackPanel Grid.Row="0">
                     <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" >
 
-                        <Button  x:Name="ButtonMinimize" Click="ButtonMinimize_Click"  Width="30" Height="30" Padding="0" Background="{x:Null}" Foreground="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{x:Null}"  >
-                            <materialDesign:PackIcon Kind="WindowMinimize"  />
-                        </Button>
+                                <Button  x:Name="ButtonMinimize" Click="ButtonMinimize_Click"  Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueDarkBrush}" >
+                                    <materialDesign:PackIcon Kind="WindowMinimize"  />
+                                </Button>
 
-                        <Button  x:Name="ButtonRestore" Click="ButtonRestore_Click" Visibility="Collapsed" Width="30" Height="30" Padding="0" Background="{x:Null}" Foreground="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{x:Null}"  >
-                            <materialDesign:PackIcon Kind="WindowRestore"  />
-                        </Button>
+                                <Button  x:Name="ButtonRestore" Click="ButtonRestore_Click" Visibility="Collapsed" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueDarkBrush}" >
+                                    <materialDesign:PackIcon Kind="WindowRestore"  />
+                                </Button>
 
-                        <Button x:Name="ButtonMaxmize" Click="ButtonMaxmize_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" Foreground="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{x:Null}"  >
-                            <materialDesign:PackIcon Kind="WindowMaximize"  />
-                        </Button>
-                        <Button x:Name="ButtonClose" Click="ButtonClose_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" Foreground="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{x:Null}"   >
-                            <materialDesign:PackIcon Kind="Power"/>
-                        </Button>
+                                <Button x:Name="ButtonMaxmize" Click="ButtonMaxmize_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueDarkBrush}">
+                                    <materialDesign:PackIcon Kind="WindowMaximize"  />
+                                </Button>
+                                <Button x:Name="ButtonClose" Click="ButtonClose_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{StaticResource PrimaryHueDarkBrush}" >
+                                    <materialDesign:PackIcon Kind="Power"/>
+                                </Button>
 
                     </StackPanel>
                 </StackPanel>
