@@ -107,6 +107,9 @@
     <Compile Include="Data\JournalMode.cs" />
     <Compile Include="Data\SqliteDataAccess.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Labour.cs" />
+    <Compile Include="Models\Storage.cs" />
+    <Compile Include="Models\Fertiliser.cs" />
     <Compile Include="Models\Crop.cs" />
     <Compile Include="Models\Harvest.cs" />
     <Compile Include="Models\ObservableObject.cs" />
@@ -115,19 +118,38 @@
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="ViewModels\FertiliserViewModel.cs" />
+    <Compile Include="ViewModels\CategoryViewModel.cs" />
+    <Compile Include="ViewModels\ProductViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="ViewModels\VehicleViewModel.cs" />
+    <Compile Include="ViewModels\StorageViewModel.cs" />
+    <Compile Include="ViewModels\LabourViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
-    <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\DashBoardViewModel.cs" />
     <Compile Include="ViewModels\CropViewModel.cs" />
     <Compile Include="ViewModels\HarvestViewModel.cs" />
     <Compile Include="ViewModels\IBaseViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="ViewModels\StockViewModel.cs" />
+    <Compile Include="Views\FertiliserView.xaml.cs">
+      <DependentUpon>FertiliserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LabourView.xaml.cs">
+      <DependentUpon>LabourView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StorageView.xaml.cs">
+      <DependentUpon>StorageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VehicleView.xaml.cs">
+      <DependentUpon>VehicleView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CropView.xaml.cs">
       <DependentUpon>CropView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Dashboard.xaml.cs">
-      <DependentUpon>Dashboard.xaml</DependentUpon>
+    <Compile Include="Views\DashboardView.xaml.cs">
+      <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\HarvestView.xaml.cs">
       <DependentUpon>HarvestView.xaml</DependentUpon>
@@ -145,11 +167,27 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\FertiliserView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\LabourView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StorageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\VehicleView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\CropView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Dashboard.xaml">
+    <Page Include="Views\DashboardView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -188,6 +226,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Data\JustRipe.db-journal" />
+    <None Include="Data\JustRipe.db.sqbpro" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

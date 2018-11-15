@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace JustRipe.Models
 {
-    public class Product : ObservableObject
+    public class Fertiliser : ObservableObject
     {
 
-        public Product(string _name)
+        public Fertiliser(string _name)
         {
             Name = _name;
         }

@@ -1,6 +1,8 @@
 ﻿using JustRipe.ViewModels;
 using System;
+using System.Security;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace JustRipe.Views
 {
@@ -13,6 +15,7 @@ namespace JustRipe.Views
         {
             InitializeComponent();
             LoginViewModel loginVM = new LoginViewModel();
+            loginVM.Username = "rtra";
             DataContext = loginVM;
 
             if (loginVM.CloseAction == null)

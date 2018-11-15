@@ -11,26 +11,26 @@ using System.Windows.Media;
 
 namespace JustRipe.ViewModels
 {
-    public class CropViewModel : ObservableObject, IBaseViewModel
+    public class StorageViewModel : ObservableObject, IBaseViewModel
     {
 
-        private Crop crop;
+        private Storage storage;
 
-        public Crop Crop
+        public Storage Storage
         {
-            get { return crop; }
-            set { crop = value; }
+            get { return storage; }
+            set { storage= value; }
         }
 
-        public RelayCommand AddCropCommand { get; set; }
+        public RelayCommand AddStorageCommand { get; set; }
 
 
-        public CropViewModel()
+        public StorageViewModel()
         {
-            crop = new Crop("Crop Corn model name ");
+            storage= new Storage("Storage  model name ");
             _color = Brushes.Red;
-            PageName = "Crops";
-            AddCropCommand = new RelayCommand(AddCrop);
+            PageName = "Storages";
+            AddStorageCommand = new RelayCommand(AddStorage);
         }
         private string pageName;
 
@@ -49,8 +49,13 @@ namespace JustRipe.ViewModels
             set { _color = value; }
         }
 
-        void AddCrop(object parameter)
+        void AddStorage(object parameter)
         {
+            User u = new User
+            {
+                Username = "fabio",
+                Password = "lazzy"
+            };
 
         }
     }

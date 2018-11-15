@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="JustRipe.Views.StockView"
+﻿<UserControl x:Class="JustRipe.Views.FertiliserView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -8,11 +8,11 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="{Binding Color, FallbackValue=white}">
         <StackPanel>
-            <Button Grid.Row="1" Content="Add Stock"
-                    Command="{Binding StockCommand}" 
+            <Button Grid.Row="1" Content="Add Fertiliser"
+                    Command="{Binding AddFertiliserCommand}" 
                     CommandParameter="hi there" 
                     Focusable="False"/>
-            <TextBlock Text="{Binding Stock.Name}"/>
+            <TextBlock Text="{Binding Fertiliser.Name}"/>
         </StackPanel>
     </Grid>
 </UserControl>

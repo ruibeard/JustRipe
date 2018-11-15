@@ -8,5 +8,16 @@ namespace JustRipe.Models
 {
     public class Vehicle : ObservableObject
     {
+        public Vehicle(string _name)
+        {
+            Name = _name;
+        }
+        private string name;
+
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
     }
 }

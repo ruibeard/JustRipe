@@ -11,26 +11,26 @@ using System.Windows.Media;
 
 namespace JustRipe.ViewModels
 {
-    public class CropViewModel : ObservableObject, IBaseViewModel
+    public class LabourViewModel : ObservableObject, IBaseViewModel
     {
 
-        private Crop crop;
+        private Labour labour;
 
-        public Crop Crop
+        public Labour Labour
         {
-            get { return crop; }
-            set { crop = value; }
+            get { return labour; }
+            set { labour = value; }
         }
 
-        public RelayCommand AddCropCommand { get; set; }
+        public RelayCommand AddLabourCommand { get; set; }
 
 
-        public CropViewModel()
+        public LabourViewModel()
         {
-            crop = new Crop("Crop Corn model name ");
+            labour = new Labour("Labour model name ");
             _color = Brushes.Red;
-            PageName = "Crops";
-            AddCropCommand = new RelayCommand(AddCrop);
+            PageName = "Labours";
+            AddLabourCommand = new RelayCommand(AddLabour);
         }
         private string pageName;
 
@@ -49,9 +49,9 @@ namespace JustRipe.ViewModels
             set { _color = value; }
         }
 
-        void AddCrop(object parameter)
+        void AddLabour(object parameter)
         {
-
+            
         }
     }
 
