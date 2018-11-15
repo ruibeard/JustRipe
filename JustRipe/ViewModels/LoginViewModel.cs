@@ -42,9 +42,10 @@ namespace JustRipe.ViewModels
         public string Password
         {
             get { return _password; }
-            private set
+            //TODO: change this to private set
+            // this is to auto fill the password
+             set
             {
-
                 if (value != _password)
                 {
                     _password = value;
@@ -100,7 +101,6 @@ namespace JustRipe.ViewModels
             string queryString = string.Empty;
             var passwordBox = (PasswordBox)parameter;
             _password = passwordBox.Password;
-
             try
             {
                 db.OpenConnection();
@@ -131,7 +131,6 @@ namespace JustRipe.ViewModels
 
                 if (count == 1)
                 {
-                    //MessageBox.Show("Correct Credentials");
 
                     var mainView = new Views.MainView();
                     var mainVM = new MainViewModel();
