@@ -50,15 +50,7 @@ namespace JustRipe.Views
             ButtonMaxmize.Visibility = Visibility.Collapsed;
             ButtonRestore.Visibility = Visibility.Visible;
         }
-        /// <summary>
-        /// Handles the drag movement when holding the windows on the title bar
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            DragMove();
-        }
+
         /// <summary>
         /// Togles the buttons of maximize and re-size of the window
         /// </summary>
@@ -84,12 +76,11 @@ namespace JustRipe.Views
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ContentControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void TitleBar_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (WindowState == WindowState.Maximized)
             {
                 WindowState = WindowState.Normal;
-
                 ButtonMaxmize.Visibility = Visibility.Visible;
                 ButtonRestore.Visibility = Visibility.Collapsed;
             }
@@ -100,28 +91,9 @@ namespace JustRipe.Views
                 ButtonRestore.Visibility = Visibility.Visible;
             }
         }
-        /// <summary>
-        /// Just shows a message on wich button of the side bar user clicked 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ListViewItem_Selected(object sender, RoutedEventArgs e)
+        private void DragWindow(object sender, MouseButtonEventArgs e)
         {
-            var item = sender as ListViewItem;
-            DataContext = new CropViewModel();
-            MessageBox.Show(item.Name);
-
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void dashbtn_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("clicked");
+            DragMove();
         }
     }
 }

@@ -13,6 +13,7 @@
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
         Title="Dashboard" Height="708" Width="1024" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+
     <!--//Defining the template for each view, it has a type of data ViewModel and the corresponding view-->
     <Window.Resources>
         <DataTemplate x:Name="DashboardViewTemplate" DataType="{x:Type vm:DashBoardViewModel}">
@@ -50,80 +51,67 @@
 
         <!--Side Bard Grid-->
         <materialDesign:ColorZone Mode="Dark" VerticalAlignment="Stretch" materialDesign:ShadowAssist.ShadowDepth="Depth5" materialDesign:ShadowAssist.ShadowEdges="Right">
-            <Grid Grid.Column="0" Width="250" HorizontalAlignment="Left">
-                <StackPanel>
-                    <!--Logo of the program-->
-                    <Image Margin="0 30" Source="/Images/logo_new.png" Width="180"/>
-                    <!--Side Menu, contains a listview with button for each view-->
-                    <ListView>
-                        <ListViewItem Height="60" Padding="0" >
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" x:Name="Dashboard" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding DashCommand}" >
-                                <StackPanel Orientation="Horizontal" >
-                                    <materialDesign:PackIcon Kind="Home" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Dashboard" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                                </StackPanel>
-                            </Button>
-                        </ListViewItem>
-                        <ListViewItem Height="60" Padding="0" >
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" x:Name="Crops" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding CropCommand}" >
-                                <StackPanel Orientation="Horizontal" >
-                                    <materialDesign:PackIcon Kind="Corn" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Crops" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                                </StackPanel>
-                            </Button>
-                        </ListViewItem>
-                        <ListViewItem Height="60" Padding="0" >
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" x:Name="Fertilisers" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding FertiliserCommand}" >
-                                <StackPanel Orientation="Horizontal" >
-                                    <materialDesign:PackIcon Kind="Medicine" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Fertilisers" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                                </StackPanel>
-                            </Button>
-                        </ListViewItem>
-                        <ListViewItem Height="60" Padding="0" >
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" x:Name="Vehicle" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding VehicleCommand}" >
-                                <StackPanel Orientation="Horizontal" >
-                                    <materialDesign:PackIcon Kind="Tractor" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Vehicle" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                                </StackPanel>
-                            </Button>
-                        </ListViewItem>
-                        <ListViewItem Height="60" Padding="0" >
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" x:Name="Storage" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding StorageCommand}" >
-                                <StackPanel Orientation="Horizontal" >
-                                    <materialDesign:PackIcon Kind="BoxVariant" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Storage" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                                </StackPanel>
-                            </Button>
-                        </ListViewItem>
-                        <ListViewItem Height="60" Padding="0" >
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" x:Name="Stock" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding StockCommand}" >
-                                <StackPanel Orientation="Horizontal" >
-                                    <materialDesign:PackIcon Kind="Stocking" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Stock" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                                </StackPanel>
-                            </Button>
-                        </ListViewItem>
-                        <ListViewItem Height="60" Padding="0" >
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" x:Name="Harvesting" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding HarvestingCommand}" >
-                                <StackPanel Orientation="Horizontal" >
-                                    <materialDesign:PackIcon Kind="LocalAttraction" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Harvesting" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                                </StackPanel>
-                            </Button>
-                        </ListViewItem>
-                        <ListViewItem Height="60" Padding="0" >
-                            <Button Style="{StaticResource MaterialDesignFlatButton}" x:Name="Labour" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding LabourCommand}" >
-                                <StackPanel Orientation="Horizontal" >
-                                    <materialDesign:PackIcon Kind="Users" VerticalAlignment="Center"/>
-                                    <TextBlock Text="Labour" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                                </StackPanel>
-                            </Button>
-                        </ListViewItem>
+            <StackPanel HorizontalAlignment="Left" Grid.Column="0" Width="250">
 
-                    </ListView>
-                </StackPanel>
-            </Grid>
+                <!--Logo of the program-->
+                <Image Margin="0 30" Source="/Images/logo.png" Width="180"/>
+                <!--Side Menu, contains a listview with button for each view-->
+                <Button HorizontalAlignment="Left"  Style="{StaticResource MaterialDesignFlatButton}" x:Name="Dashboard" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding DashCommand}" >
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Home" VerticalAlignment="Center"/>
+                        <TextBlock Text="Dashboard" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}" x:Name="Crops" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding CropCommand}" >
+                    <StackPanel Orientation="Horizontal" >
+                        <materialDesign:PackIcon Kind="Corn" VerticalAlignment="Center"/>
+                        <TextBlock Text="Crops" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button   HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}" x:Name="Fertilisers" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding FertiliserCommand}" >
+                    <StackPanel Orientation="Horizontal" >
+                        <materialDesign:PackIcon Kind="Medicine" VerticalAlignment="Center" />
+                        <TextBlock Text="Fertilisers" FontSize="18" VerticalAlignment="Center"  Margin="20 0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button   HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}" x:Name="Vehicle" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding VehicleCommand}" >
+                    <StackPanel Orientation="Horizontal" >
+                        <materialDesign:PackIcon Kind="Tractor" VerticalAlignment="Center"  />
+                        <TextBlock Text="Vehicle" FontSize="18"  Margin="20 0"  />
+                    </StackPanel>
+                </Button>
+
+                <Button   HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}" x:Name="Storage" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding StorageCommand}" >
+                    <StackPanel Orientation="Horizontal" >
+                        <materialDesign:PackIcon Kind="BoxVariant" VerticalAlignment="Center"/>
+                        <TextBlock Text="Storage" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button   HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}" x:Name="Stock" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding StockCommand}" >
+                    <StackPanel Orientation="Horizontal" >
+                        <materialDesign:PackIcon Kind="Stocking" VerticalAlignment="Center"/>
+                        <TextBlock Text="Stock" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button   HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}" x:Name="Harvesting" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding HarvestingCommand}" >
+                    <StackPanel Orientation="Horizontal" >
+                        <materialDesign:PackIcon Kind="LocalAttraction" VerticalAlignment="Center"/>
+                        <TextBlock Text="Harvesting" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </Button>
+
+                <Button   HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}" x:Name="Labour" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding LabourCommand}" >
+                    <StackPanel Orientation="Horizontal" >
+                        <materialDesign:PackIcon Kind="Users" VerticalAlignment="Center"/>
+                        <TextBlock Text="Labour" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
         </materialDesign:ColorZone>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
@@ -132,28 +120,25 @@
             </Grid.RowDefinitions>
 
             <!--Title bar-->
-            <ContentControl MouseDoubleClick="ContentControl_MouseDoubleClick">
-                <StackPanel Grid.Row="0">
-                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" >
+            <Border  Grid.Row="0"   Background="Red" MouseDown="DragWindow" Mous>
 
-                        <Button  x:Name="ButtonMinimize" Click="ButtonMinimize_Click"  Width="30" Height="30" Padding="0" Background="{x:Null}" Foreground="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{x:Null}"  >
-                            <materialDesign:PackIcon Kind="WindowMinimize"  />
-                        </Button>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" >
+                    <Button  x:Name="ButtonMinimize" Click="ButtonMinimize_Click"  Width="30" Height="30" Padding="0" Background="{x:Null}" Foreground="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{x:Null}"  >
+                        <materialDesign:PackIcon Kind="WindowMinimize"  />
+                    </Button>
 
-                        <Button  x:Name="ButtonRestore" Click="ButtonRestore_Click" Visibility="Collapsed" Width="30" Height="30" Padding="0" Background="{x:Null}" Foreground="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{x:Null}"  >
-                            <materialDesign:PackIcon Kind="WindowRestore"  />
-                        </Button>
+                    <Button  x:Name="ButtonRestore" Click="ButtonRestore_Click" Visibility="Collapsed" Width="30" Height="30" Padding="0" Background="{x:Null}" Foreground="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{x:Null}"  >
+                        <materialDesign:PackIcon Kind="WindowRestore"  />
+                    </Button>
 
-                        <Button x:Name="ButtonMaxmize" Click="ButtonMaxmize_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" Foreground="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{x:Null}"  >
-                            <materialDesign:PackIcon Kind="WindowMaximize"  />
-                        </Button>
-                        <Button x:Name="ButtonClose" Click="ButtonClose_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" Foreground="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{x:Null}"   >
-                            <materialDesign:PackIcon Kind="Power"/>
-                        </Button>
-
-                    </StackPanel>
+                    <Button x:Name="ButtonMaxmize" Click="ButtonMaxmize_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" Foreground="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{x:Null}"  >
+                        <materialDesign:PackIcon Kind="WindowMaximize"  />
+                    </Button>
+                    <Button x:Name="ButtonClose" Click="ButtonClose_Click" Width="30" Height="30" Padding="0" Background="{x:Null}" Foreground="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{x:Null}"   >
+                        <materialDesign:PackIcon Kind="Power"/>
+                    </Button>
                 </StackPanel>
-            </ContentControl>
+            </Border>
             <!--Main Area Content-->
             <Grid x:Name="ContainerX" Grid.Row="1">
                 <StackPanel>
