@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:JustRipe.Views"
-        xmlns:vm="clr-namespace:JustRipe.ViewModels"
+        xmlns:vm="clr-namespace:JustRipe.ViewModels" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -98,7 +98,7 @@
                     </StackPanel>
                 </Button>
 
-                <Button   HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}" x:Name="Harvesting" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding HarvestingCommand}" >
+                <Button HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFlatButton}" x:Name="Harvesting" Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding HarvestingCommand}" >
                     <StackPanel Orientation="Horizontal" >
                         <materialDesign:PackIcon Kind="LocalAttraction" VerticalAlignment="Center"/>
                         <TextBlock Text="Harvesting" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
@@ -120,7 +120,7 @@
             </Grid.RowDefinitions>
 
             <!--Title bar-->
-            <Border  Grid.Row="0"   Background="Red" MouseDown="DragWindow" Mous>
+            <Border  Grid.Row="0" MouseDown="DragWindow" >
 
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" >
                     <Button  x:Name="ButtonMinimize" Click="ButtonMinimize_Click"  Width="30" Height="30" Padding="0" Background="{x:Null}" Foreground="{DynamicResource PrimaryHueMidBrush}" BorderBrush="{x:Null}"  >
@@ -140,8 +140,12 @@
                 </StackPanel>
             </Border>
             <!--Main Area Content-->
-            <Grid x:Name="ContainerX" Grid.Row="1">
-                <StackPanel>
+            <Grid x:Name="ContainerX" Grid.Row="1"> 
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="110*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.RowSpan="2">
                     <TextBlock Text="Dashboard" Margin="10" FontSize="20"/>
                     <!--Control responsible to show the different pages-->
                     <ContentPresenter Content="{Binding SelectedViewModel}"/>

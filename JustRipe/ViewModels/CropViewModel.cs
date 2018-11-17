@@ -3,6 +3,8 @@ using JustRipe.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,25 +15,44 @@ namespace JustRipe.ViewModels
 {
     public class CropViewModel : ObservableObject, IBaseViewModel
     {
+        private DataTable _cropTable;
 
-        private Crop crop;
-
-        public Crop Crop
+        public DataTable CropTable
         {
-            get { return crop; }
-            set { crop = value; }
+            get { return _cropTable; }
+            set { _cropTable = value; }
         }
 
         public RelayCommand AddCropCommand { get; set; }
 
-
         public CropViewModel()
         {
-            crop = new Crop("Crop Corn model name ");
             _color = Brushes.Red;
             PageName = "Crops";
             AddCropCommand = new RelayCommand(AddCrop);
+            CropTable = selectQuery();
         }
+
+
+        public DataTable selectQuery(string query = "")
+        {
+            SQLiteDatabase db = new SQLiteDatabase();
+            SQLiteDataAdapter ad;
+            DataTable dt = new DataTable();
+
+            db.OpenConnection();  
+
+            using (SQLiteCommand cmd = new SQLiteCommand(db.Connection))
+            {
+                cmd.CommandText = "Select * from Crops";  //set the passed query
+                ad = new SQLiteDataAdapter(cmd);
+                ad.Fill(dt); //fill the datasource
+            }
+            return dt;
+        }
+
+
+
         private string pageName;
 
         public string PageName

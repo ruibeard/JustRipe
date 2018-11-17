@@ -51,11 +51,7 @@ namespace JustRipe.ViewModels
 
         void AddCategory(object parameter)
         {
-            User u = new User
-            {
-                Username = "fabio",
-                Password = "lazzy"
-            };
+           
 
         }
     }
