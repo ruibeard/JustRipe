@@ -30,7 +30,7 @@ namespace JustRipe.ViewModels
         public object SelectedViewModel
         {
             get { return selectedViewModel; }
-            set { selectedViewModel = value; OnPropertyChanged("SelectedViewModel"); }
+            set { selectedViewModel = value; OnPropertyChanged(nameof(SelectedViewModel)); }
         }
 
 

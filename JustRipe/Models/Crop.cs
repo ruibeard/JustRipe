@@ -8,11 +8,6 @@ namespace JustRipe.Models
 {
     public class Crop : ObservableObject
     {
-
-        public Crop(string _name)
-        {
-            Name = _name;
-        }
         private string name;
 
         public string Name
@@ -20,5 +15,28 @@ namespace JustRipe.Models
             get { return name; }
             set { name = value; }
         }
+        private string _stage;
+
+        public string Stage
+        {
+            get { return _stage; }
+            set { _stage = value; }
+        }
+
+        private string _type;
+
+        public string Type
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
+        private string _area;
+
+        public string Area
+        {
+            get { return _area; }
+            set { _area = value; }
+        }
+
     }
 }

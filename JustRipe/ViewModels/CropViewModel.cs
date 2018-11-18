@@ -1,15 +1,8 @@
-﻿using JustRipe.Data;
-using JustRipe.Models;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Data;
-using System.Data.SQLite;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Data;
 using System.Windows.Media;
+using JustRipe.Data.DTOs;
+using JustRipe.Data.Repositories;
+using JustRipe.Models;
 
 namespace JustRipe.ViewModels
 {
@@ -30,28 +23,32 @@ namespace JustRipe.ViewModels
             _color = Brushes.Red;
             PageName = "Crops";
             AddCropCommand = new RelayCommand(AddCrop);
-            CropTable = selectQuery();
+            //CropTable = selectQuery();
+
+            FillAllCrops();
         }
 
-
-        public DataTable selectQuery(string query = "")
+        private CropRepository GetRepository()
         {
-            SQLiteDatabase db = new SQLiteDatabase();
-            SQLiteDataAdapter ad;
-            DataTable dt = new DataTable();
-
-            db.OpenConnection();  
-
-            using (SQLiteCommand cmd = new SQLiteCommand(db.Connection))
-            {
-                cmd.CommandText = "Select * from Crops";  //set the passed query
-                ad = new SQLiteDataAdapter(cmd);
-                ad.Fill(dt); //fill the datasource
-            }
-            return dt;
+            return new CropRepository(new Repository<CropDTO>(), new Repository<UserDTO>());
         }
 
+        private void FillAllCrops()
+        {
+            var crops = GetRepository().GetAllCrops();
 
+            CropTable = new DataTable();
+
+            CropTable.Columns.Add("Name");
+            CropTable.Columns.Add("Stage");
+            CropTable.Columns.Add("Type");
+            CropTable.Columns.Add("Area");
+
+            foreach (var crop in crops)
+            {
+                CropTable.Rows.Add(crop.Name, crop.Stage, crop.Type, crop.Area);
+            }
+        }
 
         private string pageName;
 

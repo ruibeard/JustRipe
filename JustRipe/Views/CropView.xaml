@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="{Binding Color, FallbackValue=white}">
 
-        <DataGrid x:Name="gridCrop" ItemsSource="{Binding CropTable}" AutoGenerateColumns="True"/>
+        <DataGrid x:Name="gridCrop" ItemsSource="{Binding CropTable}" AutoGenerateColumns="True" CanUserAddRows="False" />
 
 
     </Grid>

@@ -39,5 +39,29 @@ namespace JustRipe.Models
             get { return name; }
             set { name = value; }
         }
+
+        private DateTime _dob;
+
+        public DateTime Dob
+        {
+            get { return _dob; }
+            set { _dob = value; }
+        }
+        private string _phoneNumber;
+
+        public string PhoneNumber
+        {
+            get { return _phoneNumber; }
+            set { _phoneNumber = value; }
+        }
+        private string _address;
+
+        public string Address
+        {
+            get { return _address; }
+            set { _address = value; }
+        }
+
+
     }
 }

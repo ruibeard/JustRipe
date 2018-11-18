@@ -20,5 +20,13 @@ namespace JustRipe.Models
             get { return name; }
             set { name = value; }
         }
+
+        private DateTime _harvestDate;
+
+        public DateTime HarvestDate
+        {
+            get { return _harvestDate; }
+            set { _harvestDate = value; }
+        }
     }
 }

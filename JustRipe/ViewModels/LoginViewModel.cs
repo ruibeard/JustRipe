@@ -105,22 +105,22 @@ namespace JustRipe.ViewModels
             {
                 db.OpenConnection();
 
-                if (db.ConnectionState == false)
-                {
-                    MessageText = "ERROR: Cannot open Database connectiton.\n" + db.Status;
-                }
+                //if (db.ConnectionState == false)
+                //{
+                //    MessageText = "ERROR: Cannot open Database connectiton.\n" + db.Status;
+                //}
 
                 MessageText += db.Status + '\n';
                 string num_rows = "-1";
 
 
-                using (SQLiteCommand cmd = new SQLiteCommand(db.Connection))
-                {
-                    cmd.CommandText = "select count(*) from users where  username = @Username and  password = @Password ";
-                    cmd.Parameters.AddWithValue("@Username", Username);
-                    cmd.Parameters.AddWithValue("@Password", Password);
-                    num_rows = cmd.ExecuteScalar().ToString();
-                }
+                //using (SQLiteCommand cmd = new SQLiteCommand(db.Connection))
+                //{
+                //    cmd.CommandText = "select count(*) from Users where  username = @Username and  password = @Password ";
+                //    cmd.Parameters.AddWithValue("@Username", Username);
+                //    cmd.Parameters.AddWithValue("@Password", Password);
+                //    num_rows = cmd.ExecuteScalar().ToString();
+                //}
 
                 int count = Convert.ToInt32(num_rows);
 

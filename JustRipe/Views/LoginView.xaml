@@ -17,10 +17,6 @@
         AllowsTransparency="True"
         Title="Login" Height="470" Width="425">
 
-
-
-
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -39,7 +35,6 @@
                 <materialDesign:ColorZone Mode="Dark"  materialDesign:ShadowAssist.ShadowDepth="Depth4">
                     <StackPanel>
                         <Image Source="/Images/logo.png" Width="180" HorizontalAlignment="Center" Margin="0 50"/>
-                        <!--<TextBlock Text="Welcome" FontSize="35" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="30 30 0 0"/>-->
                     </StackPanel>
                 </materialDesign:ColorZone>
             </StackPanel>
