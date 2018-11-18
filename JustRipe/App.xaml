@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:JustRipe"
             xmlns:materialDesign="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
 
-    StartupUri="Views/MainView.xaml">
+    StartupUri="Views/LoginView.xaml">
 
     <Application.Resources>
         <ResourceDictionary>
