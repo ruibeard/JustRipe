@@ -8,17 +8,6 @@ namespace JustRipe.Data
     {
 
 
-        //public User CheckUserCredentials(string Username, string Password)
-        //{
-
-        //    using (var cnn = DbConnection())
-        //    {
-        //        cnn.Open();
-        //        var result = cnn.Query(
-        //            @"SELECT count(id) FROM Users WHERE Username = @Username and Password = @Password").FirstOrDefault();
-        //        return result;
-        //    }
-        //}
         public static int CheckUserCredentials(User user)
         {
             using (var cnn = DbConnection())

@@ -115,7 +115,7 @@
     </ApplicationDefinition>
     <Compile Include="Data\DTOs\CropDTO.cs" />
     <Compile Include="Data\DTOs\UserDTO.cs" />
-    <Compile Include="Data\IUserRepository.cs" />
+    <Compile Include="Data\Repositories\IUserRepository.cs" />
     <Compile Include="Data\Repositories\CropRepository.cs" />
     <Compile Include="Data\Repositories\IRepository.cs" />
     <Compile Include="Data\Repositories\Repository.cs" />
