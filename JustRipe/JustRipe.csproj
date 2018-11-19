@@ -115,10 +115,12 @@
     </ApplicationDefinition>
     <Compile Include="Data\DTOs\CropDTO.cs" />
     <Compile Include="Data\DTOs\UserDTO.cs" />
+    <Compile Include="Data\IUserRepository.cs" />
     <Compile Include="Data\Repositories\CropRepository.cs" />
     <Compile Include="Data\Repositories\IRepository.cs" />
-    <Compile Include="Data\JournalMode.cs" />
     <Compile Include="Data\Repositories\Repository.cs" />
+    <Compile Include="Data\SQLiteDb.cs" />
+    <Compile Include="Data\Repositories\UserRepository.cs" />
     <Compile Include="Data\SQLiteDatabase.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Labour.cs" />

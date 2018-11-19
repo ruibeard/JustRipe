@@ -1,7 +1,6 @@
 ﻿using JustRipe.Data;
 using JustRipe.Models;
 using System;
-using System.Data.SQLite;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -97,68 +96,39 @@ namespace JustRipe.ViewModels
 
         private void CheckCredentials(object parameter)
         {
-            SQLiteDatabase db = new SQLiteDatabase();
-            string queryString = string.Empty;
             var passwordBox = (PasswordBox)parameter;
             _password = passwordBox.Password;
-            try
+
+            //User newUser = ;
+            var count = UserRepository.CheckUserCredentials(
+                new User
+                {
+                    Username = _username,
+                    Password = _password
+                });
+
+            if (count < 1)
             {
-                db.OpenConnection();
-
-                if (db.ConnectionState == false)
-                {
-                    MessageText = "ERROR: Cannot open Database connectiton.\n" + db.Status;
-                }
-
-                MessageText += db.Status + '\n';
-                string num_rows = "-1";
-
-
-                using (SQLiteCommand cmd = new SQLiteCommand(db.Connection))
-                {
-                    cmd.CommandText = "select count(*) from users where  username = @Username and  password = @Password ";
-                    cmd.Parameters.AddWithValue("@Username", Username);
-                    cmd.Parameters.AddWithValue("@Password", Password);
-                    num_rows = cmd.ExecuteScalar().ToString();
-                }
-
-                int count = Convert.ToInt32(num_rows);
-
-                if (count < 1)
-                {
-                    MessageBox.Show("Incorrect Credentials");
-                }
-
-                if (count == 1)
-                {
-
-                    var mainView = new Views.MainView();
-                    var mainVM = new MainViewModel();
-
-                    mainView.DataContext = mainVM;
-                    mainView.Show();
-
-                    CloseAction();
-                }
-                if (count > 1)
-                {
-                    MessageBox.Show("Duplicate user");
-                }
-
+                MessageBox.Show("Incorrect Credentials");
             }
-            catch (System.Exception exp)
+
+            if (count == 1)
             {
-                MessageText += "\n\nAN ERROR OCURRED: " + exp.Message + "\n";
-                MessageText += "\n\nAt line: \n";
-                MessageText += "Query was: " + queryString + "\n";
+
+                var mainView = new Views.MainView();
+                var mainVM = new MainViewModel();
+
+                mainView.DataContext = mainVM;
+                mainView.Show();
+
+                CloseAction();
             }
-            finally
+            if (count > 1)
             {
-                db.CloseConnection();
+                MessageBox.Show("Duplicate user");
             }
 
         }
 
     }
-
 }

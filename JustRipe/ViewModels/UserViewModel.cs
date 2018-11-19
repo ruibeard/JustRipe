@@ -13,7 +13,7 @@ namespace JustRipe.ViewModels
 
         public UserViewModel()
         {
-            user = new User("new user");
+            user = new User();
             _color = Brushes.Green;
             PageName = "User";
         }
