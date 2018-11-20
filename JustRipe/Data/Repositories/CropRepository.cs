@@ -1,12 +1,12 @@
-﻿using System;
+﻿using JustRipe.Data.DTOs;
+using JustRipe.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using JustRipe.Data.DTOs;
-using JustRipe.Models;
 
 namespace JustRipe.Data.Repositories
 {
-    public class CropRepository : IDisposable
+    public class CropRepository : SQLiteDb, IDisposable
     {
         private readonly IRepository<CropDTO> repository;
         private readonly IRepository<UserDTO> repositoryUser;
@@ -38,6 +38,20 @@ namespace JustRipe.Data.Repositories
             //    Type = crop.Type,
             //});
         }
+        public void AddCrop(CropDTO _crop)
+        {
+            repository.Add(_crop);
+        }
+        //using (var cnn = DbConnection())
+        //{
+        //    cnn.Open();
+        //    var newCrop = cnn.Query(
+        //        @"INSERT INTO Crops (name, stage, type, area) VALUES (@Name, @Stage, @Type, @Area)", _crop);
+        //}
+
+
+        //_crop.
+
 
         //public IEnumerable<Crop> GetCropsByUser(string username)
         //{

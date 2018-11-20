@@ -11,6 +11,6 @@ namespace JustRipe.ViewModels
         /// <summary>
         /// Makes sure every child class has a page name. Usefull to show user te current Page
         /// </summary>
-        string PageName { get; set; }
+        //string PageName { get; set; }
     }
 }

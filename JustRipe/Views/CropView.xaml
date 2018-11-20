@@ -4,10 +4,20 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JustRipe.Views"
-             mc:Ignorable="d" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="{Binding Color, FallbackValue=white}">
-        <DataGrid x:Name="gridCrop" ItemsSource="{Binding CropTable}" AutoGenerateColumns="True" CanUserAddRows="False" />
-    </Grid>  
-    
+    <StackPanel Background="{Binding Color, FallbackValue=white}">
+        <DataGrid x:Name="gridCrop" ItemsSource="{Binding CropTable}" AutoGenerateColumns="True" CanUserAddRows="true" />
+
+
+        <TextBox x:Name="Name" Text="{Binding Name, FallbackValue=Nome}"/>
+        <TextBox x:Name="Stage"  Text="{Binding Stage, FallbackValue=estado}"/>
+        <TextBox x:Name="Type"  Text="{Binding Type, FallbackValue=tipo}"/>
+        <TextBox x:Name="Area"  Text="{Binding Area, FallbackValue=area}"/>
+        
+        <Button Content="Create" Command="{Binding AddCropCommand}"/>
+    </StackPanel>
+
 </UserControl>

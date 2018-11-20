@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using MaterialDesignThemes.Wpf;
+using System;
+using System.Windows.Controls;
 
 namespace JustRipe.Views
 {
@@ -10,6 +12,12 @@ namespace JustRipe.Views
         public CropView()
         {
             InitializeComponent();
+
+
+        }
+        private void Sample1_DialogHost_OnDialogClosing(object sender, DialogClosingEventArgs eventArgs)
+        {
+           
         }
     }
 }
