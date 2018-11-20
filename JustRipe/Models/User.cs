@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace JustRipe.Models
+﻿namespace JustRipe.Models
 {
     public class User
     {
@@ -33,9 +31,9 @@ namespace JustRipe.Models
             set { name = value; }
         }
 
-        private DateTime _dob;
+        private string _dob;
 
-        public DateTime Dob
+        public string DateOfBrithday
         {
             get { return _dob; }
             set { _dob = value; }
@@ -54,7 +52,6 @@ namespace JustRipe.Models
             get { return _address; }
             set { _address = value; }
         }
-
 
     }
 }

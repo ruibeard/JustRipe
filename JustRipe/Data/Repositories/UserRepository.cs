@@ -6,18 +6,16 @@ namespace JustRipe.Data
 {
     public class UserRepository : SQLiteDb, IUserRepository
     {
-
-
-        public static int CheckUserCredentials(User user)
+        public static User CheckUserCredentials(string _username, string _password)
         {
             using (var cnn = DbConnection())
             {
-                var rows = cnn.Query(
-                "SELECT COUNT(1) as 'Count' FROM Users WHERE Username = @Username and Password = @Password", user);
-                return (int)rows.First().Count;
+                cnn.Open();
+                User u = cnn.Query<User>(
+                "SELECT * FROM Users WHERE Username = @_username and Password = @_password", new { _username, _password }).FirstOrDefault();
+                return u;
             }
         }
-
         public User GetUser(long id)
         {
             using (var cnn = DbConnection())
@@ -44,20 +42,5 @@ namespace JustRipe.Data
             }
         }
 
-        private static void CreateDatabase()
-        {
-            using (var cnn = DbConnection())
-            {
-                cnn.Open();
-                cnn.Execute(
-                    @"create table Users
-                      (
-                         ID          integer primary key AUTOINCREMENT,
-                         FirstName   varchar(100) not null,
-                         LastName    varchar(100) not null,
-                         DateOfBirth datetime not null
-                      )");
-            }
-        }
     }
 }

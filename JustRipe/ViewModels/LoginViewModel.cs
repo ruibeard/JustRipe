@@ -93,42 +93,29 @@ namespace JustRipe.ViewModels
         }
         #endregion
 
-
         private void CheckCredentials(object parameter)
         {
             var passwordBox = (PasswordBox)parameter;
             _password = passwordBox.Password;
 
-            //User newUser = ;
-            var count = UserRepository.CheckUserCredentials(
-                new User
-                {
-                    Username = _username,
-                    Password = _password
-                });
+            var retrievedUser = UserRepository.CheckUserCredentials(_username, _password);
 
-            if (count < 1)
+            if (retrievedUser != null)
             {
-                MessageBox.Show("Incorrect Credentials");
-            }
-
-            if (count == 1)
-            {
-
                 var mainView = new Views.MainView();
                 var mainVM = new MainViewModel();
 
                 mainView.DataContext = mainVM;
                 mainView.Show();
-
                 CloseAction();
+
             }
-            if (count > 1)
+            else
             {
-                MessageBox.Show("Duplicate user");
+                MessageBox.Show("Incorrect Credentials");
             }
+
 
         }
-
     }
 }

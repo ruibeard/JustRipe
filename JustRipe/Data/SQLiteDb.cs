@@ -1,10 +1,9 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
 using System.Data.SQLite;
 
 namespace JustRipe.Data
 {
-    public class SQLiteDb
+    public  class SQLiteDb
     {
 
         public static SQLiteConnection DbConnection()
