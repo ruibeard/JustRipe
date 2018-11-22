@@ -8,16 +8,19 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel Background="{Binding Color, FallbackValue=white}">
-        <DataGrid x:Name="gridCrop" ItemsSource="{Binding CropTable}" AutoGenerateColumns="True" CanUserAddRows="true" />
+    <StackPanel>
 
+        <DataGrid x:Name="gridCrop" Margin="5 5 5 5" ItemsSource="{Binding CropTable}" AutoGenerateColumns="True" CanUserAddRows="true" />
 
-        <TextBox x:Name="Name" Text="{Binding Name, FallbackValue=Nome}"/>
-        <TextBox x:Name="Stage"  Text="{Binding Stage, FallbackValue=estado}"/>
-        <TextBox x:Name="Type"  Text="{Binding Type, FallbackValue=tipo}"/>
-        <TextBox x:Name="Area"  Text="{Binding Area, FallbackValue=area}"/>
-        
-        <Button Content="Create" Command="{Binding AddCropCommand}"/>
+         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="32">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <TextBox x:Name="Name" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Name" Text="{Binding Name, FallbackValue=Nome}"/>
+                <TextBox x:Name="Stage" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Stage" Text="{Binding Stage, FallbackValue=estado}"/>
+                <TextBox x:Name="Type" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Type" Text="{Binding Type, FallbackValue=tipo}"/>
+                <TextBox x:Name="Area" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Area" Text="{Binding Area, FallbackValue=area}"/>
+                <Button Content="Create" Command="{Binding AddCropCommand}"/>
+            </StackPanel>
+        </materialDesign:Card>
     </StackPanel>
 
 </UserControl>

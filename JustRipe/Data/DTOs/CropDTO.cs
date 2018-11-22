@@ -5,7 +5,7 @@ namespace JustRipe.Data.DTOs
     [Table("crops")]
     public class CropDTO
     {
-        [PrimaryKey, Column("id")]
+        [PrimaryKey, Column("id"), AutoIncrement]
         public int Id { get; set; }
         [Column("name")]
         public string Name { get; set; }
