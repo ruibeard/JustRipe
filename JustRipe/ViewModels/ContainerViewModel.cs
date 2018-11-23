@@ -11,26 +11,26 @@ using System.Windows.Media;
 
 namespace JustRipe.ViewModels
 {
-    public class LabourViewModel : ObservableObject, IBaseViewModel
+    public class ContainerViewModel : ObservableObject
     {
 
-        private Labour labour;
+        private Container container;
 
-        public Labour Labour
+        public Container Container
         {
-            get { return labour; }
-            set { labour = value; }
+            get { return container; }
+            set { container= value; }
         }
 
-        public RelayCommand AddLabourCommand { get; set; }
+        public RelayCommand AddContainerCommand { get; set; }
 
 
-        public LabourViewModel()
+        public ContainerViewModel()
         {
-            labour = new Labour("Labour model name ");
+            container= new Container("Container  model name ");
             _color = Brushes.Red;
-            PageName = "Labours";
-            AddLabourCommand = new RelayCommand(AddLabour);
+            PageName = "Containers";
+            AddContainerCommand = new RelayCommand(AddContainer);
         }
         private string pageName;
 
@@ -49,9 +49,14 @@ namespace JustRipe.ViewModels
             set { _color = value; }
         }
 
-        void AddLabour(object parameter)
+        void AddContainer(object parameter)
         {
-            
+            User u = new User
+            {
+                Username = "fabio",
+                Password = "lazzy"
+            };
+
         }
     }
 

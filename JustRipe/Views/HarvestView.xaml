@@ -6,7 +6,5 @@
              xmlns:local="clr-namespace:JustRipe.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="{Binding Color, FallbackValue=white}">
-        <TextBlock Text="{Binding Harvest.Name}"/>
-    </Grid>
+  
 </UserControl>

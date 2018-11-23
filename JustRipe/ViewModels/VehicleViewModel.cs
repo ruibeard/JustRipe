@@ -11,7 +11,7 @@ using System.Windows.Media;
 
 namespace JustRipe.ViewModels
 {
-    public class VehicleViewModel : ObservableObject, IBaseViewModel
+    public class VehicleViewModel : ObservableObject
     {
 
         private Vehicle vehicle;

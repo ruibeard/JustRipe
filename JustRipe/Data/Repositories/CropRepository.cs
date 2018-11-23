@@ -9,14 +9,28 @@ namespace JustRipe.Data.Repositories
     public class CropRepository : SQLiteDb, IDisposable
     {
         private readonly IRepository<CropDTO> repository;
-        private readonly IRepository<UserDTO> repositoryUser;
+        //private readonly IRepository<UserDTO> repositoryUser;
 
-        public CropRepository(
-            IRepository<CropDTO> repository,
-            IRepository<UserDTO> repositoryUser)
+        public CropRepository(IRepository<CropDTO> repository)
         {
             this.repository = repository;
-            this.repositoryUser = repositoryUser;
+            //this.repositoryUser = repositoryUser;
+        }
+
+        public IEnumerable<Crop> GetAllCropsCurrentlyInCultivation()
+        {
+            return from crop in repository.GetAll()
+                   where crop.Stage is "Cultivating"
+                   select new Crop()
+                   {
+                       Id = crop.Id,
+                       Name = crop.Name,
+                       Stage = crop.Stage,
+                       Area = crop.Area,
+                       Type = crop.Type,
+                       NumContainers = crop.NumContainers,
+
+                   };
         }
 
         public IEnumerable<Crop> GetAllCrops()
@@ -29,20 +43,17 @@ namespace JustRipe.Data.Repositories
                        Stage = crop.Stage,
                        Area = crop.Area,
                        Type = crop.Type,
+                       NumContainers= crop.NumContainers,
                    };
-
-            //return repository.GetAll().Select(crop => new Crop()
-            //{
-            //    Name = crop.Name,
-            //    Stage = crop.Stage,
-            //    Area = crop.Area,
-            //    Type = crop.Type,
-            //});
         }
 
         public void UpdateCrop(CropDTO _crop)
         {
             repository.Update(_crop);
+        }
+        public void DeleteCrop(CropDTO _crop)
+        {
+            repository.Delete(_crop);
         }
 
         public void AddCrop(CropDTO _crop)

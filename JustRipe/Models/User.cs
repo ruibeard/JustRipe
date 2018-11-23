@@ -2,11 +2,8 @@
 {
     public class User
     {
-        public User()
-        {
-        }
 
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         private string username;
 
@@ -51,6 +48,13 @@
         {
             get { return _address; }
             set { _address = value; }
+        }
+
+        private string _role;
+        public string Role
+        {
+            get { return _role; }
+            set { _role = value; }
         }
 
     }

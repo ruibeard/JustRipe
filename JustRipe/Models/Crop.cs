@@ -1,15 +1,14 @@
 ﻿namespace JustRipe.Models
 {
-    public class Crop : ObservableObject
+    public class Crop
     {
-        private string name;
-        private  int id;
-
+        private int _id;
         public int Id
         {
-            get { return id; }
-            set { id = value; }
+            get { return _id; }
+            set { _id = value; }
         }
+        private string name;
         public string Name
         {
             get { return name; }
@@ -36,6 +35,13 @@
         {
             get { return _area; }
             set { _area = value; }
+        }
+        private int _numContainers;
+
+        public int NumContainers
+        {
+            get { return _numContainers; }
+            set { _numContainers = value; }
         }
 
     }

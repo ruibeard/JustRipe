@@ -11,7 +11,7 @@ using System.Windows.Media;
 
 namespace JustRipe.ViewModels
 {
-    public class CategoryViewModel : ObservableObject, IBaseViewModel
+    public class CategoryViewModel : ObservableObject
     {
 
         private Category category;

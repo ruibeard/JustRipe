@@ -6,13 +6,5 @@
              xmlns:local="clr-namespace:JustRipe.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="{Binding Color, FallbackValue=white}">
-        <StackPanel>
-            <Button Grid.Row="1" Content="Add Vehicle"
-                    Command="{Binding AddVehicleCommand}" 
-                    CommandParameter="hi there" 
-                    Focusable="False"/>
-            <TextBlock Text="{Binding Vehicle.Name}"/>
-        </StackPanel>
-    </Grid>
+    
 </UserControl>

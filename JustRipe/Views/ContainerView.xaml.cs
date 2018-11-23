@@ -3,11 +3,11 @@
 namespace JustRipe.Views
 {
     /// <summary>
-    /// Interaction logic for Storage.xaml
+    /// Interaction logic for Container.xaml
     /// </summary>
-    public partial class StorageView : UserControl
+    public partial class ContainerView : UserControl
     {
-        public StorageView()
+        public ContainerView()
         {
             InitializeComponent();
         }

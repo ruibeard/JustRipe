@@ -8,7 +8,7 @@ using System.Windows.Media;
 
 namespace JustRipe.ViewModels
 {
-    public class HarvestViewModel : ObservableObject, IBaseViewModel
+    public class HarvestViewModel : ObservableObject
     {
         public HarvestViewModel()
         {

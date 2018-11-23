@@ -3,7 +3,7 @@ using System.Windows;
 
 namespace JustRipe.ViewModels
 {
-    class DashBoardViewModel : ObservableObject, IBaseViewModel
+    class DashBoardViewModel : ObservableObject
     {
 
         public RelayCommand AddCropCommand { get; set; }

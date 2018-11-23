@@ -8,32 +8,15 @@ using System.Windows.Media;
 
 namespace JustRipe.ViewModels
 {
-    public class UserViewModel : ObservableObject, IBaseViewModel
+    public class UserViewModel : ObservableObject
     {
 
         public UserViewModel()
         {
             user = new User();
-            _color = Brushes.Green;
-            PageName = "User";
         }
-        private string pageName;
-
-        public string PageName
-        {
-            get { return pageName; }
-            set { pageName = value; }
-        }
-
-
-        private Brush _color;
-
-        public Brush Color
-        {
-            get { return _color; }
-            set { _color = value; }
-        }
-
+        
+ 
         private User user;
 
         public User User
@@ -41,5 +24,20 @@ namespace JustRipe.ViewModels
             get { return user; }
             set { user = value; }
         }
+
+        public string Name { get; set; }
+
+        public string UserName { get; set; }
+
+        public string Password { get; set; }
+
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Address { get; set; }
+        public string DateOfBirth { get; set; }
+
+        public string Wage { get; set; }
+
+
     }
 }

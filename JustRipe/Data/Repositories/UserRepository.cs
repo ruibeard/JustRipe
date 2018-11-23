@@ -1,46 +1,67 @@
-﻿using Dapper;
+﻿using JustRipe.Data.DTOs;
 using JustRipe.Models;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 
-namespace JustRipe.Data
+namespace JustRipe.Data.Repositories
 {
-    public class UserRepository : SQLiteDb, IUserRepository
+    public class UserRepository : SQLiteDb, IDisposable
     {
-        public static User CheckUserCredentials(string _username, string _password)
+        private readonly IRepository<UserDTO> repositoryUser;
+        private readonly IRepository<RoleDTO> repositoryRole;
+        private readonly IRepository<UserRoleDTO> repositoryUserRole;
+
+        public UserRepository(IRepository<UserDTO> repositoryUser)
         {
-            using (var cnn = DbConnection())
-            {
-                cnn.Open();
-                User u = cnn.Query<User>(
-                "SELECT * FROM Users WHERE Username = @_username and Password = @_password", new { _username, _password }).FirstOrDefault();
-                return u;
-            }
-        }
-        public User GetUser(long id)
-        {
-            using (var cnn = DbConnection())
-            {
-                cnn.Open();
-                User result = cnn.Query<User>(
-                    @"SELECT Id, FirstName, LastName, DateOfBirth
-                    FROM User
-                    WHERE Id = @id", new { id }).FirstOrDefault();
-                return result;
-            }
+            this.repositoryUser = repositoryUser;
         }
 
-        public void SaveUser(User user)
+        public UserRepository(IRepository<UserDTO> repositoryUser, IRepository<RoleDTO> repositoryRole, IRepository<UserRoleDTO> repositoryUserRole)
         {
-            using (var cnn = DbConnection())
-            {
-                cnn.Open();
-                user.Id = cnn.Query<long>(
-                    @"INSERT INTO Users
-                    ( FirstName, LastName, DateOfBirth ) VALUES 
-                    ( @FirstName, @LastName, @DateOfBirth );
-                    select last_insert_rowid()", user).First();
-            }
+            this.repositoryUser = repositoryUser;
+            this.repositoryRole = repositoryRole;
+            this.repositoryUserRole = repositoryUserRole;
         }
 
+        public IEnumerable<User> GetAllUsers()
+        {
+            return from user in repositoryUser.GetAll()
+                   select new User()
+                   {
+                       Id = user.Id,
+                       Name = user.Name,
+
+                   };
+        }
+
+        public IEnumerable<User> GetAllLabourUsers()
+        {
+            return from user in repositoryUser.GetAll()
+                   join u_r in repositoryUserRole.GetAll() on user.Id equals u_r.UserId
+                   join role in repositoryRole.GetAll() on u_r.RoleId equals role.Id
+                   where role.Name is "labourer"
+                   select new User()
+                   {
+                       Id = user.Id,
+                       Name = user.Name,
+                       Role = role.Name
+                   };
+        }
+
+        public void UpdateUser(UserDTO _user)
+        {
+            repositoryUser.Update(_user);
+        }
+
+        public void AddUser(UserDTO _user)
+        {
+            repositoryUser.Add(_user);
+        }
+
+        public void Dispose()
+        {
+            repositoryUser.Dispose();
+        }
     }
 }

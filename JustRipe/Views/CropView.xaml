@@ -4,26 +4,35 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JustRipe.Views"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
 
-        <DataGrid x:Name="gridCrop" Margin="5 5 5 5"
-                  ItemsSource="{Binding CropTable}" 
-                  SelectedItem="{Binding SelectedCrop, Mode=TwoWay}"
-                  AutoGenerateColumns="True" 
-                  CanUserAddRows="true" />
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="30 5">
+            <TextBlock Text="Show unavailable Products:"/>
+            <ToggleButton Command="{Binding ShowAllCropsCommand}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" IsChecked="False" />
+        </StackPanel>
+     
+        <DataGrid x:Name="gridCrop" Margin="5 5 5 5" 
+                  ItemsSource="{Binding CropTable , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                  SelectedItem="{Binding SelectedCrop, Mode=TwoWay}" AutoGenerateColumns="True" CanUserAddRows="False">
+        </DataGrid>
 
-        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="32">
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="42">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <TextBox x:Name="Id" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Id" Text="{Binding Id, Mode=TwoWay}"/>
-                <TextBox x:Name="Name" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Name" Text="{Binding Name, Mode=TwoWay}"/>
-                <TextBox x:Name="Stage" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Stage" Text="{Binding Stage, Mode=TwoWay}"/>
-                <TextBox x:Name="Type" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Type" Text="{Binding Type, Mode=TwoWay}"/>
-                <TextBox x:Name="Area" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Area" Text="{Binding Area, Mode=TwoWay}"/>
-                <Button Content="Create" Command="{Binding AddUpdateCropCommand}"/>
+                <TextBox x:Name="Id" Visibility="Collapsed" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Id" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="Name" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Name" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="Stage" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Stage" Text="{Binding Stage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="Type" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Type" Text="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="Area" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Area" Text="{Binding Area, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Margin="10 0" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateCropCommand}" >
+                    <materialDesign:PackIcon Kind="Tick" Height="24" Width="24" />
+                </Button>
+                <Button  Command="{Binding DeleteCropCommand}" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" ToolTip="MaterialDesignFloatingActionDarkButton">
+                    <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
+                </Button>
             </StackPanel>
         </materialDesign:Card>
     </StackPanel>

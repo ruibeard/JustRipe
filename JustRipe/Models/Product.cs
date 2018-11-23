@@ -1,24 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JustRipe.Models
+﻿namespace JustRipe.Models
 {
     public class Product : ObservableObject
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public double Quantity { get; set; }
+        public int CategoryId { get; set; }
+        public string CategoryName { get; set; }
+        public int Price { get; set; }
+        public string Status { get; set; }
 
-        public Product(string _name)
-        {
-            Name = _name;
-        }
-        private string name;
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
     }
+
 }

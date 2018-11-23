@@ -7,7 +7,7 @@ using System.Windows.Media;
 
 namespace JustRipe.ViewModels
 {
-    public class LoginViewModel : ObservableObject, IBaseViewModel
+    public class LoginViewModel : ObservableObject
     {
 
         #region Fields
@@ -29,7 +29,6 @@ namespace JustRipe.ViewModels
             get { return _username; }
             set
             {
-
                 if (value != _username)
                 {
                     _username = value;

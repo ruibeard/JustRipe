@@ -1,11 +1,12 @@
 ﻿using JustRipe.Data.DTOs;
 using JustRipe.Data.Repositories;
 using JustRipe.Models;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows;
 
 namespace JustRipe.ViewModels
-{
+{ 
     public class CropViewModel : ObservableObject
     {
         #region Fields
@@ -15,28 +16,23 @@ namespace JustRipe.ViewModels
         private string _area;
         private string _stage;
         private string _type;
+        private int _numContainers;
+
+        #endregion Fields
+
+        #region Properties
         private Crop selectedCrop;
-
-        #endregion
-
-        #region Propierties
-        public string Type
-        {
-            get { return _type; }
-            set
-            {
-                _type = value;
-            }
-        }
-
         public Crop SelectedCrop
         {
             get { return selectedCrop; }
             set
             {
-                selectedCrop = value; OnPropertyChanged(nameof(SelectedCrop));
-                FillUpdateCreateForm();
-                MessageBox.Show(SelectedCrop.Id.ToString());
+                if (value != null)
+                {
+                    selectedCrop = value;
+                    FillUpdateCreateForm();
+                    OnPropertyChanged(nameof(SelectedCrop));
+                }
             }
         }
         public int Id
@@ -44,11 +40,15 @@ namespace JustRipe.ViewModels
             get { return _id; }
             set { _id = value; OnPropertyChanged(nameof(Id)); }
         }
-
         public string Name
         {
             get { return _name; }
             set { _name = value; OnPropertyChanged(nameof(Name)); }
+        }
+        public string Type
+        {
+            get { return _type; }
+            set { _type = value; OnPropertyChanged(nameof(Type)); }
         }
 
         public string Stage
@@ -62,16 +62,23 @@ namespace JustRipe.ViewModels
             get { return _area; }
             set { _area = value; OnPropertyChanged(nameof(Area)); }
         }
+        public int NumContainers
+        {
+            get { return _numContainers; }
+            set { _numContainers = value; OnPropertyChanged(nameof(NumContainers)); }
+        }
 
         public RelayCommand AddUpdateCropCommand { get; set; }
-
-        #endregion
-
+        public RelayCommand DeleteCropCommand { get; set; }
+        public RelayCommand ShowAllCropsCommand { get; set; }
+        #endregion Properties
 
         public CropViewModel()
         {
             AddUpdateCropCommand = new RelayCommand(AddUpdateCrop);
-            FillAllCrops();
+            DeleteCropCommand = new RelayCommand(DeleteCrop);
+            ShowAllCropsCommand = new RelayCommand(ShowAllCrops);
+            ShowCropsInCultivation();
         }
 
         void FillUpdateCreateForm()
@@ -82,48 +89,23 @@ namespace JustRipe.ViewModels
             Type = SelectedCrop.Type;
             Area = SelectedCrop.Area;
         }
+
         private CropRepository GetRepository()
         {
-            return new CropRepository(new Repository<CropDTO>(), new Repository<UserDTO>());
+            return new CropRepository(new Repository<CropDTO>());
         }
 
-        //private DataTable _cropTable;
-        //public DataTable CropTable
-        //{
-        //    get { return _cropTable; }
-        //    set { _cropTable = value; }
-        //}
-
-        //private void FillAllCrops()
-        //{
-        //    var crops = GetRepository().GetAllCrops();
-
-        //    CropTable = new DataTable();
-
-        //    CropTable.Columns.Add("Id");
-        //    CropTable.Columns.Add("Name");
-        //    CropTable.Columns.Add("Stage");
-        //    CropTable.Columns.Add("Type");
-        //    CropTable.Columns.Add("Area");
-
-        //    foreach (var crop in crops)
-        //    {
-        //        CropTable.Rows.Add(crop.Id, crop.Name, crop.Stage, crop.Type, crop.Area);
-        //    }
-        //}
-        private ObservableCollection<Crop> _cropTable;
-
-        public ObservableCollection<Crop> CropTable
-        {
-            get { return _cropTable; }
-            set { _cropTable = value; OnPropertyChanged(nameof(CropTable)); }
-        }
-
-
-        private void FillAllCrops()
+        private void ShowAllCrops(object param)
         {
             var crops = GetRepository().GetAllCrops();
-            CropTable = new ObservableCollection<Crop>();
+            CropTable = new ObservableCollection<Object>();
+            BuildTable(crops);
+        }
+
+        private void ShowCropsInCultivation()
+        {
+            var crops = GetRepository().GetAllCropsCurrentlyInCultivation();
+            CropTable = new ObservableCollection<Object>();
 
             foreach (var crop in crops)
             {
@@ -134,21 +116,57 @@ namespace JustRipe.ViewModels
                         Name = crop.Name,
                         Stage = crop.Stage,
                         Type = crop.Type,
-                        Area = crop.Area
+                        Area = crop.Area,
+                        NumContainers = crop.NumContainers,
+
                     });
             }
         }
 
+        private void BuildTable(IEnumerable<Crop> crops)
+        {
+            foreach (var crop in crops)
+            {
+                CropTable.Add(
+                    new Crop
+                    {
+                        Id = crop.Id,
+                        Name = crop.Name,
+                        Stage = crop.Stage,
+                        Type = crop.Type,
+                        Area = crop.Area,
+                        NumContainers = crop.NumContainers,
+                    });
+            }
+        }
+
+        private ObservableCollection<Object> _cropTable;
+        public ObservableCollection<object> CropTable
+        {
+            get { return _cropTable; }
+            set
+            {
+                if (value != null)
+                {
+                    _cropTable = value;
+                    OnPropertyChanged(nameof(CropTable));
+                }
+            }
+        }
+
+
         private void AddUpdateCrop(object parameter)
         {
-            if (SelectedCrop == null)
-            {
-                AddCrop(parameter);
-            }
+            if (SelectedCrop == null) { AddCrop(parameter); }
             else
             {
                 UpdateCrop(parameter);
+                SelectedCrop = null;
             }
+            Name = Stage = Type = Area = "";
+            Id = 0;
+            CropTable.Clear();
+            ShowCropsInCultivation();
         }
 
         void AddCrop(object parameter)
@@ -161,6 +179,8 @@ namespace JustRipe.ViewModels
                 Area = Area
             };
             GetRepository().AddCrop(newCrop);
+
+
         }
 
         void UpdateCrop(object parameter)
@@ -174,6 +194,20 @@ namespace JustRipe.ViewModels
                 Area = Area
             };
             GetRepository().UpdateCrop(newCrop);
+
+        }
+
+        private void DeleteCrop(object parameter)
+        {
+            if (SelectedCrop != null)
+            {
+                CropDTO newCrop = new CropDTO
+                {
+                    Id = Id,
+                };
+                GetRepository().DeleteCrop(newCrop);
+                ShowCropsInCultivation();
+            }
         }
 
         //void AddCrop(object parameter)

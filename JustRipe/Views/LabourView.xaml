@@ -4,15 +4,37 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JustRipe.Views"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="{Binding Color, FallbackValue=white}">
-        <StackPanel>
-            <Button Grid.Row="1" Content="Add Labour"
-                    Command="{Binding AddLabourCommand}" 
-                    CommandParameter="hi there" 
-                    Focusable="False"/>
-            <TextBlock Text="{Binding Labour.Name}"/>
-        </StackPanel>
-    </Grid>
+    <StackPanel>
+
+        <DataGrid x:Name="gridUser" Margin="5 5 5 5" 
+                  ItemsSource="{Binding LabourTable , Mode=TwoWay}" 
+                  SelectedItem="{Binding SelectedLabour, Mode=TwoWay}"
+                  AutoGenerateColumns="False" 
+                  CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Header="Role" Binding="{Binding Path=Role}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="42">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <TextBox x:Name="Id" Visibility="Collapsed" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Id" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="Name" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Name" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="Role" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Role" Text="{Binding Role, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                <Button Margin="10 0" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateUserCommand}" >
+                    <materialDesign:PackIcon Kind="Tick" Height="24" Width="24" />
+                </Button>
+                <Button  Command="{Binding DeleteUserCommand}" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" ToolTip="MaterialDesignFloatingActionDarkButton">
+                    <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
+                </Button>
+            </StackPanel>
+        </materialDesign:Card>
+    </StackPanel>
 </UserControl>

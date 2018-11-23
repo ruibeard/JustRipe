@@ -5,7 +5,7 @@ namespace JustRipe.Data
 {
     public class SQLiteDatabase : IDisposable
     {
-        private const string _DBFilePath = @".\Data\";
+        private const string _DBFilePath = @"..\..\Data\";
         private const string _DBFileName = "JustRipe.db";
 
         private SQLiteConnection _Connection = null;

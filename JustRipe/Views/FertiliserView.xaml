@@ -4,15 +4,45 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JustRipe.Views"
-             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="{Binding Color, FallbackValue=white}">
-        <StackPanel>
-            <Button Grid.Row="1" Content="Add Fertiliser"
-                    Command="{Binding AddFertiliserCommand}" 
-                    CommandParameter="hi there" 
-                    Focusable="False"/>
-            <TextBlock Text="{Binding Fertiliser.Name}"/>
+    <StackPanel Height="300" VerticalAlignment="Bottom">
+
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="30 5">
+            <TextBlock Text="Show unavailable Products:"/>
+            <ToggleButton Command="{Binding ShowAllProductsCommand}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" IsChecked="True" />
         </StackPanel>
-    </Grid>
+        <DataGrid x:Name="gridStock" Margin="5 5 5 5" 
+                  ItemsSource="{Binding FertiliserTable , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                  SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" AutoGenerateColumns="false" CanUserAddRows="False">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Header="Description" Binding="{Binding Path=Description}"/>
+                <DataGridTextColumn Header="Category" Binding="{Binding Path=CategoryName}"/>
+                <DataGridTextColumn Header="Price" Binding="{Binding Path=Price}"/>
+                <DataGridTextColumn Header="quantity" Binding="{Binding Path=Quantity}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="42">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <TextBox x:Name="Id" Visibility="Collapsed" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Id" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="Name" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Name" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="Description" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Description" Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="CategoryName" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="CategoryName" Text="{Binding CategoryName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="Quantity" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Quantity" Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="Price" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Price" Text="{Binding Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <Button Margin="10 0" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateProductCommand}" >
+                    <materialDesign:PackIcon Kind="Tick" Height="24" Width="24" />
+                </Button>
+                <Button  Command="{Binding DeleteStockCommand}" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" ToolTip="MaterialDesignFloatingActionDarkButton">
+                    <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
+                </Button>
+            </StackPanel>
+        </materialDesign:Card>
+    </StackPanel>
 </UserControl>

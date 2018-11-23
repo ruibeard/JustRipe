@@ -91,7 +91,9 @@ namespace JustRipe.Views
                 ButtonRestore.Visibility = Visibility.Visible;
             }
         }
-        private void DragWindow(object sender, MouseButtonEventArgs e)
+
+
+        private void Border_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();
         }
