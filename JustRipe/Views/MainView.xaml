@@ -12,7 +12,7 @@
         TextElement.FontWeight="Medium"
         TextElement.FontSize="14"
         FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
-        Title="Dashboard" Height="708" Width="1024" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
+        Title="Dashboard" Height="708" Width="1366" WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="NoResize">
 
     <!--//Defining the template for each view, it has a type of data ViewModel and the corresponding view-->
     <Window.Resources>

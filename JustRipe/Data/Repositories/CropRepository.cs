@@ -24,6 +24,7 @@ namespace JustRipe.Data.Repositories
             return from crop in repository.GetAll()
                    select new Crop()
                    {
+                       Id = crop.Id,
                        Name = crop.Name,
                        Stage = crop.Stage,
                        Area = crop.Area,
@@ -38,6 +39,12 @@ namespace JustRipe.Data.Repositories
             //    Type = crop.Type,
             //});
         }
+
+        public void UpdateCrop(CropDTO _crop)
+        {
+            repository.Update(_crop);
+        }
+
         public void AddCrop(CropDTO _crop)
         {
             repository.Add(_crop);

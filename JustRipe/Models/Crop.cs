@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JustRipe.Models
+﻿namespace JustRipe.Models
 {
     public class Crop : ObservableObject
     {
         private string name;
+        private  int id;
 
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
         public string Name
         {
             get { return name; }
