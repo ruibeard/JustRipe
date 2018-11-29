@@ -18,7 +18,7 @@ namespace JustRipe.ViewModels
         private int _userId;
         private int _cropId;
         private string _taskDate;
-        
+
         private Task selectedTask;
 
         #endregion Fields
@@ -128,12 +128,12 @@ namespace JustRipe.ViewModels
         public TaskViewModel()
         {
             FillAllTasks();
-            GetAllCrops();
+            GetAllCropsCurrentlyInCultivation();
             AddUpdateTaskCommand = new RelayCommand(AddUpdateTask);
             DeleteTaskCommand = new RelayCommand(DeleteTask);
         }
 
-         private CropRepository GetCropRepository()
+        private CropRepository GetCropRepository()
         {
             return new CropRepository(new Repository<CropDTO>());
         }
@@ -166,11 +166,9 @@ namespace JustRipe.ViewModels
             }
         }
 
- 
-
-        private void GetAllCrops()
+        private void GetAllCropsCurrentlyInCultivation()
         {
-            var all_Cropss = GetCropRepository().GetAllCropsCurrentlyInCultivation();
+            var all_Cropss = GetCropRepository().GetAllCrops();
 
             foreach (var crop in all_Cropss)
             {
@@ -211,7 +209,6 @@ namespace JustRipe.ViewModels
             {
                 UpdateTask(parameter);
             }
-
             FillAllTasks();
         }
 

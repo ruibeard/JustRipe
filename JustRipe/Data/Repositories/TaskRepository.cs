@@ -37,6 +37,25 @@ namespace JustRipe.Data.Repositories
                        LabourNeeded = task.LabourNeeded,
                    };
         }
+        public IEnumerable<Task> GetAllHarvestingTasks()
+        {
+            return from task in taskRepo.GetAll()
+                   join crop in cropRepo.GetAll() on task.CropId equals crop.Id
+                   join user in userRepo.GetAll() on task.UserId equals user.Id
+                   where task.Type is "Harvesting"
+                   select new Task()
+                   {
+                       Id = task.Id,
+                       Name = task.Name,
+                       CropId = task.CropId,
+                       CropName = crop.Name,
+                       UserId = task.UserId,
+                       CreatedBy = user.Name,
+                       Type = task.Type,
+                       TaskDate = task.TaskDate,
+                       LabourNeeded = task.LabourNeeded,
+                   };
+        }
 
         public void UpdateTask(TaskDTO _task)
         {
