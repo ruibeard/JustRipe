@@ -81,16 +81,46 @@ namespace JustRipe.ViewModels
             set { _quantity = value; OnPropertyChanged(nameof(Quantity)); }
         }
 
+        private string _unit;
+
+        public string Unit
+        {
+            get { return _unit; }
+            set { _unit = value; }
+        }
+
+        private bool _showingAll = false;
+
+        public bool ShowingAll
+        {
+            get { return _showingAll; }
+            set { _showingAll = value; OnPropertyChanged(nameof(ShowingAll)); }
+        }
+
+        private void ToogleTable(object param)
+        {
+            if (ShowingAll == false)
+            {
+                ShowProductsInStock();
+                _showingAll = true;
+            }
+            else
+            {
+                ShowProductsInStock();
+                _showingAll = false;
+            }
+        }
+
         public RelayCommand AddUpdateProductCommand { get; set; }
         public RelayCommand DeleteProductCommand { get; set; }
-        public RelayCommand ShowAllProductsCommand { get; set; }
+        public RelayCommand ShowAllProdutsToogleCommand { get; set; }
         #endregion Properties
 
         public ProductViewModel()
         {
             AddUpdateProductCommand = new RelayCommand(AddUpdateProduct);
             DeleteProductCommand = new RelayCommand(DeleteProduct);
-            ShowAllProductsCommand = new RelayCommand(ShowAllProducts);
+            ShowAllProdutsToogleCommand = new RelayCommand(ToogleTable);
             ShowProductsInStock();
         }
 
@@ -99,6 +129,7 @@ namespace JustRipe.ViewModels
             Id = SelectedProduct.Id;
             Name = SelectedProduct.Name;
             Quantity = SelectedProduct.Quantity;
+            Unit = SelectedProduct.Unit;
             Description = selectedProduct.Description;
             CategoryName = SelectedProduct.CategoryName;
             CategoryId = SelectedProduct.CategoryId;
@@ -134,6 +165,7 @@ namespace JustRipe.ViewModels
                         Name = prod.Name,
                         Description = prod.Description,
                         Quantity = prod.Quantity,
+                        Unit = prod.Unit,
                         CategoryId = prod.CategoryId,
                         CategoryName = prod.CategoryName,
                     });
@@ -154,7 +186,6 @@ namespace JustRipe.ViewModels
             }
         }
 
-
         private void AddUpdateProduct(object parameter)
         {
             if (SelectedProduct == null) { AddProduct(parameter); }
@@ -163,7 +194,7 @@ namespace JustRipe.ViewModels
                 UpdateProduct(parameter);
                 SelectedProduct = null;
             }
-            Name = CategoryName = Description = "";
+            Name = CategoryName = Description = Unit = "";
             Id = 0;
             Quantity = CategoryId = 0;
             ProductTable.Clear();

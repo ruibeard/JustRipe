@@ -29,6 +29,7 @@ namespace JustRipe.Data.Repositories
                        Name = product.Name,
                        CategoryName = cat.Name,
                        Quantity = product.Quantity,
+                       Unit = product.Unit,
                        Description = product.Description,
                        Price = product.Price,
                        Status = product.Status
@@ -47,6 +48,7 @@ namespace JustRipe.Data.Repositories
                        Name = product.Name,
                        CategoryName = cat.Name,
                        Quantity = product.Quantity,
+                       Unit = product.Unit,
                        Description = product.Description,
                        Price = product.Price,
                        Status = product.Status
@@ -65,6 +67,7 @@ namespace JustRipe.Data.Repositories
                        Name = product.Name,
                        CategoryName = cat.Name,
                        Quantity = product.Quantity,
+                       Unit = product.Unit,
                        Description = product.Description,
                        Price = product.Price,
                        Status = product.Status
@@ -80,6 +83,7 @@ namespace JustRipe.Data.Repositories
                        Name = product.Name,
                        CategoryName = cat.Name,
                        Quantity = product.Quantity,
+                       Unit = product.Unit,
                        Description = product.Description,
                        Price = product.Price,
                        Status= product.Status

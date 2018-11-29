@@ -11,7 +11,6 @@
         <KeyBinding Key="Return" Command="{Binding AddUpdateTaskCommand}" />
     </UserControl.InputBindings>-->
     <StackPanel>
-        <ScrollViewer>
             <DataGrid x:Name="gridTask" Margin="5 5 5 5"
                   ItemsSource="{Binding TaskTable, Mode=TwoWay}" 
                   SelectedItem="{Binding SelectedTask, Mode=TwoWay}"
@@ -27,7 +26,6 @@
                     <DataGridTextColumn Header="Labour Needed" Binding="{Binding Path=LabourNeeded}"/>
                 </DataGrid.Columns>
             </DataGrid>
-        </ScrollViewer>
 
         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="10">
             <Grid>

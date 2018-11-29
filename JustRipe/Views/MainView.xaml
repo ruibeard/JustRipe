@@ -181,15 +181,16 @@
             <!--Main Area Content-->
             <Grid x:Name="ContainerX" Grid.Row="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="110*"/>
-                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <StackPanel Grid.RowSpan="2">
-                    <TextBlock Text="{Binding PageName, FallbackValue=Dashboard}" Margin="10" FontSize="20"/>
-                    <!--Control responsible to show the different pages-->
-                    <ContentPresenter Content="{Binding SelectedViewModel}"/>
+                <TextBlock Grid.Row="0" Text="{Binding PageName, FallbackValue=Dashboard}" Margin="10" FontSize="20"/>
+                <!--Control responsible to show the different pages-->
 
-                </StackPanel>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+
+                    <ContentPresenter  Content="{Binding SelectedViewModel}" VerticalAlignment="Stretch"/>
+                </ScrollViewer>
             </Grid>
 
         </Grid>

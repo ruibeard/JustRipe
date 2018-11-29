@@ -11,8 +11,8 @@
     <StackPanel>
 
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="30 5">
-            <TextBlock Text="Show unavailable Products:"/>
-            <ToggleButton Command="{Binding ShowAllCropsCommand}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" IsChecked="False" />
+            <TextBlock Text="Show all crops:" Margin="5 0"/>
+            <ToggleButton Command="{Binding ShowAllCropsToogleCommand}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" IsChecked="False" />
         </StackPanel>
      
         <DataGrid x:Name="gridCrop" Margin="5 5 5 5" 

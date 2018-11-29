@@ -43,26 +43,43 @@ namespace JustRipe.ViewModels
             set { _name = value; OnPropertyChanged(nameof(Name)); }
         }
         private int _categoryId;
-
-
         public int CategoryId
         {
             get { return _categoryId; }
             set { _categoryId = value; OnPropertyChanged(nameof(CategoryId)); }
         }
         private string _categoryName;
-
         public string CategoryName
         {
             get { return _categoryName; }
             set { _categoryName = value; OnPropertyChanged(nameof(CategoryName)); }
         }
         private double _quantity;
-
         public double Quantity
         {
             get { return _quantity; }
             set { _quantity = value; OnPropertyChanged(nameof(Quantity)); }
+        }
+
+        private string _description;
+        public string Description
+        {
+            get { return _description; }
+            set { _description = value; OnPropertyChanged(nameof(Description)); }
+        }
+
+        private string _unit;
+        public string Unit
+        {
+            get { return _unit; }
+            set { _unit = value; OnPropertyChanged(nameof(Unit)); }
+        }
+
+        private double _price;
+        public double Price
+        {
+            get { return _price; }
+            set { _price = value; OnPropertyChanged(nameof(Price)); }
         }
 
         public RelayCommand AddUpdateProductCommand { get; set; }
@@ -83,6 +100,8 @@ namespace JustRipe.ViewModels
             Id = SelectedProduct.Id;
             Name = SelectedProduct.Name;
             Quantity = SelectedProduct.Quantity;
+            Unit = SelectedProduct.Unit;
+            Price = SelectedProduct.Price;
             CategoryName = SelectedProduct.CategoryName;
             CategoryId = SelectedProduct.CategoryId;
         }
@@ -116,6 +135,7 @@ namespace JustRipe.ViewModels
                         Id = prod.Id,
                         Name = prod.Name,
                         Quantity = prod.Quantity,
+                        Unit = prod.Unit,
                         CategoryId = prod.CategoryId,
                         CategoryName = prod.CategoryName,
                     });
@@ -161,8 +181,6 @@ namespace JustRipe.ViewModels
                 CategoryId = CategoryId,
             };
             GetRepository().AddProduct(newProduct);
-
-
         }
 
         void UpdateProduct(object parameter)

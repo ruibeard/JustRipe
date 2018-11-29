@@ -4,9 +4,10 @@ using JustRipe.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace JustRipe.ViewModels
-{ 
+{
     public class CropViewModel : ObservableObject
     {
         #region Fields
@@ -19,6 +20,13 @@ namespace JustRipe.ViewModels
         private int _numContainers;
 
         #endregion Fields
+        private bool _showingAll = false;
+
+        public bool ShowingAll
+        {
+            get { return _showingAll; }
+            set { _showingAll = value; OnPropertyChanged(nameof(ShowingAll)); }
+        }
 
         #region Properties
         private Crop selectedCrop;
@@ -70,14 +78,14 @@ namespace JustRipe.ViewModels
 
         public RelayCommand AddUpdateCropCommand { get; set; }
         public RelayCommand DeleteCropCommand { get; set; }
-        public RelayCommand ShowAllCropsCommand { get; set; }
+        public RelayCommand ShowAllCropsToogleCommand { get; set; }
         #endregion Properties
 
         public CropViewModel()
         {
             AddUpdateCropCommand = new RelayCommand(AddUpdateCrop);
             DeleteCropCommand = new RelayCommand(DeleteCrop);
-            ShowAllCropsCommand = new RelayCommand(ShowAllCrops);
+            ShowAllCropsToogleCommand = new RelayCommand(ToogleTable);
             ShowCropsInCultivation();
         }
 
@@ -95,8 +103,23 @@ namespace JustRipe.ViewModels
             return new CropRepository(new Repository<CropDTO>());
         }
 
-        private void ShowAllCrops(object param)
+        private void ToogleTable(object param)
         {
+            if (ShowingAll == false)
+            {
+                ShowAllCrops();
+                _showingAll = true;
+            }
+            else
+            {
+                ShowCropsInCultivation();
+                _showingAll = false;
+            }
+        }
+
+        private void ShowAllCrops()
+        {
+
             var crops = GetRepository().GetAllCrops();
             CropTable = new ObservableCollection<Object>();
             BuildTable(crops);
@@ -106,21 +129,7 @@ namespace JustRipe.ViewModels
         {
             var crops = GetRepository().GetAllCropsCurrentlyInCultivation();
             CropTable = new ObservableCollection<Object>();
-
-            foreach (var crop in crops)
-            {
-                CropTable.Add(
-                    new Crop
-                    {
-                        Id = crop.Id,
-                        Name = crop.Name,
-                        Stage = crop.Stage,
-                        Type = crop.Type,
-                        Area = crop.Area,
-                        NumContainers = crop.NumContainers,
-
-                    });
-            }
+            BuildTable(crops);
         }
 
         private void BuildTable(IEnumerable<Crop> crops)

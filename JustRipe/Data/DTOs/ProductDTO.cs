@@ -17,6 +17,9 @@ namespace JustRipe.Data.DTOs
         [Column("quantity")]
         public double Quantity { get; set; }
 
+        [Column("unit")]
+        public string Unit { get; set; }
+
         [Column("price")]
         public int Price { get; set; }
 

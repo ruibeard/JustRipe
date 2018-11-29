@@ -14,7 +14,13 @@ namespace JustRipe.ViewModels
         private int _id;
         private string _name;
 
+        public RelayCommand AddUpdateProductCommand { get; set; }
+        public RelayCommand DeleteProductCommand { get; set; }
+        public RelayCommand ShowAllProdutsToogleCommand { get; set; }
         #endregion Fields
+
+
+
 
         #region Properties
         private Product selectedProduct;
@@ -69,6 +75,16 @@ namespace JustRipe.ViewModels
             get { return _categoryName; }
             set { _categoryName = value; OnPropertyChanged(nameof(CategoryName)); }
         }
+
+
+        private string  _unit;
+
+        public string  Unit
+        {
+            get { return _unit; }
+            set { _unit = value; }
+        }
+
         private double _quantity;
 
         public double Quantity
@@ -77,18 +93,35 @@ namespace JustRipe.ViewModels
             set { _quantity = value; OnPropertyChanged(nameof(Quantity)); }
         }
 
+        private bool _isToogleEnabled = false;
 
+        public bool IsToogleEnabled
+        {
+            get { return _isToogleEnabled; }
+            set { _isToogleEnabled = value; OnPropertyChanged(nameof(IsToogleEnabled)); }
+        }
 
-        public RelayCommand AddUpdateProductCommand { get; set; }
-        public RelayCommand DeleteProductCommand { get; set; }
-        public RelayCommand ShowAllProductsCommand { get; set; }
+        private void ToogleTable(object param)
+        {
+            if (IsToogleEnabled == false)
+            {
+                ShowAllProducts();
+                _isToogleEnabled = true;
+            }
+            else
+            {
+                ShowProductsInStock();
+                _isToogleEnabled = false;
+            }
+        }
+
         #endregion Properties
 
         public StockViewModel()
         {
             AddUpdateProductCommand = new RelayCommand(AddUpdateProduct);
             DeleteProductCommand = new RelayCommand(DeleteProduct);
-            ShowAllProductsCommand = new RelayCommand(ShowAllProducts);
+            ShowAllProdutsToogleCommand = new RelayCommand(ToogleTable);
             ShowProductsInStock();
         }
 
@@ -98,6 +131,7 @@ namespace JustRipe.ViewModels
             Name = SelectedProduct.Name;
             Description = SelectedProduct.Description;
             Quantity = SelectedProduct.Quantity;
+            Unit = SelectedProduct.Unit;
             CategoryName = SelectedProduct.CategoryName;
             CategoryId = SelectedProduct.CategoryId;
         }
@@ -108,7 +142,7 @@ namespace JustRipe.ViewModels
         }
 
 
-        private void ShowAllProducts(object param)
+        private void ShowAllProducts()
         {
             var crops = GetRepository().GetAllProducts();
             ProductTable = new ObservableCollection<Object>();
@@ -132,7 +166,9 @@ namespace JustRipe.ViewModels
                     {
                         Id = prod.Id,
                         Name = prod.Name,
+                        Description = prod.Description,
                         Quantity = prod.Quantity,
+                        Unit = prod.Unit,
                         CategoryId = prod.CategoryId,
                         CategoryName = prod.CategoryName,
                     });
