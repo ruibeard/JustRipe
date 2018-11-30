@@ -19,5 +19,15 @@ namespace JustRipe.Views
         {
            
         }
+
+        private void Button_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+
+        }
+
+        private void gridCrop_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

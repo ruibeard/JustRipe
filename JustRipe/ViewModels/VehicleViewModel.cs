@@ -1,62 +1,223 @@
-﻿using JustRipe.Data;
+﻿using JustRipe.Data.DTOs;
+using JustRipe.Data.Repositories;
 using JustRipe.Models;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Media;
 
 namespace JustRipe.ViewModels
 {
     public class VehicleViewModel : ObservableObject
     {
+        #region Fields
 
-        private Vehicle vehicle;
+        private int _id;
+        private string _name;
+        private string _year;
+        private string _type;
+        private string _brand;
+        private string _model;
+        private string _capacity;
+        private string _licencePlate;
+        private string _status;
 
-        public Vehicle Vehicle
+        #endregion Fields
+
+        #region Properties
+        private Vehicle selectedVehicle;
+        public Vehicle SelectedVehicle
         {
-            get { return vehicle; }
-            set { vehicle = value; }
+            get { return selectedVehicle; }
+            set
+            {
+                if (value != null)
+                {
+                    selectedVehicle = value;
+                    FillUpdateCreateForm();
+                    OnPropertyChanged(nameof(SelectedVehicle));
+                }
+            }
+        }
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; OnPropertyChanged(nameof(Id)); }
+        }
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; OnPropertyChanged(nameof(Name)); }
+        }
+ 
+        public string Year
+        {
+            get { return _year; }
+            set { _year = value; OnPropertyChanged(nameof(Year)); }
         }
 
-        public RelayCommand AddVehicleCommand { get; set; }
+        public string Type
+        {
+            get { return _type; }
+            set { _type = value; OnPropertyChanged(nameof(Type)); }
+        }
+
+        public string Brand
+        {
+            get { return _brand; }
+            set { _brand = value; OnPropertyChanged(nameof(Brand)); }
+        }
+
+        public string Model
+        {
+            get { return _model; }
+            set { _model = value; OnPropertyChanged(nameof(Model)); }
+        }
+
+        public string Capacity
+        {
+            get { return _capacity; }
+            set { _capacity = value; OnPropertyChanged(nameof(Capacity)); }
+        }
+
+        public string LicencePlate
+        {
+            get { return _licencePlate; }
+            set { _licencePlate = value; OnPropertyChanged(nameof(LicencePlate)); }
+        }
+
+        public string Status
+        {
+            get { return _status; }
+            set { _status = value; OnPropertyChanged(nameof(Status)); }
+        }
+
+        public RelayCommand AddUpdateVehicleCommand { get; set; }
+        public RelayCommand DeleteVehicleCommand { get; set; }
+        #endregion Properties
 
 
         public VehicleViewModel()
         {
-            vehicle = new Vehicle("Vehicle  model name ");
-            _color = Brushes.Red;
-            PageName = "Vehicles";
-            AddVehicleCommand = new RelayCommand(AddVehicle);
-        }
-        private string pageName;
-
-        public string PageName
-        {
-            get { return pageName; }
-            set { pageName = value; }
+            FillAllVehicles();
+            AddUpdateVehicleCommand = new RelayCommand(AddUpdateVehicle);
+            DeleteVehicleCommand = new RelayCommand(DeleteVehicle);
         }
 
 
-        private Brush _color;
-
-        public Brush Color
+        void FillUpdateCreateForm()
         {
-            get { return _color; }
-            set { _color = value; }
+            Id = SelectedVehicle.Id;
+            Name = SelectedVehicle.Name;
+            Year = SelectedVehicle.Year;
+            Type = SelectedVehicle.Type;
+            Brand = SelectedVehicle.Brand;
+            Model = SelectedVehicle.Model;
+            Capacity = SelectedVehicle.Capacity;
+            LicencePlate = SelectedVehicle.LicencePlate;
+            Status = SelectedVehicle.Status;
+        }
+
+        private VehicleRepository GetRepository()
+        {
+            return new VehicleRepository(new Repository<VehicleDTO>());
+        }
+
+        private void FillAllVehicles()
+        {
+            var vehicles = GetRepository().GetAllVehicles();
+            VehicleTable = new ObservableCollection<Object>();
+
+            foreach (var vehicle in vehicles)
+            {
+                VehicleTable.Add(
+                    new Vehicle
+                    {
+                        Id = vehicle.Id,
+                        Name = vehicle.Name,
+                        Year = vehicle.Year,
+                        Type = vehicle.Type,
+                        Brand = vehicle.Brand,
+                        Model = vehicle.Model,
+                        Capacity = vehicle.Capacity,
+                        LicencePlate = vehicle.LicencePlate,
+                        Status = vehicle.Status,
+                    });
+            }
+        }
+
+        private ObservableCollection<Object> _vehicleTable;
+        public ObservableCollection<object> VehicleTable
+        {
+            get { return _vehicleTable; }
+            set
+            {
+                if (value != null)
+                {
+                    _vehicleTable = value;
+                    OnPropertyChanged(nameof(VehicleTable));
+                }
+            }
+        }
+
+        private void AddUpdateVehicle(object parameter)
+        {
+            if (SelectedVehicle == null) { AddVehicle(parameter); }
+            else
+            {
+                UpdateVehicle(parameter);
+                SelectedVehicle = null;
+            }
+            Name = Year = Type = Brand = Model = Capacity = LicencePlate = Status = "";
+            Id = 0;
+            VehicleTable.Clear();
+            FillAllVehicles();
         }
 
         void AddVehicle(object parameter)
         {
-            User u = new User
+            VehicleDTO newVehicle = new VehicleDTO
             {
-                Username = "fabio",
-                Password = "lazzy"
+                Name = Name,
+                Year = Year,
+                Type = Type,
+                Brand = Brand,
+                Model = Model,
+                Capacity = Capacity,
+                LicencePlate = LicencePlate,
+                Status = Status,
             };
+            GetRepository().AddVehicle(newVehicle);
 
+
+        }
+
+        void UpdateVehicle(object parameter)
+        {
+            VehicleDTO newVehicle = new VehicleDTO
+            {
+                Id = Id,
+                Name = Name,
+                Year = Year,
+                Type = Type,
+                Brand = Brand,
+                Model = Model,
+                Capacity = Capacity,
+                LicencePlate = LicencePlate,
+                Status = Status,
+            };
+            GetRepository().UpdateVehicle(newVehicle);
+
+        }
+
+        private void DeleteVehicle(object parameter)
+        {
+            if (SelectedVehicle != null)
+            {
+                VehicleDTO newVehicle = new VehicleDTO
+                {
+                    Id = Id,
+                };
+                GetRepository().DeleteVehicle(newVehicle);
+            }
         }
     }
 

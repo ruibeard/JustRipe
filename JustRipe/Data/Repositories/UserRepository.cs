@@ -35,6 +35,23 @@ namespace JustRipe.Data.Repositories
                    };
         }
 
+        public IEnumerable<User> CheckUserCredentials(string _username, string _password)
+        {
+            return from user in repositoryUser.GetAll()
+                   join user_role in repositoryUserRole.GetAll() on user.Id equals user_role.UserId
+                   join role in repositoryRole.GetAll() on user_role.RoleId equals role.Id
+                   where user.UserName == _username
+                   where user.Password == _password
+                   select new User()
+                   {
+                       Id = user.Id,
+                       Name = user.Name,
+                       Role = role.Name,
+                       PhoneNumber = user.PhoneNumber,
+                   };
+        }
+
+
         public IEnumerable<User> GetAllLabourUsers()
         {
             return from user in repositoryUser.GetAll()

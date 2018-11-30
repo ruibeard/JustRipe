@@ -8,7 +8,7 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel>
+    <StackPanel Margin="0,0,-466,0">
 
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="30 5">
             <TextBlock Text="Show all crops:" Margin="5 0"/>
@@ -16,8 +16,11 @@
         </StackPanel>
      
         <DataGrid x:Name="gridCrop" Margin="5 5 5 5" 
-                  ItemsSource="{Binding CropTable , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                  SelectedItem="{Binding SelectedCrop, Mode=TwoWay}" AutoGenerateColumns="True" CanUserAddRows="False">
+ 
+                  ItemsSource="{Binding CropTable , Mode=TwoWay}" 
+                  SelectedItem="{Binding SelectedCrop, Mode=TwoWay}"
+                  AutoGenerateColumns="True" 
+                  CanUserAddRows="False" SelectionChanged="gridCrop_SelectionChanged">
         </DataGrid>
 
         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="42">

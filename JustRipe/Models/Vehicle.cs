@@ -6,50 +6,68 @@ using System.Threading.Tasks;
 
 namespace JustRipe.Models
 {
-    public class Vehicle : ObservableObject
+    public class Vehicle
     {
-        public Vehicle(string _name)
+        private int _id;
+        public int Id
         {
-            Name = _name;
+            get { return _id; }
+            set { _id = value; }
         }
         private string name;
-
         public string Name
         {
             get { return name; }
             set { name = value; }
         }
-        private string _model;
 
+        private string _year;
+        public string Year
+        {
+            get { return _year; }
+            set { _year = value; }
+        }
+
+        private string _type;
+        public string Type
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
+
+        private string _brand;
+        public string Brand
+        {
+            get { return _brand; }
+            set { _brand = value; }
+        }
+
+        private string _model;
         public string Model
         {
             get { return _model; }
             set { _model = value; }
         }
 
-
-        private string _brand;
-
-        public string Brand
-        {
-            get { return _brand; }
-            set { _brand = value; }
-        }
-        private int _capacity;
-
-        public int Capacity
+        private string _capacity;
+        public string Capacity
         {
             get { return _capacity; }
             set { _capacity = value; }
         }
 
-        private string _licensePlate;
-
-        public string LicensePlate
+        private string _licencePlate;
+        public string LicencePlate
         {
-            get { return _licensePlate; }
-            set { _licensePlate = value; }
+            get { return _licencePlate; }
+            set { _licencePlate = value; }
         }
 
+        private string _status;
+        public string Status
+        {
+            get { return _status; }
+            set { _status = value; }
+        }
     }
 }

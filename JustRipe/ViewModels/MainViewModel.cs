@@ -20,7 +20,20 @@ namespace JustRipe.ViewModels
         public RelayCommand VehicleCommand { get; set; }
         public RelayCommand LabourCommand { get; set; }
 
-        
+        public static string _loggedUserName;
+
+        public static string LoggedUserName
+        {
+            get
+            {
+                return _loggedUserName;
+            }
+            set
+            {
+                _loggedUserName = value;
+            }
+        }
+
 
         private string _pageName;
 

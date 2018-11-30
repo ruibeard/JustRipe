@@ -126,6 +126,7 @@
     <Compile Include="Data\DTOs\RoleDTO.cs" />
     <Compile Include="Data\DTOs\UserRoleDTO.cs" />
     <Compile Include="Data\DTOs\UserDTO.cs" />
+    <Compile Include="Data\DTOs\VehicleDTO.cs" />
     <Compile Include="Data\Repositories\ProductRepository.cs" />
     <Compile Include="Data\Repositories\UserRepository.cs" />
     <Compile Include="Data\Repositories\TaskRepository.cs" />
@@ -133,8 +134,8 @@
     <Compile Include="Data\Repositories\CropRepository.cs" />
     <Compile Include="Data\Repositories\IRepository.cs" />
     <Compile Include="Data\Repositories\Repository.cs" />
+    <Compile Include="Data\Repositories\VehicleRepository.cs" />
     <Compile Include="Data\SQLiteDb.cs" />
-    <Compile Include="Data\Repositories\OldUserRepository.cs" />
     <Compile Include="Data\SQLiteDatabase.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Task.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Vehicle.cs" />
+    <Compile Include="Utils\Constants.cs" />
     <Compile Include="ViewModels\StockViewModel.cs" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
     <Compile Include="ViewModels\FertiliserViewModel.cs" />

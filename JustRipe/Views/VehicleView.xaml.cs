@@ -11,5 +11,10 @@ namespace JustRipe.Views
         {
             InitializeComponent();
         }
+
+        private void gridVehicle_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
