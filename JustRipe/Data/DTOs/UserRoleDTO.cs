@@ -14,6 +14,5 @@ namespace JustRipe.Data.DTOs
         [Column("role_id")]
         public int RoleId{ get; set; }
 
-      
     }
 }

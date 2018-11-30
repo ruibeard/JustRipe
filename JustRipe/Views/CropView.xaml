@@ -7,37 +7,96 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
-    <StackPanel Margin="0,0,-466,0">
+            >
+   <StackPanel>
 
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="30 5">
-            <TextBlock Text="Show all crops:" Margin="5 0"/>
-            <ToggleButton Command="{Binding ShowAllCropsToogleCommand}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" IsChecked="False" />
-        </StackPanel>
-     
-        <DataGrid x:Name="gridCrop" Margin="5 5 5 5" 
- 
+      <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="30 5">
+         <TextBlock Text="Show all crops:" Margin="5 0"/>
+         <ToggleButton Command="{Binding ShowAllCropsToogleCommand}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" IsChecked="False" />
+      </StackPanel>
+
+      <DataGrid x:Name="gridCrop" Margin="5 5 5 5" Padding="10" Height="380"
                   ItemsSource="{Binding CropTable , Mode=TwoWay}" 
                   SelectedItem="{Binding SelectedCrop, Mode=TwoWay}"
-                  AutoGenerateColumns="True" 
-                  CanUserAddRows="False" SelectionChanged="gridCrop_SelectionChanged">
-        </DataGrid>
+                  AutoGenerateColumns="False" 
+                  CanUserAddRows="False" CanUserDeleteRows="False" 
+                  >
+         <DataGrid.Columns>
+            <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}"  />
+            <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
+            <DataGridTextColumn Header="Stage" Binding="{Binding Path=Stage}"/>
+            <DataGridTextColumn Header="Area" Binding="{Binding Path=Area}"/>
+            <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}"/>
+            <DataGridTextColumn Header="NumContainers" Binding="{Binding Path=NumContainers}"/>
+            <DataGridTextColumn Header="StorageRequired" Binding="{Binding Path=StorageRequired}"/>
+            <DataGridTemplateColumn Header="">
+               <DataGridTemplateColumn.CellTemplate>
+                  <DataTemplate>
+                     <Button Width="20" Height="20" Margin="0"
+                                Command="{Binding Path=DataContext.EditCropCommand, 
+                                RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type DataGrid}}}"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" >
+                        <materialDesign:PackIcon Kind="Pencil" Height="10" Width="10" />
+                     </Button>
+                  </DataTemplate>
+               </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
 
-        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="42">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <TextBox x:Name="Id" Visibility="Collapsed" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Id"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox x:Name="Name" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Name"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox x:Name="Stage" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Stage"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Stage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox x:Name="Type" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Type"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox x:Name="Area" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Area"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Area, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox x:Name="NumContainers" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="NumContainers"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding NumContainers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <Button Margin="10 0" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateCropCommand}" >
-                    <materialDesign:PackIcon Kind="Tick" Height="24" Width="24" />
-                </Button>
-                <Button  Command="{Binding DeleteCropCommand}" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" ToolTip="MaterialDesignFloatingActionDarkButton">
-                    <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
-                </Button>
+            <DataGridTemplateColumn Header="">
+               <DataGridTemplateColumn.CellTemplate>
+                  <DataTemplate>
+                     <Button Width="20" Height="20"  Margin="0"
+                                Command="{Binding Path=DataContext.DeleteCropCommand, 
+                                RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type DataGrid}}}"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniButton}" >
+                        <materialDesign:PackIcon Kind="Close" Height="10" Width="10" />
+                        <Button.Background>
+                           <SolidColorBrush Color="{StaticResource RedPrimary700}" />
+                        </Button.Background>
+                     </Button>
+                  </DataTemplate>
+               </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+         </DataGrid.Columns>
+      </DataGrid>
+
+      <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="10">
+         <Grid>
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*"/>
+               <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+               <RowDefinition Height="*"/>
+               <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Column="0">
+
+               <TextBox x:Name="Id" Visibility="Collapsed"  Margin="10 5" materialDesign:HintAssist.Hint="Id"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Name"  Margin="10 5" materialDesign:HintAssist.Hint="Name"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Stage"  Margin="10 5" materialDesign:HintAssist.Hint="Stage"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Stage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Type"  Margin="10 5" materialDesign:HintAssist.Hint="Type"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
-        </materialDesign:Card>
-    </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Width="500" >
+
+
+               <TextBox x:Name="Area"  Margin="10 5" materialDesign:HintAssist.Hint="Area"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Area, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="NumContainers"  Margin="10 5" materialDesign:HintAssist.Hint="NumContainers"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding NumContainers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="StorageRequired"  Margin="10 5" materialDesign:HintAssist.Hint="StorageRequired"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding StorageRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0 15">
+               <Button Margin="10 5" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateCropCommand}" >
+                  <materialDesign:PackIcon Kind="Tick" Height="24" Width="24" />
+               </Button>
+               <Button  Command="{Binding DeleteCropCommand}" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" >
+                  <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
+               </Button>
+            </StackPanel>
+         </Grid>
+      </materialDesign:Card>
+   </StackPanel>
 </UserControl>

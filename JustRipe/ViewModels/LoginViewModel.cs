@@ -155,7 +155,7 @@ namespace JustRipe.ViewModels
                 var mainVM = new MainViewModel();
 
 
-                MainViewModel.LoggedUserName = "Welcome, " + returnedUser.Name + " - " + returnedUser.Role;
+                MainViewModel.LoggedUserName = "Welcome, " + returnedUser.FirstName + " - " + returnedUser.Role;
                 mainView.DataContext = mainVM;
                 mainView.Show();
                 CloseAction();

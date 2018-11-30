@@ -18,5 +18,9 @@ namespace JustRipe.Data.DTOs
 
         [Column("numContainers")]
         public int NumContainers { get; set; }
+
+
+        [Column("storageRequired")]
+        public string StorageRequired { get; set; }
     }
 }

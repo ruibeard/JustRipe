@@ -1,24 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JustRipe.Models
+﻿namespace JustRipe.Models
 {
-    public class Labour : ObservableObject
-    {
-
-        public Labour(string _name)
-        {
-            Name = _name;
-        }
-        private string name;
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-    }
+   public class Labour
+   {
+      public string Name { get; set; }
+   }
 }

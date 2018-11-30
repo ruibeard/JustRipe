@@ -73,7 +73,7 @@ namespace JustRipe.ViewModels
                     new User
                     {
                         Id = lab.Id,
-                        Name = lab.Name,
+                        FirstName = lab.FirstName,
                         Role = lab.Role,
                     });
             }
@@ -110,7 +110,7 @@ namespace JustRipe.ViewModels
         {
             UserDTO newUser = new UserDTO
             {
-                Name = Name,
+                FirstName = Name,
 
             };
             GetRepository().AddUser(newUser);

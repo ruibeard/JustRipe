@@ -20,6 +20,7 @@ namespace JustRipe.ViewModels
         #endregion Fields
 
         #region Properties
+
         private Product selectedProduct;
         public Product SelectedProduct
         {
@@ -34,14 +35,14 @@ namespace JustRipe.ViewModels
                 }
             }
         }
-        private List<Category> _categories;
+        private List<Category> _categoryList = new List<Category>();
 
         public List<Category> CategoryList
         {
-            get { return _categories; }
+            get { return _categoryList; }
             set
             {
-                _categories = value;
+                _categoryList = value;
                 OnPropertyChanged(nameof(CategoryList));
             }
         }
@@ -75,7 +76,6 @@ namespace JustRipe.ViewModels
             set { _categoryId = value; OnPropertyChanged(nameof(CategoryId)); }
         }
         private string _categoryName;
-
         public string CategoryName
         {
             get { return _categoryName; }
@@ -86,7 +86,7 @@ namespace JustRipe.ViewModels
         public string Unit
         {
             get { return _unit; }
-            set { _unit = value; }
+            set { _unit = value; OnPropertyChanged(nameof(Unit)); }
         }
 
         private double _quantity;
@@ -127,6 +127,8 @@ namespace JustRipe.ViewModels
             DeleteProductCommand = new RelayCommand(DeleteProduct);
             ShowAllProdutsToogleCommand = new RelayCommand(ToogleTable);
             ShowProductsInStock();
+            GetAllCategories();
+
         }
 
         void FillUpdateCreateForm()
@@ -138,7 +140,7 @@ namespace JustRipe.ViewModels
             CategoryName = SelectedProduct.CategoryName;
             CategoryId = SelectedProduct.CategoryId;
             Unit = SelectedProduct.Unit;
-            GetAllCategories();
+
         }
 
         private ProductRepository GetProductRepo()
@@ -151,10 +153,15 @@ namespace JustRipe.ViewModels
             return new CategoryRepository(new Repository<CategoryDTO>());
         }
 
+
+        private CropRepository GetCropRepository()
+        {
+            return new CropRepository(new Repository<CropDTO>());
+        }
+
         private void ShowAllProducts()
         {
             var crops = GetProductRepo().GetAllProducts();
-            ProductTable = new ObservableCollection<Object>();
             BuildTable(crops);
         }
 
@@ -165,14 +172,14 @@ namespace JustRipe.ViewModels
             BuildTable(products);
         }
 
+
         private void GetAllCategories()
         {
-            var all_categories = GetCategoryRepo().GetAllCategories();
+            var allCategories = GetCategoryRepo().GetAllCategories();
 
-            foreach (var cat in all_categories)
+            foreach (var category in allCategories)
             {
-                Trace.WriteLine(cat.Name);
-                CategoryList.Add(new Category { Id = cat.Id, Name = cat.Name });
+                CategoryList.Add(new Category { Id = category.Id, Name = category.Name });
             }
         }
 

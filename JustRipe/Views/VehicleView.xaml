@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:JustRipe.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+            >
 
     <StackPanel Margin="0,0,-466,0">
         <DataGrid x:Name="gridVehicle" Margin="5 5 5 5" 
@@ -14,19 +14,29 @@
                   SelectedItem="{Binding SelectedVehicle, Mode=TwoWay}"
                   AutoGenerateColumns="True" 
                   CanUserAddRows="False" SelectionChanged="gridVehicle_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Header="Year" Binding="{Binding Path=Year}"/>
+                <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}"/>
+                <DataGridTextColumn Header="Brand" Binding="{Binding Path=Brand}"/>
+                <DataGridTextColumn Header="Model" Binding="{Binding Path=Model}"/>
+                <DataGridTextColumn Header="LicencePlate" Binding="{Binding Path=LicencePlate}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Path=Status}"/>
+            </DataGrid.Columns>
         </DataGrid>
 
         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="42" Height="164">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0,0,0,-33">
                 <TextBox x:Name="Id" Visibility="Collapsed" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Id" Text="{Binding Id, Mode=TwoWay}"/>
                 <TextBox x:Name="Name" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Name" Text="{Binding Name, Mode=TwoWay}" Height="45" VerticalAlignment="Top"/>
-                <TextBox x:Name="Year" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Year" Text="{Binding Stage, Mode=TwoWay}" Height="45" VerticalAlignment="Top"/>
+                <TextBox x:Name="Year" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Year" Text="{Binding Year, Mode=TwoWay}" Height="45" VerticalAlignment="Top"/>
                 <TextBox x:Name="Type" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Type" Text="{Binding Type, Mode=TwoWay}" Height="45" VerticalAlignment="Top"/>
-                <TextBox x:Name="Brand" Width="120" Margin="10 0" materialDesign:HintAssist.Hint="Brand" Text="{Binding Area, Mode=TwoWay}" Height="45" VerticalAlignment="Top"/>
-                <TextBox x:Name="Model" Width="120" Margin="-550 0" materialDesign:HintAssist.Hint="Model" Text="{Binding Area, Mode=TwoWay}" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                <TextBox x:Name="Capacity" Width="120" Margin="-409 0" materialDesign:HintAssist.Hint="Capacity" Text="{Binding Area, Mode=TwoWay}" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                <TextBox x:Name="LicencePlate" Width="120" Margin="-269 0" materialDesign:HintAssist.Hint="Licence Plate" Text="{Binding Area, Mode=TwoWay}" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                <TextBox x:Name="Status" Width="120" Margin="-130 0" materialDesign:HintAssist.Hint="Status" Text="{Binding Area, Mode=TwoWay}" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                <TextBox x:Name="Brand" Width="120" Margin="10 0" materialDesign:HintAssist.Hint="Brand" Text="{Binding Brand, Mode=TwoWay}" Height="45" VerticalAlignment="Top"/>
+                <TextBox x:Name="Model" Width="120" Margin="-550 0" materialDesign:HintAssist.Hint="Model" Text="{Binding Model, Mode=TwoWay}" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                <TextBox x:Name="Capacity" Width="120" Margin="-409 0" materialDesign:HintAssist.Hint="Capacity" Text="{Binding Capacity, Mode=TwoWay}" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                <TextBox x:Name="LicencePlate" Width="120" Margin="-269 0" materialDesign:HintAssist.Hint="Licence Plate" Text="{Binding LicencePlate, Mode=TwoWay}" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                <TextBox x:Name="Status" Width="120" Margin="-130 0" materialDesign:HintAssist.Hint="Status" Text="{Binding Status, Mode=TwoWay}" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
                 <Button Margin="10 0" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateVehicleCommand}" >
                     <materialDesign:PackIcon Kind="Tick" Height="24" Width="24" />
                 </Button>

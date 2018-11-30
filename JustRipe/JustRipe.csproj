@@ -146,7 +146,6 @@
     <Compile Include="Models\Crop.cs" />
     <Compile Include="Models\Harvest.cs" />
     <Compile Include="Models\ObservableObject.cs" />
-    <Compile Include="Models\Page.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Vehicle.cs" />
@@ -166,6 +165,9 @@
     <Compile Include="ViewModels\HarvestViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="Views\UserView.xaml.cs">
+      <DependentUpon>UserView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TaskView.xaml.cs">
       <DependentUpon>TaskView.xaml</DependentUpon>
     </Compile>
@@ -203,6 +205,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\UserView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\TaskView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -276,6 +282,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\JustRipe - Copy.db" />
     <Content Include="Data\JustRipe.db" />
     <Resource Include="Images\gif.gif" />
     <Resource Include="Images\logo.png" />

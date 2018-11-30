@@ -1,61 +1,19 @@
-﻿namespace JustRipe.Models
+﻿using System;
+
+namespace JustRipe.Models
 {
-    public class User
-    {
-
-        public int Id { get; set; }
-
-        private string username;
-
-        public string Username
-        {
-            get { return username; }
-            set { username = value; }
-        }
-        private string password;
-
-        public string Password
-        {
-            get { return password; }
-            set { password = value; }
-        }
-
-        private string name;
-
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        private string _dob;
-
-        public string DateOfBrithday
-        {
-            get { return _dob; }
-            set { _dob = value; }
-        }
-        private string _phoneNumber;
-
-        public string PhoneNumber
-        {
-            get { return _phoneNumber; }
-            set { _phoneNumber = value; }
-        }
-        private string _address;
-
-        public string Address
-        {
-            get { return _address; }
-            set { _address = value; }
-        }
-
-        private string _role;
-        public string Role
-        {
-            get { return _role; }
-            set { _role = value; }
-        }
-
-    }
+   public class User
+   {
+      public int Id { get; set; }
+      public string Username { get; set; }
+      public string Password { get; set; }
+      public string FirstName { get; set; }
+      public string LastName { get; set; }
+      public string Email { get; set; }
+      public string PhoneNumber { get; set; }
+      public string Address { get; set; }
+      public DateTime DateOfBirth { get; set; }
+      public decimal AnualWage { get; set; }
+      public string Role { get; set; }
+   }
 }

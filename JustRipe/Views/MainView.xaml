@@ -45,10 +45,13 @@
         <DataTemplate x:Name="LabourViewTemplate" DataType="{x:Type vm:LabourerViewModel}">
             <views:LabourView/>
         </DataTemplate>
-        <DataTemplate x:Name="TaskViewTemplate" DataType="{x:Type vm:TaskViewModel}">
-            <views:TaskView/>
-        </DataTemplate>
-    </Window.Resources>
+      <DataTemplate x:Name="TaskViewTemplate" DataType="{x:Type vm:TaskViewModel}">
+         <views:TaskView/>
+      </DataTemplate>
+      <DataTemplate x:Name="UserViewTemplate" DataType="{x:Type vm:UserViewModel}">
+         <views:UserView/>
+      </DataTemplate>
+   </Window.Resources>
 
     <!--Main Grid-->
     <Grid Background="{DynamicResource MaterialDesignPaper}">
@@ -138,15 +141,24 @@
                     </StackPanel>
                 </Button>
 
-                <Button HorizontalAlignment="Left" Height="35" Margin="0 10"
-                        Style="{StaticResource MaterialDesignFlatButton}" x:Name="Labour" 
+            <Button HorizontalAlignment="Left" Height="35" Margin="0 10"
+                        Style="{StaticResource MaterialDesignFlatButton}" x:Name="Labourers" 
                         Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding LabourCommand}" >
-                    <StackPanel Orientation="Horizontal" >
-                        <materialDesign:PackIcon  Height="30" Width="30" Kind="Worker" VerticalAlignment="Center"/>
-                        <TextBlock  Width="170" Text="Labour" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
-                    </StackPanel>
-                </Button>
-            </StackPanel>
+               <StackPanel Orientation="Horizontal" >
+                  <materialDesign:PackIcon  Height="30" Width="30" Kind="Worker" VerticalAlignment="Center"/>
+                  <TextBlock  Width="170" Text="Labour" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+               </StackPanel>
+            </Button>
+
+            <Button HorizontalAlignment="Left" Height="35" Margin="0 10"
+                        Style="{StaticResource MaterialDesignFlatButton}" x:Name="Users" 
+                        Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding UserCommand}" >
+               <StackPanel Orientation="Horizontal" >
+                  <materialDesign:PackIcon  Height="30" Width="30" Kind="Worker" VerticalAlignment="Center"/>
+                  <TextBlock  Width="170" Text="Users" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
+               </StackPanel>
+            </Button>
+         </StackPanel>
         </materialDesign:ColorZone>
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>

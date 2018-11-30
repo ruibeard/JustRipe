@@ -11,16 +11,13 @@ namespace JustRipe.ViewModels
     public class TaskViewModel : ObservableObject
     {
         #region Fields
-
         private int _id;
         private string _name;
         private string _type;
         private int _userId;
         private int _cropId;
         private string _taskDate;
-
         private Task selectedTask;
-
         #endregion Fields
 
         #region Properties
@@ -37,15 +34,26 @@ namespace JustRipe.ViewModels
                 }
             }
         }
-        private List<Crop> _cropss = new List<Crop>();
+        private List<User> _users = new List<User>();
 
+        public List<User> UserList
+        {
+            get { return _users; }
+            set
+            {
+                _users = value;
+                OnPropertyChanged(nameof(UserList));
+            }
+        }
+
+        private List<Crop> _crops = new List<Crop>();
 
         public List<Crop> CropList
         {
-            get { return _cropss; }
+            get { return _crops; }
             set
             {
-                _cropss = value;
+                _crops = value;
                 OnPropertyChanged(nameof(CropList));
             }
         }
@@ -92,7 +100,6 @@ namespace JustRipe.ViewModels
         }
 
         private string _createdBy;
-
         public string CreatedBy
         {
             get { return _createdBy; }
@@ -128,6 +135,9 @@ namespace JustRipe.ViewModels
         public TaskViewModel()
         {
             FillAllTasks();
+
+            GetAllCrops();
+            GetAllUsers();
             AddUpdateTaskCommand = new RelayCommand(AddUpdateTask);
             DeleteTaskCommand = new RelayCommand(DeleteTask);
         }
@@ -136,10 +146,17 @@ namespace JustRipe.ViewModels
         {
             return new CropRepository(new Repository<CropDTO>());
         }
+        private UserRepository GetUserRepository()
+        {
+            return new UserRepository(new Repository<UserDTO>());
+        }
+        private TaskRepository GetRepository()
+        {
+            return new TaskRepository(new Repository<TaskDTO>(), new Repository<CropDTO>(), new Repository<UserDTO>());
+        }
 
         void FillUpdateCreateForm()
         {
-            GetAllCropsCurrentlyInCultivation();
             Id = SelectedTask.Id;
             Name = SelectedTask.Name;
             TaskDate = SelectedTask.TaskDate;
@@ -149,10 +166,6 @@ namespace JustRipe.ViewModels
             LabourNeeded = SelectedTask.LabourNeeded;
             CropId = SelectedTask.CropId;
             UserId = SelectedTask.UserId;
-        }
-        private TaskRepository GetRepository()
-        {
-            return new TaskRepository(new Repository<TaskDTO>(), new Repository<CropDTO>(), new Repository<UserDTO>());
         }
 
         private ObservableCollection<Object> _taskTable;
@@ -166,13 +179,24 @@ namespace JustRipe.ViewModels
             }
         }
 
-        private void GetAllCropsCurrentlyInCultivation()
+        private void GetAllCrops()
         {
             var all_Cropss = GetCropRepository().GetAllCrops();
 
             foreach (var crop in all_Cropss)
             {
                 CropList.Add(new Crop { Id = crop.Id, Name = crop.Name });
+            }
+        }
+
+
+        private void GetAllUsers()
+        {
+            var all_Userss = GetUserRepository().GetAllUsers();
+
+            foreach (var user in all_Userss)
+            {
+                UserList.Add(new User { Id = user.Id, FirstName = user.FirstName });
             }
         }
         private void FillAllTasks()

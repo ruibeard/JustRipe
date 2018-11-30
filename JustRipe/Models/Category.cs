@@ -1,28 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JustRipe.Models
+﻿namespace JustRipe.Models
 {
-    public class Category
-    {
+   public class Category
+   {
+      public int Id { get; set; }
+      public string Name { get; set; }
+      public int ParentID { get; set; }
 
-        private int _id;
-
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; }
-        }
-
-        private string _name;
-
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-    }
+   }
 }
