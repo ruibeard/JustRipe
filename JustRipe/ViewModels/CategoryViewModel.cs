@@ -27,8 +27,6 @@ namespace JustRipe.ViewModels
 
         public CategoryViewModel()
         {
-            category = new Category("Category Corn model name ");
-            _color = Brushes.Red;
             PageName = "Categorys";
             AddCategoryCommand = new RelayCommand(AddCategory);
         }

@@ -128,7 +128,6 @@ namespace JustRipe.ViewModels
         public TaskViewModel()
         {
             FillAllTasks();
-            GetAllCropsCurrentlyInCultivation();
             AddUpdateTaskCommand = new RelayCommand(AddUpdateTask);
             DeleteTaskCommand = new RelayCommand(DeleteTask);
         }
@@ -140,6 +139,7 @@ namespace JustRipe.ViewModels
 
         void FillUpdateCreateForm()
         {
+            GetAllCropsCurrentlyInCultivation();
             Id = SelectedTask.Id;
             Name = SelectedTask.Name;
             TaskDate = SelectedTask.TaskDate;

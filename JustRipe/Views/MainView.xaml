@@ -191,8 +191,8 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="{Binding PageName, FallbackValue=Dashboard}" Margin="10" FontSize="20"/>
                     <StackPanel  Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal" VerticalAlignment="Center" >
-                        <materialDesign:PackIcon Kind="User" Width="30" Height="35"/>
-                        <TextBlock   Margin="0 0 20 0" Text="{Binding LoggedUserName, FallbackValue=Mr.}" FontSize="30" />
+                        <materialDesign:PackIcon Kind="User" Width="20" Height="20" VerticalAlignment="Center"/>
+                        <TextBlock  VerticalAlignment="Center"  Margin="0 0 20 0" Text="{Binding LoggedUserName, FallbackValue=Mr.}" />
                     </StackPanel>
 
                 </Grid>

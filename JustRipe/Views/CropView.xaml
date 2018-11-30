@@ -25,11 +25,12 @@
 
         <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="42">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
-                <TextBox x:Name="Id" Visibility="Collapsed" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Id" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox x:Name="Name" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Name" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox x:Name="Stage" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Stage" Text="{Binding Stage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox x:Name="Type" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Type" Text="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <TextBox x:Name="Area" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Area" Text="{Binding Area, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="Id" Visibility="Collapsed" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Id"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="Name" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Name"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="Stage" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Stage"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Stage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="Type" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Type"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="Area" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Area"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Area, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox x:Name="NumContainers" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="NumContainers"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding NumContainers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <Button Margin="10 0" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateCropCommand}" >
                     <materialDesign:PackIcon Kind="Tick" Height="24" Width="24" />
                 </Button>

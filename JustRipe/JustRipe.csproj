@@ -127,6 +127,7 @@
     <Compile Include="Data\DTOs\UserRoleDTO.cs" />
     <Compile Include="Data\DTOs\UserDTO.cs" />
     <Compile Include="Data\DTOs\VehicleDTO.cs" />
+    <Compile Include="Data\Repositories\CategoryRepository.cs" />
     <Compile Include="Data\Repositories\ProductRepository.cs" />
     <Compile Include="Data\Repositories\UserRepository.cs" />
     <Compile Include="Data\Repositories\TaskRepository.cs" />

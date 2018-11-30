@@ -4,7 +4,6 @@ using JustRipe.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows;
 
 namespace JustRipe.ViewModels
 {
@@ -96,6 +95,7 @@ namespace JustRipe.ViewModels
             Stage = SelectedCrop.Stage;
             Type = SelectedCrop.Type;
             Area = SelectedCrop.Area;
+            NumContainers = SelectedCrop.NumContainers;
         }
 
         private CropRepository GetRepository()
@@ -180,13 +180,8 @@ namespace JustRipe.ViewModels
 
         void AddCrop(object parameter)
         {
-            CropDTO newCrop = new CropDTO
-            {
-                Name = Name,
-                Stage = Stage,
-                Type = Type,
-                Area = Area
-            };
+            var newCrop = NewCropDTO();
+
             GetRepository().AddCrop(newCrop);
 
 
@@ -194,18 +189,23 @@ namespace JustRipe.ViewModels
 
         void UpdateCrop(object parameter)
         {
-            CropDTO newCrop = new CropDTO
+            var newCrop = NewCropDTO();
+
+            GetRepository().UpdateCrop(newCrop);
+
+        }
+        private CropDTO NewCropDTO()
+        {
+            return new CropDTO
             {
                 Id = Id,
                 Name = Name,
                 Stage = Stage,
                 Type = Type,
-                Area = Area
+                Area = Area,
+                NumContainers = NumContainers,
             };
-            GetRepository().UpdateCrop(newCrop);
-
         }
-
         private void DeleteCrop(object parameter)
         {
             if (SelectedCrop != null)
@@ -219,10 +219,6 @@ namespace JustRipe.ViewModels
             }
         }
 
-        //void AddCrop(object parameter)
-        //{
-        //    GetRepository().AddCrop(new Crop { Name = Name, Stage = Stage, Area = Area, Type = Type });
-        //}
     }
 
 }

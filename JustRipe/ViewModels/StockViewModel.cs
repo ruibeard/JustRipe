@@ -4,6 +4,7 @@ using JustRipe.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 
 namespace JustRipe.ViewModels
 {
@@ -13,14 +14,10 @@ namespace JustRipe.ViewModels
 
         private int _id;
         private string _name;
-
         public RelayCommand AddUpdateProductCommand { get; set; }
         public RelayCommand DeleteProductCommand { get; set; }
         public RelayCommand ShowAllProdutsToogleCommand { get; set; }
         #endregion Fields
-
-
-
 
         #region Properties
         private Product selectedProduct;
@@ -37,7 +34,17 @@ namespace JustRipe.ViewModels
                 }
             }
         }
+        private List<Category> _categories;
 
+        public List<Category> CategoryList
+        {
+            get { return _categories; }
+            set
+            {
+                _categories = value;
+                OnPropertyChanged(nameof(CategoryList));
+            }
+        }
         public int Id
         {
             get { return _id; }
@@ -52,7 +59,6 @@ namespace JustRipe.ViewModels
             set
             {
                 _description = value; OnPropertyChanged(nameof(Description));
-
             }
         }
 
@@ -76,10 +82,8 @@ namespace JustRipe.ViewModels
             set { _categoryName = value; OnPropertyChanged(nameof(CategoryName)); }
         }
 
-
-        private string  _unit;
-
-        public string  Unit
+        private string _unit;
+        public string Unit
         {
             get { return _unit; }
             set { _unit = value; }
@@ -131,30 +135,45 @@ namespace JustRipe.ViewModels
             Name = SelectedProduct.Name;
             Description = SelectedProduct.Description;
             Quantity = SelectedProduct.Quantity;
-            Unit = SelectedProduct.Unit;
             CategoryName = SelectedProduct.CategoryName;
             CategoryId = SelectedProduct.CategoryId;
+            Unit = SelectedProduct.Unit;
+            GetAllCategories();
         }
 
-        private ProductRepository GetRepository()
+        private ProductRepository GetProductRepo()
         {
             return new ProductRepository(new Repository<ProductDTO>(), new Repository<CategoryDTO>());
         }
 
+        private CategoryRepository GetCategoryRepo()
+        {
+            return new CategoryRepository(new Repository<CategoryDTO>());
+        }
 
         private void ShowAllProducts()
         {
-            var crops = GetRepository().GetAllProducts();
+            var crops = GetProductRepo().GetAllProducts();
             ProductTable = new ObservableCollection<Object>();
             BuildTable(crops);
         }
 
         private void ShowProductsInStock()
         {
-            var products = GetRepository().GetAllProductsCurrentlyInStock();
+            var products = GetProductRepo().GetAllProductsCurrentlyInStock();
             ProductTable = new ObservableCollection<Object>();
-
             BuildTable(products);
+        }
+
+        private void GetAllCategories()
+        {
+            var all_categories = GetCategoryRepo().GetAllCategories();
+
+            foreach (var cat in all_categories)
+            {
+                Trace.WriteLine(cat.Name);
+                CategoryList.Add(new Category { Id = cat.Id, Name = cat.Name });
+            }
         }
 
         private void BuildTable(IEnumerable<Product> products)
@@ -175,24 +194,26 @@ namespace JustRipe.ViewModels
             }
         }
 
-        private ObservableCollection<Object> _cropTable;
+        private ObservableCollection<Object> _productTable;
         public ObservableCollection<object> ProductTable
         {
-            get { return _cropTable; }
+            get { return _productTable; }
             set
             {
                 if (value != null)
                 {
-                    _cropTable = value;
+                    _productTable = value;
                     OnPropertyChanged(nameof(ProductTable));
                 }
             }
         }
 
-
         private void AddUpdateProduct(object parameter)
         {
-            if (SelectedProduct == null) { AddProduct(parameter); }
+            if (SelectedProduct == null)
+            {
+                AddProduct(parameter);
+            }
             else
             {
                 UpdateProduct(parameter);
@@ -207,27 +228,29 @@ namespace JustRipe.ViewModels
 
         void AddProduct(object parameter)
         {
-            ProductDTO newProduct = new ProductDTO
-            {
-                Name = Name,
-                Quantity = Quantity,
-                CategoryId = CategoryId,
-            };
-            GetRepository().AddProduct(newProduct);
+            ProductDTO newProduct = NewProductDTO();
 
-
+            GetProductRepo().AddProduct(newProduct);
         }
 
         void UpdateProduct(object parameter)
         {
-            ProductDTO newProduct = new ProductDTO
+            ProductDTO newProduct = NewProductDTO();
+            GetProductRepo().UpdateProduct(newProduct);
+
+        }
+
+        private ProductDTO NewProductDTO()
+        {
+            return new ProductDTO
             {
+                Id = Id,
                 Name = Name,
+                Description = Description,
                 Quantity = Quantity,
+                Unit = Unit,
                 CategoryId = CategoryId,
             };
-            GetRepository().UpdateProduct(newProduct);
-
         }
 
         private void DeleteProduct(object parameter)
@@ -238,15 +261,9 @@ namespace JustRipe.ViewModels
                 {
                     Id = Id,
                 };
-                GetRepository().DeleteProduct(newProduct);
+                GetProductRepo().DeleteProduct(newProduct);
                 ShowProductsInStock();
             }
         }
-
-        //void AddProduct(object parameter)
-        //{
-        //    GetRepository().AddProduct(new Product { Name = Name, Stage = Stage, Area = Area, Type = Type });
-        //}
     }
-
 }

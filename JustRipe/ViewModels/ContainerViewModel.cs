@@ -27,8 +27,6 @@ namespace JustRipe.ViewModels
 
         public ContainerViewModel()
         {
-            container= new Container("Container  model name ");
-            _color = Brushes.Red;
             PageName = "Containers";
             AddContainerCommand = new RelayCommand(AddContainer);
         }
@@ -40,23 +38,9 @@ namespace JustRipe.ViewModels
             set { pageName = value; }
         }
 
-
-        private Brush _color;
-
-        public Brush Color
-        {
-            get { return _color; }
-            set { _color = value; }
-        }
-
         void AddContainer(object parameter)
         {
-            User u = new User
-            {
-                Username = "fabio",
-                Password = "lazzy"
-            };
-
+ 
         }
     }
 
