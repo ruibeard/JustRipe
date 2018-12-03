@@ -4,12 +4,21 @@ namespace JustRipe.Models
 {
    public class User
    {
-      public int Id { get; set; }
+      private int id;
+      public int Id
+      {
+         get { return id; }
+         set
+         {
+            if (value > 0)
+               id = value;
+         }
+      }
       public string Username { get; set; }
       public string Password { get; set; }
       public string FirstName { get; set; }
-      private string _fullName;
 
+      private string _fullName;
       public string FullName
       {
          get { return FirstName + " " + LastName; }

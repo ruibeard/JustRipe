@@ -2,27 +2,27 @@
 
 namespace JustRipe.Data.DTOs
 {
-    [Table("crops")]
-    public class CropDTO
-    {
-        [PrimaryKey, Column("id"), AutoIncrement]
-        public int Id { get; set; }
-        [Column("name")]
-        public string Name { get; set; }
-        [Column("stage")]
-        public string Stage { get; set; }
-        [Column("type")]
-        public string Type { get; set; }
-        [Column("area")]
-        public string Area { get; set; }
+   [Table("cropItem")]
+   public class CropDTO
+   {
+      [PrimaryKey, Column("id"), AutoIncrement]
+      public int Id { get; set; }
+      [Column("name")]
+      public string Name { get; set; }
+      [Column("stage")]
+      public string Stage { get; set; }
+      [Column("type")]
+      public string Type { get; set; }
+      [Column("area")]
+      public string Area { get; set; }
 
-        [Column("numContainers")]
-        public int NumContainers { get; set; }
+      [Column("numContainers")]
+      public int NumContainers { get; set; }
 
       [Column("storageRequired")]
       public string StorageRequired { get; set; }
 
       [Column("container_Id")]
-      public int ContainerId{ get; set; }
+      public int ContainerId { get; set; }
    }
 }

@@ -3,6 +3,7 @@ using JustRipe.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 
 namespace JustRipe.Data.Repositories
 {
@@ -29,6 +30,7 @@ namespace JustRipe.Data.Repositories
          return from user in repositoryUser.GetAll()
                 select new User()
                 {
+                   Id = user.Id,
                    Username = user.Username,
                    Password = user.Password,
                    FirstName = user.FirstName,

@@ -15,7 +15,7 @@
          <!--<ToggleButton Command="{Binding ShowAllContainersToogleCommand}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" IsChecked="False" />-->
       </StackPanel>
 
-      <DataGrid x:Name="gridContainer" Margin="5 5 5 5" Padding="10" Height="380"
+      <DataGrid x:Name="gridContainer" Margin="5" Padding="10" MaxHeight="380"
                   ItemsSource="{Binding ContainerTable , Mode=TwoWay}" 
                   SelectedItem="{Binding SelectedContainer, Mode=TwoWay}"
                   AutoGenerateColumns="False" 
@@ -24,9 +24,10 @@
          <DataGrid.Columns>
             <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}"  />
             <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
-            <DataGridTextColumn Header="Capacity" Binding="{Binding Path=Capacity}"/>
-            <DataGridTextColumn Header="UnitType" Binding="{Binding Path=UnitType}"/>
-            <DataGridTextColumn Header="Available" Binding="{Binding Path=Available}"/>
+            <DataGridTextColumn Header="Description" Binding="{Binding Path=Description}"/>
+            <DataGridTextColumn Header="Quantity" Binding="{Binding Path=Quantity}"/>
+            <DataGridTextColumn Header="Unit" Binding="{Binding Path=Unit}"/>
+            <DataGridTextColumn Header="Status" Binding="{Binding Path=Status}"/>
             <DataGridTemplateColumn Header="">
                <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
@@ -73,22 +74,23 @@
 
                <TextBox x:Name="Id" Visibility="Collapsed"  Margin="10 5" materialDesign:HintAssist.Hint="Id"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="Name"  Margin="10 5" materialDesign:HintAssist.Hint="Name"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               <TextBox x:Name="Capacity"  Margin="10 5" materialDesign:HintAssist.Hint="Capacity"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Capacity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Description"  Margin="10 5" materialDesign:HintAssist.Hint="Description"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Quantity"  Margin="10 5" materialDesign:HintAssist.Hint="Quantity"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Capacity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Width="500" >
 
 
-               <TextBox x:Name="UnitType"  Margin="10 5" materialDesign:HintAssist.Hint="UnitType"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding UnitType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               <TextBox x:Name="Available"  Margin="10 5" materialDesign:HintAssist.Hint="Available"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Available, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Unit"  Margin="10 5" materialDesign:HintAssist.Hint="Unit"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Unit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Status"  Margin="10 5" materialDesign:HintAssist.Hint="Status"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0 15">
-               <Button Margin="10 5" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateContainerCommand}" >
+               <Button Margin="10 5" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateCommand}" >
                   <materialDesign:PackIcon Kind="Tick" Height="24" Width="24" />
                </Button>
-               <Button  Command="{Binding DeleteContainerCommand}" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" >
+               <Button  Command="{Binding DeleteCommand}" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" >
                   <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
                </Button>
             </StackPanel>

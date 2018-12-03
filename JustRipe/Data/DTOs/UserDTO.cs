@@ -14,15 +14,6 @@ namespace JustRipe.Data.DTOs
       [Column("lastName")]
       public string LastName { get; set; }
 
-
-      private string _fullName;
-
-      public string FullName
-      {
-         get { return FirstName + " " + LastName; }
-         set { _fullName = value; }
-      }
-
       [Column("username")]
       public string Username { get; set; }
 

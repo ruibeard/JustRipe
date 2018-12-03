@@ -6,73 +6,73 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d">
 
-    <!--<UserControl.InputBindings>
+   <!--<UserControl.InputBindings>
         <KeyBinding Key="Return" Command="{Binding AddUpdateTaskCommand}" />
     </UserControl.InputBindings>-->
-    <StackPanel>
-        <DataGrid x:Name="gridTask" Margin="5 5 5 5"
+   <StackPanel>
+      <DataGrid x:Name="gridTask"  Margin="5" Padding="10" MaxHeight="380" 
                   ItemsSource="{Binding TaskTable, Mode=TwoWay}" 
                   SelectedItem="{Binding SelectedTask, Mode=TwoWay}"
                   AutoGenerateColumns="False" 
                   CanUserAddRows="true">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
-                <DataGridTextColumn Header="Task Date" Binding="{Binding Path=TaskDate}"/>
-                <DataGridTextColumn Header="Crop Name" Binding="{Binding Path=CropName}"/>
-                <DataGridTextColumn Header="Created By" Binding="{Binding Path=CreatedBy}"/>
-                <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}"/>
-                <DataGridTextColumn Header="Labour Needed" Binding="{Binding Path=LabourNeeded}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+         <DataGrid.Columns>
+            <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}"/>
+            <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
+            <DataGridTextColumn Header="Task Date" Binding="{Binding Path=TaskDate}"/>
+            <DataGridTextColumn Header="Crop Name" Binding="{Binding Path=CropName}"/>
+            <DataGridTextColumn Header="Created By" Binding="{Binding Path=CreatedBy}"/>
+            <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}"/>
+            <DataGridTextColumn Header="Labour Needed" Binding="{Binding Path=LabourNeeded}"/>
+         </DataGrid.Columns>
+      </DataGrid>
 
-        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="10">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
+      <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="10">
+         <Grid>
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*"/>
+               <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+               <RowDefinition Height="*"/>
+               <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-                <StackPanel Grid.Column="0">
-                    <TextBox x:Name="Id"  Visibility="Collapsed" Margin="10 5" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <StackPanel Grid.Column="0">
+               <TextBox x:Name="Id"  Visibility="Collapsed" Margin="10 5" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBox x:Name="Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Margin="10 5" materialDesign:HintAssist.Hint="Name" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}"  Margin="10 5" materialDesign:HintAssist.Hint="Name" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBox   x:Name="CropId" Visibility="Collapsed" Margin="10 5" materialDesign:HintAssist.Hint="CropId" Text="{Binding CropId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox   x:Name="CropId" Visibility="Collapsed" Margin="10 5" materialDesign:HintAssist.Hint="CropId" Text="{Binding CropId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <ComboBox x:Name="NAMECROP"  Margin="10 5" HorizontalAlignment="Left"  IsEditable="True"
+               <ComboBox x:Name="NAMECROP"  Margin="10 5" HorizontalAlignment="Left"  IsEditable="True"
                         Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Crop" ItemsSource="{Binding CropList}" DisplayMemberPath="Name"
                         SelectedValue="{Binding CropId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Id"/>
 
-                    <TextBox x:Name="UserId" Visibility="Collapsed" Margin="10 5"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="UserId" Text="{Binding UserId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="UserId" Visibility="Collapsed" Margin="10 5"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="UserId" Text="{Binding UserId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBox x:Name="CreatedBy"  Margin="10 5" materialDesign:HintAssist.Hint="Created By"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding CreatedBy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                </StackPanel>
+               <TextBox x:Name="CreatedBy"  Margin="10 5" materialDesign:HintAssist.Hint="Created By"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding CreatedBy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
 
-                <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Width="500" >
+            <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Width="500" >
 
-                    <DatePicker x:Name="TaskDate"  materialDesign:HintAssist.Hint="Task Date"  Margin="10 5" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  Text="{Binding TaskDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <DatePicker x:Name="TaskDate"  materialDesign:HintAssist.Hint="Task Date"  Margin="10 5" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  Text="{Binding TaskDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBox x:Name="Type"  Margin="10 5" materialDesign:HintAssist.Hint="Type"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Type"  Margin="10 5" materialDesign:HintAssist.Hint="Type"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                    <TextBox x:Name="LabourNeeded"  Margin="10 5" materialDesign:HintAssist.Hint="Labour Needed"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding LabourNeeded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="LabourNeeded"  Margin="10 5" materialDesign:HintAssist.Hint="Labour Needed"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding LabourNeeded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-                </StackPanel>
+            </StackPanel>
 
-                <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
 
-                    <Button Margin="10 10" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateTaskCommand}" IsDefault="True" >
-                        <materialDesign:PackIcon Kind="Tick" Height="24" Width="24" />
-                    </Button>
-                    <Button Margin="10 10" Command="{Binding DeleteTaskCommand}" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" ToolTip="MaterialDesignFloatingActionDarkButton">
-                        <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
-                    </Button>
-                </StackPanel>
-            </Grid>
-        </materialDesign:Card>
-    </StackPanel>
+               <Button Margin="10 10" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateTaskCommand}" IsDefault="True" >
+                  <materialDesign:PackIcon Kind="Tick" Height="24" Width="24" />
+               </Button>
+               <Button Margin="10 10" Command="{Binding DeleteTaskCommand}" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" ToolTip="MaterialDesignFloatingActionDarkButton">
+                  <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
+               </Button>
+            </StackPanel>
+         </Grid>
+      </materialDesign:Card>
+   </StackPanel>
 </UserControl>

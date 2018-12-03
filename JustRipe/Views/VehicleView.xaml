@@ -5,46 +5,94 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JustRipe.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             mc:Ignorable="d" 
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d"
             >
+   <StackPanel>
 
-    <StackPanel Margin="0,0,-466,0">
-        <DataGrid x:Name="gridVehicle" Margin="5 5 5 5" 
+      <DataGrid x:Name="gridVehicle" Margin="5 5 5 5" Padding="10" MaxHeight="380"
                   ItemsSource="{Binding VehicleTable , Mode=TwoWay}" 
                   SelectedItem="{Binding SelectedVehicle, Mode=TwoWay}"
-                  AutoGenerateColumns="True" 
-                  CanUserAddRows="False" SelectionChanged="gridVehicle_SelectionChanged">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
-                <DataGridTextColumn Header="Year" Binding="{Binding Path=Year}"/>
-                <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}"/>
-                <DataGridTextColumn Header="Brand" Binding="{Binding Path=Brand}"/>
-                <DataGridTextColumn Header="Model" Binding="{Binding Path=Model}"/>
-                <DataGridTextColumn Header="LicencePlate" Binding="{Binding Path=LicencePlate}"/>
-                <DataGridTextColumn Header="Status" Binding="{Binding Path=Status}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+                  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" >
+         <DataGrid.Columns>
+            <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}"  />
+            <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
+            <DataGridTextColumn Header="Year" Binding="{Binding Path=Year}"/>
+            <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}"/>
+            <DataGridTextColumn Header="Brand" Binding="{Binding Path=Brand}"/>
+            <DataGridTextColumn Header="Model" Binding="{Binding Path=Model}"/>
+            <DataGridTextColumn Header="Capacity" Binding="{Binding Path=Capacity}"/>
+            <DataGridTextColumn Header="Licence Plate" Binding="{Binding Path=LicencePlate}"/>
+            <DataGridTextColumn Header="Status" Binding="{Binding Path=Status}"/>
+            <DataGridTemplateColumn Header="">
+               <DataGridTemplateColumn.CellTemplate>
+                  <DataTemplate>
+                     <Button Width="20" Height="20" Margin="0"
+                                Command="{Binding Path=DataContext.EditCommand, 
+                                RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type DataGrid}}}"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" >
+                        <materialDesign:PackIcon Kind="Pencil" Height="10" Width="10" />
+                     </Button>
+                  </DataTemplate>
+               </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
 
-        <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="42" Height="164">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" Margin="0,0,0,-33">
-                <TextBox x:Name="Id" Visibility="Collapsed" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Id" Text="{Binding Id, Mode=TwoWay}"/>
-                <TextBox x:Name="Name" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Name" Text="{Binding Name, Mode=TwoWay}" Height="45" VerticalAlignment="Top"/>
-                <TextBox x:Name="Year" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Year" Text="{Binding Year, Mode=TwoWay}" Height="45" VerticalAlignment="Top"/>
-                <TextBox x:Name="Type" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Type" Text="{Binding Type, Mode=TwoWay}" Height="45" VerticalAlignment="Top"/>
-                <TextBox x:Name="Brand" Width="120" Margin="10 0" materialDesign:HintAssist.Hint="Brand" Text="{Binding Brand, Mode=TwoWay}" Height="45" VerticalAlignment="Top"/>
-                <TextBox x:Name="Model" Width="120" Margin="-550 0" materialDesign:HintAssist.Hint="Model" Text="{Binding Model, Mode=TwoWay}" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                <TextBox x:Name="Capacity" Width="120" Margin="-409 0" materialDesign:HintAssist.Hint="Capacity" Text="{Binding Capacity, Mode=TwoWay}" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                <TextBox x:Name="LicencePlate" Width="120" Margin="-269 0" materialDesign:HintAssist.Hint="Licence Plate" Text="{Binding LicencePlate, Mode=TwoWay}" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                <TextBox x:Name="Status" Width="120" Margin="-130 0" materialDesign:HintAssist.Hint="Status" Text="{Binding Status, Mode=TwoWay}" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
-                <Button Margin="10 0" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateVehicleCommand}" >
-                    <materialDesign:PackIcon Kind="Tick" Height="24" Width="24" />
-                </Button>
-                <Button  Command="{Binding DeleteVehicleCommand}" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" ToolTip="MaterialDesignFloatingActionDarkButton">
-                    <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
-                </Button>
+            <DataGridTemplateColumn Header="">
+               <DataGridTemplateColumn.CellTemplate>
+                  <DataTemplate>
+                     <Button Width="20" Height="20"  Margin="0"
+                                Command="{Binding Path=DataContext.DeleteCommand, 
+                                RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type DataGrid}}}"
+                                Style="{StaticResource MaterialDesignFloatingActionMiniButton}">
+                        <materialDesign:PackIcon Kind="Close" Height="10" Width="10" />
+                        <Button.Background>
+                           <SolidColorBrush Color="{StaticResource RedPrimary700}" />
+                        </Button.Background>
+                     </Button>
+                  </DataTemplate>
+               </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+         </DataGrid.Columns>
+      </DataGrid>
+
+      <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="10">
+         <Grid>
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*"/>
+               <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+               <RowDefinition Height="*"/>
+               <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Column="0">
+
+               <TextBox x:Name="Id" Visibility="Collapsed"  Margin="10 5" materialDesign:HintAssist.Hint="Id"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Name"  Margin="10 5" materialDesign:HintAssist.Hint="Name"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Brand"  Margin="10 5" materialDesign:HintAssist.Hint="Brand"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Brand, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Year"  Margin="10 5" materialDesign:HintAssist.Hint="Year"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Year, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="LicencePlate"  Margin="10 5" materialDesign:HintAssist.Hint="LicencePlate"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding LicencePlate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
-        </materialDesign:Card>
-    </StackPanel>
 
+            <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Width="500" >
+
+               <TextBox x:Name="Type"  Margin="10 5" materialDesign:HintAssist.Hint="Type"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Model"  Margin="10 5" materialDesign:HintAssist.Hint="Model"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Model, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Capacity"  Margin="10 5" materialDesign:HintAssist.Hint="Capacity"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Capacity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Status"  Margin="10 5" materialDesign:HintAssist.Hint="Status"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0 15">
+               <Button Margin="10 5" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddOrUpdateCommand}" >
+                  <materialDesign:PackIcon Kind="Tick" Height="24" Width="24" />
+               </Button>
+               <Button  Command="{Binding DeleteCommand}" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" >
+                  <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
+               </Button>
+            </StackPanel>
+         </Grid>
+      </materialDesign:Card>
+   </StackPanel>
 </UserControl>

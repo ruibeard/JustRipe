@@ -9,7 +9,17 @@ namespace JustRipe.Models
     public class Harvest
     {
 
-        public Harvest(string _name)
+      private int id;
+      public int Id
+      {
+         get { return id; }
+         set
+         {
+            if (value > 0)
+               id = value;
+         }
+      }
+      public Harvest(string _name)
         {
             Name = _name;
         }

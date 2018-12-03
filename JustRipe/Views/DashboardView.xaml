@@ -6,7 +6,7 @@
 
         <materialDesign:Card   Background="{DynamicResource MaterialDesignBackground}">
             <StackPanel>
-                <Image  gif:ImageBehavior.AnimatedSource="/Images/gif.gif" Stretch="Fill" Height="802" />
+                <!--<Image  gif:ImageBehavior.AnimatedSource="/Images/gif.gif" Stretch="Fill" Height="802" />-->
             </StackPanel>
         </materialDesign:Card>
     </StackPanel>

@@ -76,7 +76,30 @@ namespace JustRipe.Data.Repositories
                        Status = product.Status
                    };
         }
-        public IEnumerable<Product> GetAllProducts()
+
+
+      public IEnumerable<Product> GetAllContainerProducts()
+      {
+         return from product in productRepo.GetAll()
+                join cat in categoryRepo.GetAll() on product.CategoryId equals cat.Id
+                where cat.Name is "Container"
+                select new Product()
+                {
+                   Id = product.Id,
+                   Name = product.Name,
+                   Price = product.Price,
+                   Status = product.Status,
+                   Description = product.Description,
+                   Quantity = product.Quantity,
+                   CategoryName = cat.Name,
+                   CategoryId = product.CategoryId,
+                   Unit = product.Unit,
+                };
+      }
+
+
+
+      public IEnumerable<Product> GetAllProducts()
         {
             return from product in productRepo.GetAll()
                    join cat in categoryRepo.GetAll() on product.CategoryId equals cat.Id

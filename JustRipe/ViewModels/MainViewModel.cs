@@ -16,7 +16,6 @@ namespace JustRipe.ViewModels
       public RelayCommand ProductCommand { get; set; }
       public RelayCommand StockCommand { get; set; }
       public RelayCommand ContainerCommand { get; set; }
-      public RelayCommand StorageCommand { get; set; }
       public RelayCommand UserCommand { get; set; }
       public RelayCommand VehicleCommand { get; set; }
       public RelayCommand LabourCommand { get; set; }
@@ -72,7 +71,6 @@ namespace JustRipe.ViewModels
          ProductCommand = new RelayCommand(OpenProduct);
          StockCommand = new RelayCommand(OpenStock);
          ContainerCommand = new RelayCommand(OpenContainer);
-         StorageCommand = new RelayCommand(OpenStorage);
          UserCommand = new RelayCommand(OpenUser);
          VehicleCommand = new RelayCommand(OpenVehicle);
          TaskCommand = new RelayCommand(OpenTask);
@@ -131,13 +129,13 @@ namespace JustRipe.ViewModels
          PageName = "Containers";
          SelectedViewModel = new ContainerViewModel();
       }
-      private void OpenStorage(object obj)
-      {
-         PageName = "Storage";
+      //private void OpenStorage(object obj)
+      //{
+      //   PageName = "Storage";
 
-         SelectedViewModel = new StorageViewModel();
+      //   SelectedViewModel = new StorageViewModel();
 
-      }
+      //}
       private void OpenUser(object obj)
       {
          PageName = "Users";

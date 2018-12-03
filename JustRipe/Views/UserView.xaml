@@ -12,13 +12,13 @@
          <ToggleButton Command="{Binding ShowAllUsersToogleCommand}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" IsChecked="False" />
       </StackPanel>
 
-      <DataGrid x:Name="gridUser" Margin="5 5 5 5" Padding="10" Height="380"
+      <DataGrid x:Name="gridUser"  Margin="5" Padding="10" MaxHeight="380" 
                   ItemsSource="{Binding UserTable , Mode=TwoWay}" 
                   SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                   AutoGenerateColumns="False" 
                   CanUserAddRows="False" CanUserDeleteRows="False" >
          <DataGrid.Columns>
-            <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}"  />
+            <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" />
             <DataGridTextColumn Header="Username" Binding="{Binding Path=Username}"/>
             <DataGridTextColumn Header="FirstName" Binding="{Binding Path=FirstName}"/>
             <DataGridTextColumn Header="LastName" Binding="{Binding Path=LastName}"/>
@@ -43,7 +43,7 @@
             <DataGridTemplateColumn Header="">
                <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
-                     <Button Width="20" Height="20"  Margin="0"
+                     <Button Width="20" Height="20" Margin="0"
                                 Command="{Binding Path=DataContext.DeleteUserCommand, 
                                 RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type DataGrid}}}"
                                 Style="{StaticResource MaterialDesignFloatingActionMiniButton}" >
@@ -59,7 +59,7 @@
       </DataGrid>
 
       <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="10">
-         
+
          <Grid>
             <Grid.ColumnDefinitions>
                <ColumnDefinition Width="*"/>
@@ -71,23 +71,27 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Column="0">
-               <TextBox x:Name="Id" Visibility="Collapsed"  Margin="10 5" materialDesign:HintAssist.Hint="Id"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               <TextBox x:Name="FirstName"  Margin="10 5" materialDesign:HintAssist.Hint="FirstName"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               <TextBox x:Name="UserName"  Margin="10 5" materialDesign:HintAssist.Hint="UserName"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               <TextBox x:Name="PhoneNumber"  Margin="10 5" materialDesign:HintAssist.Hint="PhoneNumber"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               <TextBox x:Name="DateOfBirth"  Margin="10 5" materialDesign:HintAssist.Hint="DateOfBirth"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding DateOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Id" Visibility="Collapsed" Margin="10 5" materialDesign:HintAssist.Hint="Id" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="FirstName" Margin="10 5" materialDesign:HintAssist.Hint="FirstName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding FirstName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="UserName" Margin="10 5" materialDesign:HintAssist.Hint="UserName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="PhoneNumber" Margin="10 5" materialDesign:HintAssist.Hint="PhoneNumber" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="DateOfBirth" Margin="10 5" materialDesign:HintAssist.Hint="DateOfBirth" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding DateOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Width="500" >
-               <TextBox x:Name="LastName"  Margin="10 5" materialDesign:HintAssist.Hint="LastName"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               <TextBox x:Name="Password"  Margin="10 5" materialDesign:HintAssist.Hint="Password"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               <TextBox x:Name="Email"  Margin="10 5" materialDesign:HintAssist.Hint="Email"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               <TextBox x:Name="Address"  Margin="10 5" materialDesign:HintAssist.Hint="Address"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               <TextBox x:Name="AnnualWage"  Margin="10 5" materialDesign:HintAssist.Hint="AnnualWage"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding AnnualWage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="LastName" Margin="10 5" materialDesign:HintAssist.Hint="LastName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <PasswordBox x:Name="Password" Password=""
+                            Margin="10 5" materialDesign:HintAssist.Hint="Password" 
+                            Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+               <TextBox x:Name="Email" Margin="10 5" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Address" Margin="10 5" materialDesign:HintAssist.Hint="Address" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="AnnualWage" Margin="10 5" materialDesign:HintAssist.Hint="AnnualWage" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding AnnualWage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0 15">
-               <Button Margin="10 5" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateUserCommand}" >
+               <Button Margin="10 5" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" 
+                       Command="{Binding AddUpdateUserCommand}"
+                       CommandParameter="{Binding ElementName=Password}">
                   <materialDesign:PackIcon Kind="Tick" Height="24" Width="24" />
                </Button>
                <Button  Command="{Binding DeleteUserCommand}" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" >

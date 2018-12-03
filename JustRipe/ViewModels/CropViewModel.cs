@@ -244,6 +244,7 @@ namespace JustRipe.ViewModels
          var newCrop = NewCropDTO();
 
          GetRepository().UpdateCrop(newCrop);
+         ShowAllCrops();
 
       }
       private CropDTO NewCropDTO()

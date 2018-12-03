@@ -10,7 +10,7 @@
             >
     <StackPanel>
 
-        <DataGrid x:Name="gridUser" Margin="5 5 5 5" 
+      <DataGrid x:Name="gridUser" Margin="5" Padding="10" MaxHeight="380" 
                   ItemsSource="{Binding LabourTable , Mode=TwoWay}" 
                   SelectedItem="{Binding SelectedLabour, Mode=TwoWay}"
                   AutoGenerateColumns="False" 

@@ -12,16 +12,39 @@ namespace JustRipe.ViewModels
       #region Fields
       private int _id;
       private string _name;
-      private string _capacity;
+      private double _quantity;
       private string _unitType;
       private string _numContainers;
-      private bool _showingAll = false;
+      private string _unit;
+      private int _categoryId;
       private ObservableCollection<Object> _cropTable;
+      private string _status;
       #endregion Fields
-       
+
+
+
+      public string Unit
+      {
+         get { return _unit; }
+         set { _unit = value; OnPropertyChanged(nameof(Quantity)); }
+      }
+
+
+      public int CategoryId
+      {
+         get { return _categoryId; }
+         set { _categoryId = value; OnPropertyChanged(nameof(Quantity)); }
+      }
+
+
       #region Properties
-      private Container selectedContainer;
-      public Container SelectedContainer
+      private Product selectedContainer;
+      public string Status
+      {
+         get { return _status; }
+         set { _status = value; }
+      }
+      public Product SelectedContainer
       {
          get { return selectedContainer; }
          set
@@ -44,10 +67,19 @@ namespace JustRipe.ViewModels
          get { return _name; }
          set { _name = value; OnPropertyChanged(nameof(Name)); }
       }
-      public string Capacity
+
+      private string _description;
+
+      public string Description
       {
-         get { return _capacity; }
-         set { _capacity = value; OnPropertyChanged(nameof(Capacity)); }
+         get { return _description; }
+         set { _description = value; OnPropertyChanged(nameof(Quantity)); }
+      }
+
+      public double Quantity
+      {
+         get { return _quantity; }
+         set { _quantity = value; OnPropertyChanged(nameof(Quantity)); }
       }
       public string Available
       {
@@ -74,37 +106,38 @@ namespace JustRipe.ViewModels
       {
          Id = SelectedContainer.Id;
          Name = SelectedContainer.Name;
-         Capacity = SelectedContainer.Capacity;
-         Available = SelectedContainer.Available;
-         UnitType = SelectedContainer.UnitType;
+         Quantity = SelectedContainer.Quantity;
+         Status = SelectedContainer.Status;
+         UnitType = SelectedContainer.Unit;
       }
-      private ContainerRepository GetRepository()
+      private ProductRepository GetRepository()
       {
-         return new ContainerRepository(new Repository<ContainerDTO>());
+         return new ProductRepository(new Repository<ProductDTO>(), new Repository<CategoryDTO>());
       }
 
       private void ShowAllContainers()
       {
-
-         var crops = GetRepository().GetAllContainers();
+         var products = GetRepository().GetAllContainerProducts();
          ContainerTable = new ObservableCollection<Object>();
-         BuildTable(crops);
+         BuildTable(products);
       }
 
-      private void BuildTable(IEnumerable<Container> crops)
+      private void BuildTable(IEnumerable<Product> products)
       {
-         foreach (var crop in crops)
-         {
+         foreach (var prod in products)
+
             ContainerTable.Add(
-                new Container
+                new Product
                 {
-                   Id = crop.Id,
-                   Name = crop.Name,
-                   Capacity = crop.Capacity,
-                   Available = crop.Available,
-                   UnitType = crop.UnitType,
+                   Id = prod.Id,
+                   Name = prod.Name,
+                   Description = prod.Description,
+                   Quantity = prod.Quantity,
+                   Status = prod.Status,
+                   Unit = prod.Unit,
+                   CategoryId = prod.CategoryId,
+                   CategoryName = prod.CategoryName,
                 });
-         }
       }
       public ObservableCollection<object> ContainerTable
       {
@@ -120,8 +153,6 @@ namespace JustRipe.ViewModels
       }
       private void ClearForm()
       {
-         //Name = Capacity = Available = UnitType = "";
-         //Id = Available = 0;
 
       }
       private void AddUpdateContainer(object parameter)
@@ -146,38 +177,37 @@ namespace JustRipe.ViewModels
       {
          var newContainer = NewContainerDTO();
 
-         GetRepository().AddContainer(newContainer);
-
-
+         GetRepository().AddProduct(newContainer);
       }
       void UpdateContainer()
       {
          var newContainer = NewContainerDTO();
 
-         GetRepository().UpdateContainer(newContainer);
+         GetRepository().UpdateProduct(newContainer);
 
       }
-      private ContainerDTO NewContainerDTO()
+      private ProductDTO NewContainerDTO()
       {
-         return new ContainerDTO
+         return new ProductDTO
          {
             Id = Id,
             Name = Name,
-            Capacity = Capacity,
-            Available = Available,
-            UnitType = UnitType,
-
+            Description = Description,
+            Quantity = Quantity,
+            Status = Status,
+            Unit = Unit,
+            CategoryId = CategoryId,
          };
       }
       private void DeleteContainer(object parameter)
       {
          if (SelectedContainer != null)
          {
-            ContainerDTO newContainer = new ContainerDTO
+            ProductDTO newContainer = new ProductDTO
             {
                Id = Id,
             };
-            GetRepository().DeleteContainer(newContainer);
+            GetRepository().DeleteProduct(newContainer);
             ShowAllContainers();
          }
       }
@@ -185,3 +215,5 @@ namespace JustRipe.ViewModels
    }
 
 }
+
+

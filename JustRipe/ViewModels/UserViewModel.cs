@@ -1,9 +1,12 @@
 ﻿using JustRipe.Data.DTOs;
 using JustRipe.Data.Repositories;
 using JustRipe.Models;
+using JustRipe.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace JustRipe.ViewModels
 {
@@ -44,7 +47,7 @@ namespace JustRipe.ViewModels
       public string Password
       {
          get { return _password; }
-         set { _password = value; OnPropertyChanged(nameof(Password)); }
+         set { _password = value; }
       }
       public string FirstName
       {
@@ -118,7 +121,7 @@ namespace JustRipe.ViewModels
          Id = SelectedItem.Id;
          UserName = SelectedItem.Username;
          FirstName = SelectedItem.FirstName;
-         Password = SelectedItem.Password;
+         //Password = SelectedItem.Password;
          LastName = SelectedItem.LastName;
          Email = SelectedItem.Email;
          PhoneNumber = SelectedItem.PhoneNumber;
@@ -161,22 +164,23 @@ namespace JustRipe.ViewModels
       }
       private void AddUpdateUser(object parameter)
       {
+
          if (SelectedItem == null)
          {
             AddUser();
          }
          else
          {
-            UpdateUser();
+            UpdateUser(parameter);
             SelectedItem = null;
          }
-         ClearForm();
+         //ClearForm();
          UserTable.Clear();
          ShowAllUsers();
       }
       void AddUser()
       {
-         var newUser = NewUserDTO();
+         var newUser = FillDTO();
          GetRepository().AddUser(newUser);
       }
 
@@ -185,24 +189,25 @@ namespace JustRipe.ViewModels
          FirstName = LastName = Address = Email = UserName = PhoneNumber = "";
          Id = 0;
          AnnualWage = 0;
-         //Name = Stage = Type = Area = StorageRequired = "";
-         //Id = NumContainers = 0;
 
       }
-      void UpdateUser()
+      void UpdateUser(object parameter)
       {
-         var newUser = NewUserDTO();
+
+         var newUser = FillDTO(parameter);
          GetRepository().UpdateUser(newUser);
       }
 
-      private UserDTO NewUserDTO()
+      private UserDTO FillDTO(object parameter = null)
       {
+         var pass = parameter as PasswordBox;
+
          return new UserDTO
          {
             Id = Id,
             FirstName = FirstName,
             LastName = LastName,
-            Password = Password,
+            Password = EncryptPassword.Encrypt(pass.Password),
             Username = UserName,
             Address = Address,
             Email = Email,

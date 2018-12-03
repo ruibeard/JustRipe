@@ -10,12 +10,10 @@ namespace JustRipe.Data.Repositories
    {
       private readonly IRepository<CropDTO> cropRepo;
       private readonly IRepository<ContainerDTO> containerRepo;
-      //private readonly IRepository<UserDTO> repositoryUser;
 
       public CropRepository(IRepository<CropDTO> cropRepo)
       {
          this.cropRepo = cropRepo;
-         //this.repositoryUser = repositoryUser;
       }
       public CropRepository(IRepository<CropDTO> cropRepo, IRepository<ContainerDTO> containerRepo)
       {
@@ -72,7 +70,6 @@ namespace JustRipe.Data.Repositories
                    StorageRequired = crop.StorageRequired,
                    NumContainers = crop.NumContainers,
                    ContainerId = crop.ContainerId,
-
                 };
       }
 

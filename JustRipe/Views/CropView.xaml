@@ -15,7 +15,7 @@
          <ToggleButton Command="{Binding ShowAllCropsToogleCommand}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" IsChecked="False" />
       </StackPanel>
 
-      <DataGrid x:Name="gridCrop" Margin="5 5 5 5" Padding="10" Height="380"
+      <DataGrid x:Name="gridCrop" Margin="5 5 5 5" Padding="10" MaxHeight="380"
                   ItemsSource="{Binding CropTable , Mode=TwoWay}" 
                   SelectedItem="{Binding SelectedCrop, Mode=TwoWay}"
                   AutoGenerateColumns="False" 
@@ -27,9 +27,9 @@
             <DataGridTextColumn Header="Stage" Binding="{Binding Path=Stage}"/>
             <DataGridTextColumn Header="Area" Binding="{Binding Path=Area}"/>
             <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}"/>
-            <DataGridTextColumn Header="Num. Containers" Binding="{Binding Path=NumContainers}"/>
             <DataGridTextColumn Header="Storage Required" Binding="{Binding Path=StorageRequired}"/>
             <DataGridTextColumn Header="Container Type" Binding="{Binding Path=Container}"/>
+            <DataGridTextColumn Header="Num. Containers" Binding="{Binding Path=NumContainers}"/>
             <DataGridTemplateColumn Header="">
                <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>

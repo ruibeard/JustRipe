@@ -73,13 +73,11 @@ namespace JustRipe.ViewModels
          get { return _name; }
          set { _name = value; OnPropertyChanged(nameof(Name)); }
       }
-
       public string Type
       {
          get { return _type; }
          set { _type = value; OnPropertyChanged(nameof(Type)); }
       }
-
       public int CropId
       {
          get { return _cropId; }
@@ -119,7 +117,6 @@ namespace JustRipe.ViewModels
       #endregion Properties
 
       private Crop _selectedCrop;
-
       public Crop SelectedCrop
       {
          get { return _selectedCrop; }
@@ -130,7 +127,6 @@ namespace JustRipe.ViewModels
             MessageBox.Show(SelectedCrop.Id.ToString());
          }
       }
-
       public TaskViewModel()
       {
          FillAllTasks();
@@ -139,7 +135,6 @@ namespace JustRipe.ViewModels
          AddUpdateTaskCommand = new RelayCommand(AddUpdateTask);
          DeleteTaskCommand = new RelayCommand(DeleteTask);
       }
-
       private CropRepository GetCropRepository()
       {
          return new CropRepository(new Repository<CropDTO>());
@@ -152,7 +147,6 @@ namespace JustRipe.ViewModels
       {
          return new TaskRepository(new Repository<TaskDTO>(), new Repository<CropDTO>(), new Repository<UserDTO>());
       }
-
       void FillUpdateCreateForm()
       {
          Id = SelectedTask.Id;
@@ -165,7 +159,6 @@ namespace JustRipe.ViewModels
          CropId = SelectedTask.CropId;
          UserId = SelectedTask.UserId;
       }
-
       private ObservableCollection<Object> _taskTable;
       public ObservableCollection<object> TaskTable
       {
@@ -176,7 +169,6 @@ namespace JustRipe.ViewModels
             OnPropertyChanged(nameof(TaskTable));
          }
       }
-
       private void GetAllCrops()
       {
          var all_Cropss = GetCropRepository().GetAllCrops();
@@ -186,14 +178,13 @@ namespace JustRipe.ViewModels
             CropList.Add(new Crop { Id = crop.Id, Name = crop.Name });
          }
       }
-
       private void GetAllUsers()
       {
          var all_Users = GetUserRepository().GetAllUsers();
 
          foreach (var user in all_Users)
          {
-            UserList.Add(new User { Id = user.Id, FullName = user.FullName });
+            UserList.Add(new User { Id = user.Id, FullName = user.FirstName + user.LastName });
          }
       }
       private void FillAllTasks()
