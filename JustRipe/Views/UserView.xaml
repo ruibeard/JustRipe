@@ -18,15 +18,15 @@
                   AutoGenerateColumns="False" 
                   CanUserAddRows="False" CanUserDeleteRows="False" >
          <DataGrid.Columns>
-            <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}"  />
+            <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}"  />
             <DataGridTextColumn Header="Username" Binding="{Binding Path=Username}"/>
             <DataGridTextColumn Header="FirstName" Binding="{Binding Path=FirstName}"/>
             <DataGridTextColumn Header="LastName" Binding="{Binding Path=LastName}"/>
             <DataGridTextColumn Header="Email" Binding="{Binding Path=Email}"/>
-            <DataGridTextColumn Header="PhoneNumber" Binding="{Binding Path=PhoneNumber}"/>
+            <DataGridTextColumn Header="Phone Number" Binding="{Binding Path=PhoneNumber}"/>
             <DataGridTextColumn Header="Address" Binding="{Binding Path=Address}"/>
-            <DataGridTextColumn Header="DateOfBirth" Binding="{Binding Path=DateOfBirth}"/>
-            <DataGridTextColumn Header="AnualWage" Binding="{Binding Path=AnualWage}"/>
+            <DataGridTextColumn Header="Date Of Birth" Binding="{Binding Path=DateOfBirth}"/>
+            <DataGridTextColumn Header="Annual Wage" Binding="{Binding Path=AnnualWage}"/>
             <DataGridTemplateColumn Header="">
                <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
@@ -83,7 +83,7 @@
                <TextBox x:Name="Password"  Margin="10 5" materialDesign:HintAssist.Hint="Password"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="Email"  Margin="10 5" materialDesign:HintAssist.Hint="Email"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="Address"  Margin="10 5" materialDesign:HintAssist.Hint="Address"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               <TextBox x:Name="AnualWage"  Margin="10 5" materialDesign:HintAssist.Hint="AnualWage"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding AnualWage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="AnnualWage"  Margin="10 5" materialDesign:HintAssist.Hint="AnnualWage"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding AnnualWage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0 15">

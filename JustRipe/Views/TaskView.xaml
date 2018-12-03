@@ -81,7 +81,7 @@
                <TextBox x:Name="UserId" Visibility="Collapsed" Margin="10 5"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="UserId" Text="{Binding UserId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                <ComboBox x:Name="CreatedBy"  Margin="10 5" HorizontalAlignment="Left"  IsEditable="True"
-                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="User" ItemsSource="{Binding UserList}" DisplayMemberPath="Name"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="User" ItemsSource="{Binding UserList}" DisplayMemberPath="FullName"
                         SelectedValue="{Binding UserId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Id"/>
 
             </StackPanel>

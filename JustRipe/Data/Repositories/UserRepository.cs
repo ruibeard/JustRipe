@@ -33,6 +33,7 @@ namespace JustRipe.Data.Repositories
                    Password = user.Password,
                    FirstName = user.FirstName,
                    LastName = user.LastName,
+                   FullName = user.FirstName + " " + user.LastName,
                    Email = user.Email,
                    PhoneNumber = user.PhoneNumber,
                    Address = user.Address,
