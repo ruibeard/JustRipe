@@ -18,9 +18,9 @@ namespace JustRipe.Views
     /// <summary>
     /// Interaction logic for HarvestView.xaml
     /// </summary>
-    public partial class HarvestView : UserControl
+    public partial class TimeTableView : UserControl
     {
-        public HarvestView()
+        public TimeTableView()
         {
             InitializeComponent();
         }

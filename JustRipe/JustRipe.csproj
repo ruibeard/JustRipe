@@ -162,7 +162,7 @@
     <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\DashBoardViewModel.cs" />
     <Compile Include="ViewModels\CropViewModel.cs" />
-    <Compile Include="ViewModels\HarvestViewModel.cs" />
+    <Compile Include="ViewModels\TimeTableViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
     <Compile Include="Views\UserView.xaml.cs">
@@ -189,8 +189,8 @@
     <Compile Include="Views\DashboardView.xaml.cs">
       <DependentUpon>DashboardView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\HarvestView.xaml.cs">
-      <DependentUpon>HarvestView.xaml</DependentUpon>
+    <Compile Include="Views\TimeTableView.xaml.cs">
+      <DependentUpon>TimeTableView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -237,7 +237,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\HarvestView.xaml">
+    <Page Include="Views\TimeTableView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
