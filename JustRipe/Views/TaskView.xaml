@@ -14,8 +14,7 @@
       <DataGrid x:Name="gridTask" Margin="5" Padding="10" Height="380"
                   ItemsSource="{Binding TaskTable, Mode=TwoWay}" 
                   SelectedItem="{Binding SelectedTask, Mode=TwoWay}"
-                  AutoGenerateColumns="False" 
-                  CanUserAddRows="true">
+                  AutoGenerateColumns="False" >
          <DataGrid.Columns>
             <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}"/>
             <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>

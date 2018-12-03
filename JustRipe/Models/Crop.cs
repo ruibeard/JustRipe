@@ -10,6 +10,8 @@
       public int NumContainers { get; set; }
       public string FertilizeRequired { get; set; }
       public string StorageRequired { get; set; }
+      public int ContainerId{ get; set; }
+      public string  Container{ get; set; }
 
    }
 }

@@ -22,13 +22,14 @@
                   CanUserAddRows="False" CanUserDeleteRows="False" 
                   >
          <DataGrid.Columns>
-            <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}"  />
+            <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}"  />
             <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
             <DataGridTextColumn Header="Stage" Binding="{Binding Path=Stage}"/>
             <DataGridTextColumn Header="Area" Binding="{Binding Path=Area}"/>
             <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}"/>
-            <DataGridTextColumn Header="NumContainers" Binding="{Binding Path=NumContainers}"/>
-            <DataGridTextColumn Header="StorageRequired" Binding="{Binding Path=StorageRequired}"/>
+            <DataGridTextColumn Header="Num. Containers" Binding="{Binding Path=NumContainers}"/>
+            <DataGridTextColumn Header="Storage Required" Binding="{Binding Path=StorageRequired}"/>
+            <DataGridTextColumn Header="Container Type" Binding="{Binding Path=Container}"/>
             <DataGridTemplateColumn Header="">
                <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
@@ -85,6 +86,12 @@
                <TextBox x:Name="Area"  Margin="10 5" materialDesign:HintAssist.Hint="Area"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Area, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="NumContainers"  Margin="10 5" materialDesign:HintAssist.Hint="NumContainers"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding NumContainers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="StorageRequired"  Margin="10 5" materialDesign:HintAssist.Hint="StorageRequired"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding StorageRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               
+               
+               <ComboBox x:Name="ContainerCombo"  Margin="10 5" HorizontalAlignment="Left" 
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Container" 
+                         ItemsSource="{Binding ContainerList}" DisplayMemberPath="Name"
+                        SelectedValue="{Binding ContainerId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Id"/>
 
             </StackPanel>
 

@@ -150,16 +150,14 @@
                </StackPanel>
             </Button>
 
-
-
-            <Button HorizontalAlignment="Left" Height="35" Margin="0 10"
+            <!--<Button HorizontalAlignment="Left" Height="35" Margin="0 10"
                         Style="{StaticResource MaterialDesignFlatButton}" x:Name="Labourers" 
                         Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding LabourCommand}" >
                <StackPanel Orientation="Horizontal" >
                   <materialDesign:PackIcon  Height="30" Width="30" Kind="Worker" VerticalAlignment="Center"/>
                   <TextBlock  Width="170" Text="Labour" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
                </StackPanel>
-            </Button>
+            </Button>-->
 
             <Button HorizontalAlignment="Left" Height="35" Margin="0 10"
                         Style="{StaticResource MaterialDesignFlatButton}" x:Name="Users" 
@@ -171,6 +169,8 @@
             </Button>
          </StackPanel>
       </materialDesign:ColorZone>
+      
+      
       <Grid Grid.Column="1">
          <Grid.RowDefinitions>
             <RowDefinition Height="30"/>

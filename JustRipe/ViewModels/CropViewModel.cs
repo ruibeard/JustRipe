@@ -4,6 +4,7 @@ using JustRipe.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace JustRipe.ViewModels
 {
@@ -19,8 +20,18 @@ namespace JustRipe.ViewModels
       private int _numContainers;
       private bool _showingAll = false;
       private ObservableCollection<Object> _cropTable;
-      #endregion Fields
+      private List<Container> _containers = new List<Container>();
 
+      public List<Container> ContainerList
+      {
+         get { return _containers; }
+         set
+         {
+            _containers = value;
+            OnPropertyChanged(nameof(ContainerList));
+         }
+      }
+      #endregion Fields
       public bool ShowingAll
       {
          get { return _showingAll; }
@@ -66,6 +77,21 @@ namespace JustRipe.ViewModels
          get { return _area; }
          set { _area = value; OnPropertyChanged(nameof(Area)); }
       }
+      private int _containerId;
+
+      public int ContainerId
+      {
+         get { return _containerId; }
+         set { _containerId = value; OnPropertyChanged(nameof(ContainerId)); }
+      }
+      private string _container;
+
+      public string Container
+      {
+         get { return _container; }
+         set { _container = value; OnPropertyChanged(nameof(Container)); }
+      }
+
       public int NumContainers
       {
          get { return _numContainers; }
@@ -87,9 +113,11 @@ namespace JustRipe.ViewModels
          DeleteCropCommand = new RelayCommand(DeleteCrop);
          ShowAllCropsToogleCommand = new RelayCommand(ToogleTable);
          ShowCropsInCultivation();
+         GetAllContainers();
       }
       void FillUpdateCreateForm()
       {
+
          Id = SelectedCrop.Id;
          Name = SelectedCrop.Name;
          Stage = SelectedCrop.Stage;
@@ -97,10 +125,12 @@ namespace JustRipe.ViewModels
          Area = SelectedCrop.Area;
          NumContainers = SelectedCrop.NumContainers;
          StorageRequired = SelectedCrop.StorageRequired;
+         Container = SelectedCrop.Container;
+         ContainerId = SelectedCrop.ContainerId;
       }
       private CropRepository GetRepository()
       {
-         return new CropRepository(new Repository<CropDTO>());
+         return new CropRepository(new Repository<CropDTO>(), new Repository<ContainerDTO>());
       }
       private void ToogleTable(object param)
       {
@@ -119,7 +149,7 @@ namespace JustRipe.ViewModels
       private void ShowAllCrops()
       {
 
-         var crops = GetRepository().GetAllCrops();
+         var crops = GetRepository().GetAllCropsAndContainers();
          CropTable = new ObservableCollection<Object>();
          BuildTable(crops);
       }
@@ -143,6 +173,8 @@ namespace JustRipe.ViewModels
                    Area = crop.Area,
                    NumContainers = crop.NumContainers,
                    StorageRequired = crop.StorageRequired,
+                   Container = crop.Container,
+                   ContainerId = crop.ContainerId,
                 });
          }
       }
@@ -185,6 +217,20 @@ namespace JustRipe.ViewModels
          else
             ShowCropsInCultivation();
       }
+      private ContainerRepository GetContainerRepository()
+      {
+         return new ContainerRepository(new Repository<ContainerDTO>());
+      }
+      private void GetAllContainers()
+      {
+         var all_Containers = GetContainerRepository().GetAllContainers();
+
+         foreach (var container in all_Containers)
+         {
+            ContainerList.Add(new Container { Id = container.Id, Name = container.Name });
+         }
+      }
+
       void AddCrop()
       {
          var newCrop = NewCropDTO();
@@ -211,6 +257,7 @@ namespace JustRipe.ViewModels
             Area = Area,
             NumContainers = NumContainers,
             StorageRequired = StorageRequired,
+            ContainerId = ContainerId,
 
          };
       }

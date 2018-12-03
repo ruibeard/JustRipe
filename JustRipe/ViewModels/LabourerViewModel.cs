@@ -114,8 +114,6 @@ namespace JustRipe.ViewModels
 
             };
             GetRepository().AddUser(newUser);
-
-
         }
          
     }
