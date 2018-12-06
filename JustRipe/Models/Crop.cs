@@ -20,7 +20,9 @@
       public string FertilizeRequired { get; set; }
       public string StorageRequired { get; set; }
       public int ContainerId{ get; set; }
-      public string  Container{ get; set; }
+      public int ProductId{ get; set; }
+      public string  ProductName{ get; set; }
+      public string  CreatedBy{ get; set; }
 
    }
 }

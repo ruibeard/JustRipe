@@ -19,7 +19,7 @@ namespace JustRipe.ViewModels
       private string _storageRequired;
       private int _numContainers;
       private bool _showingAll = false;
-      private ObservableCollection<Object> _cropTable;
+      private ObservableCollection<Object> _cropTable = new ObservableCollection<Object>();
       private List<Container> _containers = new List<Container>();
 
       public List<Container> ContainerList
@@ -77,19 +77,19 @@ namespace JustRipe.ViewModels
          get { return _area; }
          set { _area = value; OnPropertyChanged(nameof(Area)); }
       }
-      private int _containerId;
-
-      public int ContainerId
+    
+      private int _productId;
+      public int ProductId
       {
-         get { return _containerId; }
-         set { _containerId = value; OnPropertyChanged(nameof(ContainerId)); }
+         get { return _productId; }
+         set { _productId = value; OnPropertyChanged(nameof(ProductId)); }
       }
-      private string _container;
+      private string _product;
 
-      public string Container
+      public string ProductName
       {
-         get { return _container; }
-         set { _container = value; OnPropertyChanged(nameof(Container)); }
+         get { return _product; }
+         set { _product = value; OnPropertyChanged(nameof(ProductName)); }
       }
 
       public int NumContainers
@@ -117,7 +117,6 @@ namespace JustRipe.ViewModels
       }
       void FillUpdateCreateForm()
       {
-
          Id = SelectedCrop.Id;
          Name = SelectedCrop.Name;
          Stage = SelectedCrop.Stage;
@@ -125,16 +124,15 @@ namespace JustRipe.ViewModels
          Area = SelectedCrop.Area;
          NumContainers = SelectedCrop.NumContainers;
          StorageRequired = SelectedCrop.StorageRequired;
-         Container = SelectedCrop.Container;
-         ContainerId = SelectedCrop.ContainerId;
+         ProductName = SelectedCrop.ProductName;
+         ProductId = SelectedCrop.ProductId;
       }
       private CropRepository GetRepository()
       {
-         return new CropRepository(new Repository<CropDTO>(), new Repository<ContainerDTO>());
+         return new CropRepository(new Repository<CropDTO>(), new Repository<ProductDTO>(), new Repository<CategoryDTO>());
       }
       private void ToogleTable(object param)
       {
-         Console.WriteLine(param);
          if (ShowingAll == false)
          {
             ShowAllCrops();
@@ -150,13 +148,11 @@ namespace JustRipe.ViewModels
       {
 
          var crops = GetRepository().GetAllCropsAndContainers();
-         CropTable = new ObservableCollection<Object>();
          BuildTable(crops);
       }
       private void ShowCropsInCultivation()
       {
          var crops = GetRepository().GetAllCropsCurrentlyInCultivation();
-         CropTable = new ObservableCollection<Object>();
          BuildTable(crops);
       }
       private void BuildTable(IEnumerable<Crop> crops)
@@ -173,8 +169,7 @@ namespace JustRipe.ViewModels
                    Area = crop.Area,
                    NumContainers = crop.NumContainers,
                    StorageRequired = crop.StorageRequired,
-                   Container = crop.Container,
-                   ContainerId = crop.ContainerId,
+                   ProductName = crop.ProductName,
                 });
          }
       }
@@ -236,8 +231,6 @@ namespace JustRipe.ViewModels
          var newCrop = NewCropDTO();
 
          GetRepository().AddCrop(newCrop);
-
-
       }
       void UpdateCrop()
       {
@@ -258,7 +251,7 @@ namespace JustRipe.ViewModels
             Area = Area,
             NumContainers = NumContainers,
             StorageRequired = StorageRequired,
-            ContainerId = ContainerId,
+            ProductId = ProductId,
 
          };
       }

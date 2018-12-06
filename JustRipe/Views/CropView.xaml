@@ -28,7 +28,7 @@
             <DataGridTextColumn Header="Area" Binding="{Binding Path=Area}"/>
             <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}"/>
             <DataGridTextColumn Header="Storage Required" Binding="{Binding Path=StorageRequired}"/>
-            <DataGridTextColumn Header="Container Type" Binding="{Binding Path=Container}"/>
+            <DataGridTextColumn Header="Container Type" Binding="{Binding Path=ProductName}"/>
             <DataGridTextColumn Header="Num. Containers" Binding="{Binding Path=NumContainers}"/>
             <DataGridTemplateColumn Header="">
                <DataGridTemplateColumn.CellTemplate>

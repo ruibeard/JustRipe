@@ -28,6 +28,5 @@ namespace JustRipe.Data.DTOs
 
         [Column("category_id")]
         public int CategoryId { get; set; }
-
     }
 }

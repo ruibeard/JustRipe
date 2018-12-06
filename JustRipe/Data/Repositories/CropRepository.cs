@@ -9,22 +9,26 @@ namespace JustRipe.Data.Repositories
    public class CropRepository : SQLiteDb, IDisposable
    {
       private readonly IRepository<CropDTO> cropRepo;
-      private readonly IRepository<ContainerDTO> containerRepo;
+      private readonly IRepository<ProductDTO> productRepo;
+      private readonly IRepository<CategoryDTO> categoryRepo;
 
       public CropRepository(IRepository<CropDTO> cropRepo)
       {
          this.cropRepo = cropRepo;
       }
-      public CropRepository(IRepository<CropDTO> cropRepo, IRepository<ContainerDTO> containerRepo)
+      public CropRepository(IRepository<CropDTO> _cropRepo, IRepository<ProductDTO> _productRepo, IRepository<CategoryDTO> _categoryRepo)
       {
-         this.cropRepo = cropRepo;
-         this.containerRepo = containerRepo;
+         cropRepo = _cropRepo;
+         categoryRepo = _categoryRepo;
+         productRepo = _productRepo;
       }
 
       public IEnumerable<Crop> GetAllCropsCurrentlyInCultivation()
       {
+
          return from crop in cropRepo.GetAll()
-                join container in containerRepo.GetAll() on crop.ContainerId equals container.Id
+                join prod in productRepo.GetAll() on crop.ProductId equals prod.Id
+                join cat in categoryRepo.GetAll() on prod.CategoryId equals cat.Id
                 where crop.Stage is "Cultivating"
                 select new Crop()
                 {
@@ -35,15 +39,17 @@ namespace JustRipe.Data.Repositories
                    Type = crop.Type,
                    NumContainers = crop.NumContainers,
                    StorageRequired = crop.StorageRequired,
-                   ContainerId = crop.ContainerId,
-                   Container = container.Name,
+                   ProductId = crop.ProductId,
+                   ProductName = prod.Name,
 
                 };
       }
       public IEnumerable<Crop> GetAllCropsAndContainers()
       {
          return from crop in cropRepo.GetAll()
-                join container in containerRepo.GetAll() on crop.ContainerId equals container.Id
+                join prod in productRepo.GetAll() on crop.ProductId equals prod.Id
+                join cat in categoryRepo.GetAll() on prod.CategoryId equals cat.Id
+                where cat.Name is "Container"
                 select new Crop()
                 {
                    Id = crop.Id,
@@ -51,10 +57,10 @@ namespace JustRipe.Data.Repositories
                    Stage = crop.Stage,
                    Area = crop.Area,
                    Type = crop.Type,
-                   StorageRequired = crop.StorageRequired,
                    NumContainers = crop.NumContainers,
-                   ContainerId = crop.ContainerId,
-                   Container = container.Name,
+                   StorageRequired = crop.StorageRequired,
+                   ProductId = crop.ProductId,
+                   ProductName = prod.Name,
                 };
       }
       public IEnumerable<Crop> GetAllCrops()
@@ -69,7 +75,7 @@ namespace JustRipe.Data.Repositories
                    Type = crop.Type,
                    StorageRequired = crop.StorageRequired,
                    NumContainers = crop.NumContainers,
-                   ContainerId = crop.ContainerId,
+                   ProductId = crop.ProductId,
                 };
       }
 
@@ -88,26 +94,7 @@ namespace JustRipe.Data.Repositories
       }
 
 
-      //using (var cnn = DbConnection())
-      //{
-      //    cnn.Open();
-      //    var newCrop = cnn.Query(
-      //        @"INSERT INTO Crops (name, stage, type, area) VALUES (@Name, @Stage, @Type, @Area)", _crop);
-      //}
-      //_crop.
-      //public IEnumerable<Crop> GetCropsByUser(string username)
-      //{
-      //    var crops =
-      //        from crop in repository.GetAll()
-      //        join user in repositoryUser.SearchFor(x => x.UserName == username) on crop.Name equals user.UserName
-      //        where user.UserName == username
-      //        select crop;
-      //    return
-      //    from crop in repository.GetAll()
-      //    join user in repositoryUser.GetAll() on crop.Name equals user.UserName
-      //    where user.UserName == username
-      //    select crop;
-      //}
+
 
       public void Dispose()
       {
@@ -115,3 +102,23 @@ namespace JustRipe.Data.Repositories
       }
    }
 }
+//using (var cnn = DbConnection())
+//{
+//    cnn.Open();
+//    var newCrop = cnn.Query(
+//        @"INSERT INTO Crops (name, stage, type, area) VALUES (@Name, @Stage, @Type, @Area)", _crop);
+//}
+//_crop.
+//public IEnumerable<Crop> GetCropsByUser(string username)
+//{
+//    var crops =
+//        from crop in repository.GetAll()
+//        join user in repositoryUser.SearchFor(x => x.UserName == username) on crop.Name equals user.UserName
+//        where user.UserName == username
+//        select crop;
+//    return
+//    from crop in repository.GetAll()
+//    join user in repositoryUser.GetAll() on crop.Name equals user.UserName
+//    where user.UserName == username
+//    select crop;
+//}
