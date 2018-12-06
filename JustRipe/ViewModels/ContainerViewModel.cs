@@ -43,12 +43,6 @@ namespace JustRipe.ViewModels
          get { return _id; }
          set { _id = value; OnPropertyChanged(nameof(Id)); }
       }
-
-      public string Status
-      {
-         get { return _status; }
-         set { _status = value; }
-      }
       public string Name
       {
          get { return _name; }
@@ -81,20 +75,25 @@ namespace JustRipe.ViewModels
          get { return _unit; }
          set { _unit = value; OnPropertyChanged(nameof(Unit)); }
       }
+
+      public string Status
+      {
+         get { return _status; }
+         set { _status = value; OnPropertyChanged(nameof(Status)); }
+      }
       public int CategoryId
       {
          get { return _categoryId; }
          set { _categoryId = value; OnPropertyChanged(nameof(Quantity)); }
       }
-      public RelayCommand AddUpdateContainerCommand { get; set; }
-      public RelayCommand DeleteContainerCommand { get; set; }
-      public RelayCommand ShowAllContainersToogleCommand { get; set; }
+      public RelayCommand AddUpdateCommand { get; set; }
+      public RelayCommand DeleteCommand { get; set; }
 
       #endregion Properties
       public ContainerViewModel()
       {
-         AddUpdateContainerCommand = new RelayCommand(AddUpdateContainer);
-         DeleteContainerCommand = new RelayCommand(DeleteContainer);
+         AddUpdateCommand = new RelayCommand(AddUpdateContainer);
+         DeleteCommand = new RelayCommand(DeleteContainer);
          ShowAllContainers();
       }
       void FillUpdateCreateForm()
@@ -105,6 +104,7 @@ namespace JustRipe.ViewModels
          Quantity = SelectedContainer.Quantity;
          Unit = SelectedContainer.Unit;
          Status = SelectedContainer.Status;
+         CategoryId = SelectedContainer.CategoryId;
       }
       private ProductRepository GetRepository()
       {

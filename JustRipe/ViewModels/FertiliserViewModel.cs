@@ -68,6 +68,13 @@ namespace JustRipe.ViewModels
          set { _description = value; OnPropertyChanged(nameof(Description)); }
       }
 
+      private string _status;
+      public string Status
+      {
+         get { return _status; }
+         set { _status = value; OnPropertyChanged(nameof(Description)); }
+      }
+
       private string _unit;
       public string Unit
       {
@@ -127,6 +134,7 @@ namespace JustRipe.ViewModels
 
       private void BuildTable(IEnumerable<Product> products)
       {
+         FertiliserTable.Clear();
          foreach (var prod in products)
          {
             FertiliserTable.Add(
@@ -135,6 +143,7 @@ namespace JustRipe.ViewModels
                    Id = prod.Id,
                    Name = prod.Name,
                    Quantity = prod.Quantity,
+                   Description = prod.Description,
                    Unit = prod.Unit,
                    Price = prod.Price,
                    CategoryId = prod.CategoryId,
@@ -157,9 +166,10 @@ namespace JustRipe.ViewModels
          }
       }
 
-
       private void AddUpdateProduct(object parameter)
       {
+         FertiliserTable.Clear();
+
          if (SelectedProduct == null) { AddProduct(parameter); }
          else
          {
@@ -169,31 +179,36 @@ namespace JustRipe.ViewModels
          Name = CategoryName;
          Id = 0;
          Quantity = CategoryId = 0;
-         FertiliserTable.Clear();
          ShowFertilisers();
       }
 
       void AddProduct(object parameter)
       {
-         ProductDTO newProduct = new ProductDTO
-         {
-            Name = Name,
-            Quantity = Quantity,
-            CategoryId = CategoryId,
-         };
+         var newProduct = NewDTO();
+
          GetRepository().AddProduct(newProduct);
       }
 
       void UpdateProduct(object parameter)
       {
-         ProductDTO newProduct = new ProductDTO
-         {
-            Name = Name,
-            Quantity = Quantity,
-            CategoryId = CategoryId,
-         };
+         var newProduct = NewDTO();
+
          GetRepository().UpdateProduct(newProduct);
 
+      }
+
+      private ProductDTO NewDTO()
+      {
+         return new ProductDTO
+         {
+            Id = Id,
+            Name = Name,
+            Description = Description,
+            Quantity = Quantity,
+            Status = Status,
+            Unit = Unit,
+            CategoryId = CategoryId,
+         };
       }
 
       private void DeleteProduct(object parameter)
@@ -208,7 +223,6 @@ namespace JustRipe.ViewModels
             ShowFertilisers();
          }
       }
-
    }
 
 }

@@ -32,7 +32,7 @@ namespace JustRipe.Data.DTOs
       [Column("dateOfBirth")]
       public DateTime DateOfBirth { get; set; }
 
-      [Column("anualWage")]
+      [Column("annualWage")]
       public decimal AnnualWage { get; set; }
    }
 }

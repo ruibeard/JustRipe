@@ -30,7 +30,7 @@ namespace JustRipe.ViewModels
       private string _phoneNumber;
       private string _address;
       private DateTime _dateOfBirth;
-      private Decimal _anualWage;
+      private Decimal _annualWage;
       private bool _showingAll = false;
       private User selectedItem;
 
@@ -81,8 +81,8 @@ namespace JustRipe.ViewModels
       }
       public Decimal AnnualWage
       {
-         get { return _anualWage; }
-         set { _anualWage = value; OnPropertyChanged(nameof(AnnualWage)); }
+         get { return _annualWage; }
+         set { _annualWage = value; OnPropertyChanged(nameof(AnnualWage)); }
 
       }
       public User SelectedItem
@@ -127,7 +127,7 @@ namespace JustRipe.ViewModels
          PhoneNumber = SelectedItem.PhoneNumber;
          Address = SelectedItem.Address;
          DateOfBirth = SelectedItem.DateOfBirth;
-         AnnualWage = SelectedItem.AnualWage;
+         AnnualWage = SelectedItem.AnnualWage;
       }
       public RelayCommand AddUpdateUserCommand { get; }
       public RelayCommand DeleteUserCommand { get; }
@@ -158,7 +158,7 @@ namespace JustRipe.ViewModels
                    PhoneNumber = user.PhoneNumber,
                    Address = user.Address,
                    DateOfBirth = user.DateOfBirth,
-                   AnualWage = user.AnualWage,
+                   AnnualWage = user.AnnualWage,
                 });
          }
       }

@@ -79,10 +79,8 @@
             </StackPanel>
 
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Width="500" >
-
                <TextBox x:Name="Unit"  Margin="10 5" materialDesign:HintAssist.Hint="Unit"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Unit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="Status"  Margin="10 5" materialDesign:HintAssist.Hint="Status"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0 15">

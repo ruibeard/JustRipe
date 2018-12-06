@@ -40,7 +40,7 @@ namespace JustRipe.Data.Repositories
                    PhoneNumber = user.PhoneNumber,
                    Address = user.Address,
                    DateOfBirth = user.DateOfBirth,
-                   AnualWage = user.AnnualWage,
+                   AnnualWage = user.AnnualWage,
                 };
       }
 

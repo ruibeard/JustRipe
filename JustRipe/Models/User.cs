@@ -32,7 +32,7 @@ namespace JustRipe.Models
       public string PhoneNumber { get; set; }
       public string Address { get; set; }
       public DateTime DateOfBirth { get; set; }
-      public decimal AnualWage { get; set; }
+      public decimal AnnualWage { get; set; }
       public string Role { get; set; }
    }
 }
