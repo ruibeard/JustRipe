@@ -30,6 +30,7 @@
             <DataGridTextColumn Header="Storage Required" Binding="{Binding Path=StorageRequired}"/>
             <DataGridTextColumn Header="Container Type" Binding="{Binding Path=ProductName}"/>
             <DataGridTextColumn Header="Num. Containers" Binding="{Binding Path=NumContainers}"/>
+            <DataGridTextColumn Header="Container" Binding="{Binding Path=ProductName}"/>
             <DataGridTemplateColumn Header="">
                <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
@@ -73,7 +74,6 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Column="0">
-
                <TextBox x:Name="Id" Visibility="Collapsed"  Margin="10 5" materialDesign:HintAssist.Hint="Id"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="Name"  Margin="10 5" materialDesign:HintAssist.Hint="Name"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="Stage"  Margin="10 5" materialDesign:HintAssist.Hint="Stage"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Stage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -82,17 +82,14 @@
 
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Width="500" >
 
-
                <TextBox x:Name="Area"  Margin="10 5" materialDesign:HintAssist.Hint="Area"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Area, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="NumContainers"  Margin="10 5" materialDesign:HintAssist.Hint="NumContainers"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding NumContainers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="StorageRequired"  Margin="10 5" materialDesign:HintAssist.Hint="StorageRequired"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding StorageRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               
-               
-               <ComboBox x:Name="ContainerCombo"  Margin="10 5" HorizontalAlignment="Left" 
-                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Container" 
-                         ItemsSource="{Binding ContainerList}" DisplayMemberPath="Name"
-                        SelectedValue="{Binding ContainerId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Id"/>
 
+               <ComboBox x:Name="Container"  Margin="10 5" HorizontalAlignment="Left"   IsEditable="True"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Container" 
+                        ItemsSource="{Binding ProductList}" DisplayMemberPath="Name"
+                        SelectedValue="{Binding ProductId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Id"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0 15">

@@ -184,7 +184,7 @@ namespace JustRipe.ViewModels
 
          foreach (var user in all_Users)
          {
-            UserList.Add(new User { Id = user.Id, FullName = user.FirstName + user.LastName });
+            UserList.Add(new User { Id = user.Id, FullName =  user.FullName});
          }
       }
       private void FillAllTasks()

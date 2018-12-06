@@ -72,10 +72,12 @@
                <TextBox   x:Name="CropId" Visibility="Collapsed" Margin="10 5" materialDesign:HintAssist.Hint="CropId" Text="{Binding CropId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                <ComboBox x:Name="CropCombo"  Margin="10 5" HorizontalAlignment="Left"  IsEditable="True"
-                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Crop" ItemsSource="{Binding CropList}" DisplayMemberPath="Name"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Crop"
+                         ItemsSource="{Binding CropList}" DisplayMemberPath="Name"
                         SelectedValue="{Binding CropId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Id"/>
 
-               <TextBox x:Name="UserId" Visibility="Collapsed" Margin="10 5"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:HintAssist.Hint="UserId" Text="{Binding UserId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="UserId" Visibility="Collapsed" Margin="10 5"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                        materialDesign:HintAssist.Hint="UserId" Text="{Binding UserId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
                <ComboBox x:Name="CreatedBy"  Margin="10 5" HorizontalAlignment="Left"  IsEditable="True"
                         Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="User" 

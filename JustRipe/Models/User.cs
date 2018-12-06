@@ -18,10 +18,12 @@ namespace JustRipe.Models
       public string Password { get; set; }
       public string FirstName { get; set; }
 
+
       private string _fullName;
+
       public string FullName
       {
-         get { return FirstName + " " + LastName; }
+         get { return _fullName; }
          set { _fullName = value; }
       }
 

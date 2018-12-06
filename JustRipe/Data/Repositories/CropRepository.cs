@@ -25,11 +25,11 @@ namespace JustRipe.Data.Repositories
 
       public IEnumerable<Crop> GetAllCropsCurrentlyInCultivation()
       {
-
          return from crop in cropRepo.GetAll()
                 join prod in productRepo.GetAll() on crop.ProductId equals prod.Id
                 join cat in categoryRepo.GetAll() on prod.CategoryId equals cat.Id
                 where crop.Stage is "Cultivating"
+                where cat.Name is "Container"
                 select new Crop()
                 {
                    Id = crop.Id,
@@ -41,7 +41,6 @@ namespace JustRipe.Data.Repositories
                    StorageRequired = crop.StorageRequired,
                    ProductId = crop.ProductId,
                    ProductName = prod.Name,
-
                 };
       }
       public IEnumerable<Crop> GetAllCropsAndContainers()

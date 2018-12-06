@@ -20,15 +20,15 @@ namespace JustRipe.ViewModels
       private int _numContainers;
       private bool _showingAll = false;
       private ObservableCollection<Object> _cropTable = new ObservableCollection<Object>();
-      private List<Container> _containers = new List<Container>();
+      private List<Product> _productList = new List<Product>();
 
-      public List<Container> ContainerList
+      public List<Product> ProductList
       {
-         get { return _containers; }
+         get { return _productList; }
          set
          {
-            _containers = value;
-            OnPropertyChanged(nameof(ContainerList));
+            _productList = value;
+            OnPropertyChanged(nameof(ProductList));
          }
       }
       #endregion Fields
@@ -77,7 +77,7 @@ namespace JustRipe.ViewModels
          get { return _area; }
          set { _area = value; OnPropertyChanged(nameof(Area)); }
       }
-    
+
       private int _productId;
       public int ProductId
       {
@@ -124,8 +124,8 @@ namespace JustRipe.ViewModels
          Area = SelectedCrop.Area;
          NumContainers = SelectedCrop.NumContainers;
          StorageRequired = SelectedCrop.StorageRequired;
-         ProductName = SelectedCrop.ProductName;
          ProductId = SelectedCrop.ProductId;
+         ProductName = SelectedCrop.ProductName;
       }
       private CropRepository GetRepository()
       {
@@ -133,6 +133,8 @@ namespace JustRipe.ViewModels
       }
       private void ToogleTable(object param)
       {
+         CropTable.Clear();
+
          if (ShowingAll == false)
          {
             ShowAllCrops();
@@ -152,6 +154,7 @@ namespace JustRipe.ViewModels
       }
       private void ShowCropsInCultivation()
       {
+
          var crops = GetRepository().GetAllCropsCurrentlyInCultivation();
          BuildTable(crops);
       }
@@ -212,17 +215,17 @@ namespace JustRipe.ViewModels
          else
             ShowCropsInCultivation();
       }
-      private ContainerRepository GetContainerRepository()
+      private ProductRepository GetProductRepository()
       {
-         return new ContainerRepository(new Repository<ContainerDTO>());
+         return new ProductRepository(new Repository<ProductDTO>(), new Repository<CategoryDTO>());
       }
       private void GetAllContainers()
       {
-         var all_Containers = GetContainerRepository().GetAllContainers();
+         var all_Containers = GetProductRepository().GetAllContainerProducts();
 
          foreach (var container in all_Containers)
          {
-            ContainerList.Add(new Container { Id = container.Id, Name = container.Name });
+            ProductList.Add(new Product { Id = container.Id, Name = container.Name });
          }
       }
 
@@ -235,7 +238,7 @@ namespace JustRipe.ViewModels
       void UpdateCrop()
       {
          var newCrop = NewCropDTO();
-
+         MessageBox.Show(newCrop.ProductId.ToString());
          GetRepository().UpdateCrop(newCrop);
          ShowAllCrops();
 
