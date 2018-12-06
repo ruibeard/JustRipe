@@ -248,7 +248,6 @@ namespace JustRipe.ViewModels
             CropId = CropId,
             TaskDate = TaskDate,
             LabourNeeded = LabourNeeded
-
          };
          GetRepository().UpdateTask(newTask);
       }

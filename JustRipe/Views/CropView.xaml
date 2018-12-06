@@ -78,6 +78,10 @@
                <TextBox x:Name="Name"  Margin="10 5" materialDesign:HintAssist.Hint="Name"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="Stage"  Margin="10 5" materialDesign:HintAssist.Hint="Stage"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Stage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="Type"  Margin="10 5" materialDesign:HintAssist.Hint="Type"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <ComboBox x:Name="Container" HorizontalAlignment="Stretch" Margin="10 5" IsEditable="True"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Container" 
+                        ItemsSource="{Binding ProductList}" DisplayMemberPath="ProductName"
+                        SelectedValue="{Binding ProductId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Id"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Width="500" >
@@ -86,10 +90,6 @@
                <TextBox x:Name="NumContainers"  Margin="10 5" materialDesign:HintAssist.Hint="NumContainers"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding NumContainers, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="StorageRequired"  Margin="10 5" materialDesign:HintAssist.Hint="StorageRequired"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding StorageRequired, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
-               <ComboBox x:Name="Container"  Margin="10 5" HorizontalAlignment="Left"   IsEditable="True"
-                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Container" 
-                        ItemsSource="{Binding ProductList}" DisplayMemberPath="Name"
-                        SelectedValue="{Binding ProductId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Id"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0 15">

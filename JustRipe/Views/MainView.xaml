@@ -67,7 +67,9 @@
             <!--Logo of the program-->
             <Image Margin="0 30" Source="/Images/logo.png" Width="190"/>
             <!--Side Menu, contains a listview with button for each view-->
-            <Button HorizontalAlignment="Left" Height="35" Margin="0 10" 
+            
+            
+            <!--<Button HorizontalAlignment="Left" Height="35" Margin="0 10" 
                         Style="{StaticResource MaterialDesignFlatButton}" 
                         x:Name="Dashboard"
                         Foreground="{DynamicResource MaterialDesignBackground}" 
@@ -76,7 +78,10 @@
                   <materialDesign:PackIcon  Height="30" Width="30" Kind="Home"  VerticalAlignment="Center"/>
                   <TextBlock  Width="170" Text="Dashboard" FontSize="18" VerticalAlignment="Center" Margin="20 0"/>
                </StackPanel>
-            </Button>
+            </Button>-->
+            
+            
+            
             <Button HorizontalAlignment="Left" Height="35" Margin="0 10"
                         Style="{StaticResource MaterialDesignFlatButton}" x:Name="TimeTable" 
                         Foreground="{DynamicResource MaterialDesignBackground}" Command="{Binding TimeTableCommand}" >

@@ -13,37 +13,18 @@ namespace JustRipe.ViewModels
       private int _id;
       private string _name;
       private double _quantity;
-      private string _unitType;
-      private string _numContainers;
       private string _unit;
+      private string _available;
       private int _categoryId;
-      private ObservableCollection<Object> _cropTable;
       private string _status;
+      private ObservableCollection<Object> _containerTable;
+      private Product selectedContainer;
+
       #endregion Fields
 
 
-
-      public string Unit
-      {
-         get { return _unit; }
-         set { _unit = value; OnPropertyChanged(nameof(Quantity)); }
-      }
-
-
-      public int CategoryId
-      {
-         get { return _categoryId; }
-         set { _categoryId = value; OnPropertyChanged(nameof(Quantity)); }
-      }
-
-
       #region Properties
-      private Product selectedContainer;
-      public string Status
-      {
-         get { return _status; }
-         set { _status = value; }
-      }
+
       public Product SelectedContainer
       {
          get { return selectedContainer; }
@@ -52,8 +33,8 @@ namespace JustRipe.ViewModels
             if (value != null)
             {
                selectedContainer = value;
-               FillUpdateCreateForm();
                OnPropertyChanged(nameof(SelectedContainer));
+               FillUpdateCreateForm();
             }
          }
       }
@@ -61,6 +42,12 @@ namespace JustRipe.ViewModels
       {
          get { return _id; }
          set { _id = value; OnPropertyChanged(nameof(Id)); }
+      }
+
+      public string Status
+      {
+         get { return _status; }
+         set { _status = value; }
       }
       public string Name
       {
@@ -73,7 +60,7 @@ namespace JustRipe.ViewModels
       public string Description
       {
          get { return _description; }
-         set { _description = value; OnPropertyChanged(nameof(Quantity)); }
+         set { _description = value; OnPropertyChanged(nameof(Description)); }
       }
 
       public double Quantity
@@ -81,15 +68,23 @@ namespace JustRipe.ViewModels
          get { return _quantity; }
          set { _quantity = value; OnPropertyChanged(nameof(Quantity)); }
       }
+
+
       public string Available
       {
-         get { return _numContainers; }
-         set { _numContainers = value; OnPropertyChanged(nameof(Available)); }
+         get { return _available; }
+         set { _available = value; OnPropertyChanged(nameof(Available)); }
       }
-      public string UnitType
+
+      public string Unit
       {
-         get { return _unitType; }
-         set { _unitType = value; OnPropertyChanged(nameof(UnitType)); }
+         get { return _unit; }
+         set { _unit = value; OnPropertyChanged(nameof(Unit)); }
+      }
+      public int CategoryId
+      {
+         get { return _categoryId; }
+         set { _categoryId = value; OnPropertyChanged(nameof(Quantity)); }
       }
       public RelayCommand AddUpdateContainerCommand { get; set; }
       public RelayCommand DeleteContainerCommand { get; set; }
@@ -106,9 +101,10 @@ namespace JustRipe.ViewModels
       {
          Id = SelectedContainer.Id;
          Name = SelectedContainer.Name;
+         Description = SelectedContainer.Description;
          Quantity = SelectedContainer.Quantity;
+         Unit = SelectedContainer.Unit;
          Status = SelectedContainer.Status;
-         UnitType = SelectedContainer.Unit;
       }
       private ProductRepository GetRepository()
       {
@@ -141,12 +137,12 @@ namespace JustRipe.ViewModels
       }
       public ObservableCollection<object> ContainerTable
       {
-         get { return _cropTable; }
+         get { return _containerTable; }
          set
          {
             if (value != null)
             {
-               _cropTable = value;
+               _containerTable = value;
                OnPropertyChanged(nameof(ContainerTable));
             }
          }
@@ -157,6 +153,7 @@ namespace JustRipe.ViewModels
       }
       private void AddUpdateContainer(object parameter)
       {
+         ContainerTable.Clear();
          if (SelectedContainer == null)
          {
             AddContainer();
@@ -168,9 +165,6 @@ namespace JustRipe.ViewModels
          }
 
          ClearForm();
-
-         ContainerTable.Clear();
-
          ShowAllContainers();
       }
       void AddContainer()

@@ -82,14 +82,22 @@ namespace JustRipe.ViewModels
       public int ProductId
       {
          get { return _productId; }
-         set { _productId = value; OnPropertyChanged(nameof(ProductId)); }
+         set
+         {
+            _productId = value; OnPropertyChanged(nameof(ProductId));
+         }
       }
-      private string _product;
+      private string _productName;
 
       public string ProductName
       {
-         get { return _product; }
-         set { _product = value; OnPropertyChanged(nameof(ProductName)); }
+         get { return _productName; }
+         set
+         {
+            _productName = value; OnPropertyChanged(nameof(ProductName));
+
+
+         }
       }
 
       public int NumContainers
@@ -173,6 +181,7 @@ namespace JustRipe.ViewModels
                    NumContainers = crop.NumContainers,
                    StorageRequired = crop.StorageRequired,
                    ProductName = crop.ProductName,
+                   ProductId = crop.ProductId
                 });
          }
       }
@@ -225,7 +234,7 @@ namespace JustRipe.ViewModels
 
          foreach (var container in all_Containers)
          {
-            ProductList.Add(new Product { Id = container.Id, Name = container.Name });
+            ProductList.Add(new Product { Id = container.Id, ProductName = container.Name });
          }
       }
 
@@ -238,7 +247,6 @@ namespace JustRipe.ViewModels
       void UpdateCrop()
       {
          var newCrop = NewCropDTO();
-         MessageBox.Show(newCrop.ProductId.ToString());
          GetRepository().UpdateCrop(newCrop);
          ShowAllCrops();
 

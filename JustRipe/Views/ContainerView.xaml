@@ -75,11 +75,10 @@
                <TextBox x:Name="Id" Visibility="Collapsed"  Margin="10 5" materialDesign:HintAssist.Hint="Id"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="Name"  Margin="10 5" materialDesign:HintAssist.Hint="Name"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="Description"  Margin="10 5" materialDesign:HintAssist.Hint="Description"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               <TextBox x:Name="Quantity"  Margin="10 5" materialDesign:HintAssist.Hint="Quantity"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Capacity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Quantity"  Margin="10 5" materialDesign:HintAssist.Hint="Quantity"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
 
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Width="500" >
-
 
                <TextBox x:Name="Unit"  Margin="10 5" materialDesign:HintAssist.Hint="Unit"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Unit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="Status"  Margin="10 5" materialDesign:HintAssist.Hint="Status"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Status, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>

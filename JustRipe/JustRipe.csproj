@@ -131,6 +131,7 @@
     <Compile Include="Data\DTOs\VehicleDTO.cs" />
     <Compile Include="Data\Repositories\ContainerRepository.cs" />
     <Compile Include="Data\Repositories\CategoryRepository.cs" />
+    <Compile Include="Data\Repositories\TimeTableRepository.cs" />
     <Compile Include="Data\Repositories\VehicleRepository.cs" />
     <Compile Include="Data\Repositories\ProductRepository.cs" />
     <Compile Include="Data\Repositories\UserRepository.cs" />

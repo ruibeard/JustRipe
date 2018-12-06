@@ -87,6 +87,7 @@ namespace JustRipe.Data.Repositories
                 {
                    Id = product.Id,
                    Name = product.Name,
+                   ProductName = product.Name,
                    Price = product.Price,
                    Status = product.Status,
                    Description = product.Description,
