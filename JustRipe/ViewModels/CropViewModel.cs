@@ -4,7 +4,6 @@ using JustRipe.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows;
 
 namespace JustRipe.ViewModels
 {
@@ -19,8 +18,18 @@ namespace JustRipe.ViewModels
       private string _storageRequired;
       private int _numContainers;
       private bool _showingAll = false;
+      private int _productId;
+      private Crop selectedCrop;
       private ObservableCollection<Object> _cropTable = new ObservableCollection<Object>();
+
       private List<Product> _productList = new List<Product>();
+
+
+      private string _productName;
+      #endregion Fields
+
+
+      #region Properties
 
       public List<Product> ProductList
       {
@@ -31,14 +40,11 @@ namespace JustRipe.ViewModels
             OnPropertyChanged(nameof(ProductList));
          }
       }
-      #endregion Fields
       public bool ShowingAll
       {
          get { return _showingAll; }
          set { _showingAll = value; OnPropertyChanged(nameof(ShowingAll)); }
       }
-      #region Properties
-      private Crop selectedCrop;
       public Crop SelectedCrop
       {
          get { return selectedCrop; }
@@ -77,29 +83,16 @@ namespace JustRipe.ViewModels
          get { return _area; }
          set { _area = value; OnPropertyChanged(nameof(Area)); }
       }
-
-      private int _productId;
       public int ProductId
       {
          get { return _productId; }
-         set
-         {
-            _productId = value; OnPropertyChanged(nameof(ProductId));
-         }
+         set { _productId = value; OnPropertyChanged(nameof(ProductId)); }
       }
-      private string _productName;
-
       public string ProductName
       {
          get { return _productName; }
-         set
-         {
-            _productName = value; OnPropertyChanged(nameof(ProductName));
-
-
-         }
+         set { _productName = value; OnPropertyChanged(nameof(ProductName)); }
       }
-
       public int NumContainers
       {
          get { return _numContainers; }
@@ -122,9 +115,11 @@ namespace JustRipe.ViewModels
          ShowAllCropsToogleCommand = new RelayCommand(ToogleTable);
          ShowCropsInCultivation();
          GetAllContainers();
+
       }
       void FillUpdateCreateForm()
       {
+         ToggleVisibility();
          Id = SelectedCrop.Id;
          Name = SelectedCrop.Name;
          Stage = SelectedCrop.Stage;
@@ -139,7 +134,7 @@ namespace JustRipe.ViewModels
       {
          return new CropRepository(new Repository<CropDTO>(), new Repository<ProductDTO>(), new Repository<CategoryDTO>());
       }
-      private void ToogleTable(object param)
+      private void ToogleTable(object param = null)
       {
          CropTable.Clear();
 
@@ -203,27 +198,6 @@ namespace JustRipe.ViewModels
          Id = NumContainers = 0;
 
       }
-      private void AddUpdateCrop(object parameter)
-      {
-         if (SelectedCrop == null)
-         {
-            AddCrop();
-         }
-         else
-         {
-            UpdateCrop();
-            SelectedCrop = null;
-         }
-
-         ClearForm();
-
-         CropTable.Clear();
-
-         if (ShowingAll)
-            ShowAllCrops();
-         else
-            ShowCropsInCultivation();
-      }
       private ProductRepository GetProductRepository()
       {
          return new ProductRepository(new Repository<ProductDTO>(), new Repository<CategoryDTO>());
@@ -237,19 +211,46 @@ namespace JustRipe.ViewModels
             ProductList.Add(new Product { Id = container.Id, ProductName = container.Name });
          }
       }
+      private void AddUpdateCrop(object parameter)
+      {
+         CropTable.Clear();
+
+         if (SelectedCrop == null)
+         {
+            AddCrop();
+         }
+         else
+         {
+            UpdateCrop();
+            SelectedCrop = null;
+         }
+         ClearForm();
+
+         ToggleVisibility();
+      }
 
       void AddCrop()
       {
          var newCrop = NewCropDTO();
-
          GetRepository().AddCrop(newCrop);
       }
       void UpdateCrop()
       {
          var newCrop = NewCropDTO();
          GetRepository().UpdateCrop(newCrop);
-         ShowAllCrops();
-
+         ShowCropsInCultivation();
+      }
+      private void DeleteCrop(object parameter)
+      {
+         if (SelectedCrop != null)
+         {
+            CropDTO newCrop = new CropDTO
+            {
+               Id = Id,
+            };
+            GetRepository().DeleteCrop(newCrop);
+            ShowCropsInCultivation();
+         }
       }
       private CropDTO NewCropDTO()
       {
@@ -266,19 +267,5 @@ namespace JustRipe.ViewModels
 
          };
       }
-      private void DeleteCrop(object parameter)
-      {
-         if (SelectedCrop != null)
-         {
-            CropDTO newCrop = new CropDTO
-            {
-               Id = Id,
-            };
-            GetRepository().DeleteCrop(newCrop);
-            ShowCropsInCultivation();
-         }
-      }
-
    }
-
 }

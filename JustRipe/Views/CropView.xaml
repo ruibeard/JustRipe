@@ -63,7 +63,7 @@
       </DataGrid>
 
       <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="10">
-         <Grid>
+         <Grid Visibility="{Binding FormVisibility, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
             <Grid.ColumnDefinitions>
                <ColumnDefinition Width="*"/>
                <ColumnDefinition Width="*"/>

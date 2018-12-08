@@ -107,6 +107,7 @@ namespace JustRipe.ViewModels
          Id = SelectedProduct.Id;
          Name = SelectedProduct.Name;
          Quantity = SelectedProduct.Quantity;
+         Description = SelectedProduct.Description;
          Unit = SelectedProduct.Unit;
          Price = SelectedProduct.Price;
          CategoryName = SelectedProduct.CategoryName;
