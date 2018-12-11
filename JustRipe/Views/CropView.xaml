@@ -29,7 +29,7 @@
             <DataGridTextColumn Header="Type" Binding="{Binding Path=Type}"/>
             <DataGridTextColumn Header="Storage Required" Binding="{Binding Path=StorageRequired}"/>
             <DataGridTextColumn Header="Container Type" Binding="{Binding Path=ProductName}"/>
-            <DataGridTextColumn Header="Num. Containers" Binding="{Binding Path=NumContainers}"/>
+            <DataGridTextColumn Header="Num. Containers"  Binding="{Binding Path=NumContainers}"/>
             <DataGridTextColumn Header="Container" Binding="{Binding Path=ProductName}"/>
             <DataGridTemplateColumn Header="">
                <DataGridTemplateColumn.CellTemplate>

@@ -110,10 +110,10 @@ namespace JustRipe.ViewModels
          if (isUserCredentialsCorrect != null && isUserCredentialsCorrect.GetEnumerator().MoveNext())
          {
             var returnedUser = isUserCredentialsCorrect.FirstOrDefault<User>();
+            MainViewModel.LoggedUser = returnedUser;
             var mainView = new Views.MainView();
             var mainVM = new MainViewModel();
 
-            MainViewModel.LoggedUserName = "Welcome, " + returnedUser.FirstName + " - " + returnedUser.Role;
             mainView.DataContext = mainVM;
             mainView.Show();
             CloseAction();

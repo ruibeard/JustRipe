@@ -55,7 +55,7 @@
          </DataGrid.Columns>
       </DataGrid>
 
-      <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="10">
+      <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="10" Visibility="{Binding FormVisibility, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
          <Grid>
             <Grid.ColumnDefinitions>
                <ColumnDefinition Width="*"/>

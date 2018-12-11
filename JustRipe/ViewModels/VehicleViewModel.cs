@@ -99,6 +99,7 @@ namespace JustRipe.ViewModels
       }
       void FillUpdateCreateForm()
       {
+         ShowForm();
          Id = SelectedVehicle.Id;
          Name = SelectedVehicle.Name;
          Year = SelectedVehicle.Year;
@@ -163,6 +164,7 @@ namespace JustRipe.ViewModels
          Id = 0;
          VehicleTable.Clear();
          FillAllVehicles();
+         HideForm();
       }
       void AddVehicle()
       {

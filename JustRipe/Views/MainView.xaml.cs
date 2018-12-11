@@ -17,7 +17,7 @@ namespace JustRipe.Views
             InitializeComponent();
             ///this line prevents from window covers taskbar when maximized
             this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            DataContext = new MainViewModel();
+            //DataContext = new MainViewModel();
 
         }
 

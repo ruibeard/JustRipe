@@ -175,7 +175,6 @@ namespace JustRipe.ViewModels
             UpdateUser(parameter);
             SelectedItem = null;
          }
-         //ClearForm();
          UserTable.Clear();
          ShowAllUsers();
          HideForm();

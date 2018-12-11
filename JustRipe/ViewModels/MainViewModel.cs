@@ -1,4 +1,5 @@
 ﻿using JustRipe.Models;
+using System.Windows;
 
 namespace JustRipe.ViewModels
 {
@@ -20,7 +21,22 @@ namespace JustRipe.ViewModels
       public RelayCommand VehicleCommand { get; set; }
       public RelayCommand LabourCommand { get; set; }
 
-      public static string _loggedUserName;
+
+      private static string _loggedUserRole;
+
+      public static string LoggedUserRole
+      {
+         get { return _loggedUserRole; }
+         set
+         {
+            if (value != null)
+            {
+               _loggedUserRole = value;
+            }
+
+         }
+      }
+      private static string _loggedUserName;
 
       public static string LoggedUserName
       {
@@ -33,7 +49,13 @@ namespace JustRipe.ViewModels
             _loggedUserName = value;
          }
       }
+      private Visibility _menuVisibility;
 
+      public Visibility MenuVisibility
+      {
+         get { return _menuVisibility; }
+         set { _menuVisibility = value; OnPropertyChanged(nameof(MenuVisibility)); }
+      }
 
       private string _pageName;
 
@@ -46,7 +68,6 @@ namespace JustRipe.ViewModels
             OnPropertyChanged(nameof(PageName));
          }
       }
-
       private object selectedViewModel;
 
       public object SelectedViewModel
@@ -54,15 +75,29 @@ namespace JustRipe.ViewModels
          get { return selectedViewModel; }
          set { selectedViewModel = value; OnPropertyChanged(nameof(SelectedViewModel)); }
       }
+      private static User _loggedUser;
 
+      public static User LoggedUser
+      {
+         get { return _loggedUser; }
+         set { _loggedUser = value; }
+      }
 
       public MainViewModel()
       {
+         if (LoggedUser != null)
+         {
+            LoggedUserName = "Welcome, " + LoggedUser.FirstName + " - " + LoggedUser.Role;
+
+
+            MenuVisibility = LoggedUser.Role == "Manager" ? Visibility.Visible : Visibility.Collapsed;
+         }
+
+
+
          /// Set the default View after login
          PageName = "Tasks";
          SelectedViewModel = new TaskViewModel();
-
-
          DashboardCommand = new RelayCommand(OpenDashboard);
          CropCommand = new RelayCommand(OpenCrop);
          FertiliserCommand = new RelayCommand(OpenFertiliser);
@@ -129,13 +164,6 @@ namespace JustRipe.ViewModels
          PageName = "Containers";
          SelectedViewModel = new ContainerViewModel();
       }
-      //private void OpenStorage(object obj)
-      //{
-      //   PageName = "Storage";
-
-      //   SelectedViewModel = new StorageViewModel();
-
-      //}
       private void OpenUser(object obj)
       {
          PageName = "Users";

@@ -11,7 +11,7 @@
    <StackPanel>
 
       <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="30 5">
-         <TextBlock Text="Show all crops:" Margin="5 0"/>
+         <!--<TextBlock Text="Show all crops:" Margin="5 0"/>-->
          <!--<ToggleButton Command="{Binding ShowAllContainersToogleCommand}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" IsChecked="False" />-->
       </StackPanel>
 
@@ -59,7 +59,7 @@
          </DataGrid.Columns>
       </DataGrid>
 
-      <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="10">
+      <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="10" Visibility="{Binding FormVisibility, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
          <Grid>
             <Grid.ColumnDefinitions>
                <ColumnDefinition Width="*"/>

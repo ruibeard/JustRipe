@@ -98,6 +98,7 @@ namespace JustRipe.ViewModels
       }
       void FillUpdateCreateForm()
       {
+         ShowForm();
          Id = SelectedContainer.Id;
          Name = SelectedContainer.Name;
          Description = SelectedContainer.Description;
@@ -166,6 +167,7 @@ namespace JustRipe.ViewModels
 
          ClearForm();
          ShowAllContainers();
+         HideForm();
       }
       void AddContainer()
       {
