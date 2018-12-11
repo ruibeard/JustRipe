@@ -6,116 +6,117 @@ using System.Collections.ObjectModel;
 
 namespace JustRipe.ViewModels
 {
-    public class LabourerViewModel : ObservableObject
-    {
-        #region Fields
+   public class LabourerViewModel : ObservableObject
+   {
+      #region Fields
 
-        private int _id;
-        private string _name;
+      private int _id;
+      private string _name;
 
-        #endregion Fields
+      #endregion Fields
 
-        #region Properties
-        private User selectedLabourer;
-        public User SelectedLabour
-        {
-            get { return selectedLabourer; }
-            set
+      #region Properties
+      private User selectedLabourer;
+      public User SelectedLabour
+      {
+         get { return selectedLabourer; }
+         set
+         {
+            if (value != null)
             {
-                if (value != null)
+               selectedLabourer = value;
+               OnPropertyChanged(nameof(SelectedLabour));
+            }
+         }
+      }
+      public int Id
+      {
+         get { return _id; }
+         set { _id = value; OnPropertyChanged(nameof(Id)); }
+      }
+      public string Name
+      {
+         get { return _name; }
+         set { _name = value; OnPropertyChanged(nameof(Name)); }
+      }
+
+      public RelayCommand AddUpdateLabourCommand { get; set; }
+      public RelayCommand DeleteLabourCommand { get; set; }
+      #endregion Properties
+
+      public LabourerViewModel()
+      {
+         FillAllLabours();
+         AddUpdateLabourCommand = new RelayCommand(AddUpdateLabour);
+         DeleteLabourCommand = new RelayCommand(DeleteUser);
+      }
+
+      private void DeleteUser(object obj)
+      {
+         throw new NotImplementedException();
+      }
+
+
+      private UserRepository GetRepository()
+      {
+         return new UserRepository(new Repository<UserDTO>(), new Repository<RoleDTO>(), new Repository<UserRoleDTO>());
+      }
+
+      private void FillAllLabours()
+      {
+         var labourers = GetRepository().GetAllLabourUsers();
+         LabourTable = new ObservableCollection<Object>();
+
+         foreach (var lab in labourers)
+         {
+            LabourTable.Add(
+                new User
                 {
-                    selectedLabourer = value;
-                    OnPropertyChanged(nameof(SelectedLabour));
-                }
-            }
-        }
-        public int Id
-        {
-            get { return _id; }
-            set { _id = value; OnPropertyChanged(nameof(Id)); }
-        }
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; OnPropertyChanged(nameof(Name)); }
-        }
-        
-        public RelayCommand AddUpdateLabourCommand { get; set; }
-        public RelayCommand DeleteLabourCommand { get; set; }
-        #endregion Properties
+                   Id = lab.Id,
+                   FirstName = lab.FirstName,
+                   Role = lab.Role,
+                });
+         }
+      }
 
-        public LabourerViewModel()
-        {
-            FillAllLabours();
-            AddUpdateLabourCommand = new RelayCommand(AddUpdateLabour);
-            DeleteLabourCommand = new RelayCommand(DeleteUser);
-        }
-
-        private void DeleteUser(object obj)
-        {
-            throw new NotImplementedException();
-        }
- 
-
-        private UserRepository GetRepository()
-        {
-            return new UserRepository(new Repository<UserDTO>(), new Repository<RoleDTO>(), new Repository<UserRoleDTO>());
-        }
-
-        private void FillAllLabours()
-        {
-            var labourers = GetRepository().GetAllLabourUsers();
-            LabourTable = new ObservableCollection<Object>();
-
-            foreach (var lab in labourers)
+      private ObservableCollection<Object> _labourTable;
+      public ObservableCollection<object> LabourTable
+      {
+         get { return _labourTable; }
+         set
+         {
+            if (value != null)
             {
-                LabourTable.Add(
-                    new User
-                    {
-                        Id = lab.Id,
-                        FirstName = lab.FirstName,
-                        Role = lab.Role,
-                    });
+               _labourTable = value;
+               OnPropertyChanged(nameof(LabourTable));
             }
-        }
-
-        private ObservableCollection<Object> _labourTable;
-        public ObservableCollection<object> LabourTable
-        {
-            get { return _labourTable; }
-            set
-            {
-                if (value != null)
-                {
-                    _labourTable = value;
-                    OnPropertyChanged(nameof(LabourTable));
-                }
-            }
-        }
+         }
+      }
 
 
-        private void AddUpdateLabour(object parameter)
-        {
-            if (SelectedLabour == null) { AddUser(parameter); }
-            else
-            {
-                //UpdateLabour(parameter);
-                SelectedLabour = null;
-            }
-            LabourTable.Clear();
-            FillAllLabours();
-        }
+      private void AddUpdateLabour(object parameter)
+      {
+         if (SelectedLabour == null) { AddUser(parameter); }
+         else
+         {
+            //UpdateLabour(parameter);
+            SelectedLabour = null;
+         }
+         LabourTable.Clear();
+         FillAllLabours();
+         HideForm();
+      }
 
-        void AddUser(object parameter)
-        {
-            UserDTO newUser = new UserDTO
-            {
-                FirstName = Name,
+      void AddUser(object parameter)
+      {
+         UserDTO newUser = new UserDTO
+         {
+            FirstName = Name,
 
-            };
-            GetRepository().AddUser(newUser);
-        }
-         
-    }
+         };
+         GetRepository().AddUser(newUser);
+      }
+
+   }
 
 }

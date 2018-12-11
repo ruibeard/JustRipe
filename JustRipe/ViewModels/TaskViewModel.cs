@@ -149,6 +149,7 @@ namespace JustRipe.ViewModels
       }
       void FillUpdateCreateForm()
       {
+         ShowForm();
          Id = SelectedTask.Id;
          Name = SelectedTask.Name;
          TaskDate = SelectedTask.TaskDate;
@@ -222,6 +223,8 @@ namespace JustRipe.ViewModels
             UpdateTask(parameter);
          }
          FillAllTasks();
+         HideForm();
+
       }
 
       void AddTask(object parameter)

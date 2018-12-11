@@ -118,6 +118,7 @@ namespace JustRipe.ViewModels
       }
       void FillUpdateCreateForm()
       {
+         ShowForm();
          Id = SelectedItem.Id;
          UserName = SelectedItem.Username;
          FirstName = SelectedItem.FirstName;
@@ -177,6 +178,7 @@ namespace JustRipe.ViewModels
          //ClearForm();
          UserTable.Clear();
          ShowAllUsers();
+         HideForm();
       }
       void AddUser()
       {

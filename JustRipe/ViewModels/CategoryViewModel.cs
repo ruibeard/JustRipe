@@ -13,40 +13,18 @@ namespace JustRipe.ViewModels
 {
     public class CategoryViewModel : ObservableObject
     {
-
         private Category category;
-
         public Category Category
         {
             get { return category; }
             set { category = value; }
         }
-
         public RelayCommand AddCategoryCommand { get; set; }
-
 
         public CategoryViewModel()
         {
-            PageName = "Categorys";
             AddCategoryCommand = new RelayCommand(AddCategory);
         }
-        private string pageName;
-
-        public string PageName
-        {
-            get { return pageName; }
-            set { pageName = value; }
-        }
-
-
-        private Brush _color;
-
-        public Brush Color
-        {
-            get { return _color; }
-            set { _color = value; }
-        }
-
         void AddCategory(object parameter)
         {
            

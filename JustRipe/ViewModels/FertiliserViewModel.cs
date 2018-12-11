@@ -104,6 +104,7 @@ namespace JustRipe.ViewModels
 
       void FillUpdateCreateForm()
       {
+         ShowForm();
          Id = SelectedProduct.Id;
          Name = SelectedProduct.Name;
          Quantity = SelectedProduct.Quantity;
@@ -181,6 +182,7 @@ namespace JustRipe.ViewModels
          Id = 0;
          Quantity = CategoryId = 0;
          ShowFertilisers();
+         HideForm();
       }
 
       void AddProduct(object parameter)

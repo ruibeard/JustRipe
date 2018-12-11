@@ -119,7 +119,7 @@ namespace JustRipe.ViewModels
       }
       void FillUpdateCreateForm()
       {
-         ToggleVisibility();
+         ShowForm();
          Id = SelectedCrop.Id;
          Name = SelectedCrop.Name;
          Stage = SelectedCrop.Stage;
@@ -151,13 +151,11 @@ namespace JustRipe.ViewModels
       }
       private void ShowAllCrops()
       {
-
          var crops = GetRepository().GetAllCropsAndContainers();
          BuildTable(crops);
       }
       private void ShowCropsInCultivation()
       {
-
          var crops = GetRepository().GetAllCropsCurrentlyInCultivation();
          BuildTable(crops);
       }
@@ -225,8 +223,8 @@ namespace JustRipe.ViewModels
             SelectedCrop = null;
          }
          ClearForm();
-
-         ToggleVisibility();
+         ShowCropsInCultivation();
+         HideForm();
       }
 
       void AddCrop()
@@ -238,7 +236,6 @@ namespace JustRipe.ViewModels
       {
          var newCrop = NewCropDTO();
          GetRepository().UpdateCrop(newCrop);
-         ShowCropsInCultivation();
       }
       private void DeleteCrop(object parameter)
       {
@@ -264,7 +261,6 @@ namespace JustRipe.ViewModels
             NumContainers = NumContainers,
             StorageRequired = StorageRequired,
             ProductId = ProductId,
-
          };
       }
    }

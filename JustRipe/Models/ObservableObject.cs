@@ -41,6 +41,9 @@ namespace JustRipe.Models
 
       #endregion // Debugging Aides
 
+
+
+
       #region Toogle Visibility binding of controls
       private Visibility _visibility = Visibility.Collapsed;
 
@@ -50,9 +53,16 @@ namespace JustRipe.Models
          set { _visibility = value; OnPropertyChanged(nameof(FormVisibility)); }
       }
 
+      protected void HideForm()
+      {
+         FormVisibility = Visibility.Collapsed;
+      }
+      protected void ShowForm()
+      {
+         FormVisibility = Visibility.Visible;
+      }
       protected void ToggleVisibility()
       {
-
          FormVisibility = (FormVisibility == Visibility.Collapsed) ? Visibility.Visible : Visibility.Collapsed;
       }
 
