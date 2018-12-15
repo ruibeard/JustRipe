@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace JustRipe.Data.Repositories
 {
-   public class UserRepository : SQLiteDb, IDisposable
+   public class UserRepository : IDisposable
    {
       private readonly IRepository<UserDTO> repositoryUser;
       private readonly IRepository<RoleDTO> repositoryRole;

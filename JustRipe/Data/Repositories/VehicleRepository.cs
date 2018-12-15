@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace JustRipe.Data.Repositories
 {
-   public class VehicleRepository : SQLiteDb, IDisposable
+   public class VehicleRepository :  IDisposable
    {
       private readonly IRepository<VehicleDTO> vehicleRepo;
 

@@ -22,5 +22,14 @@ namespace JustRipe.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\Data\\JustRipe.db")]
+        public string SqliteDbPath {
+            get {
+                return ((string)(this["SqliteDbPath"]));
+            }
+        }
     }
 }

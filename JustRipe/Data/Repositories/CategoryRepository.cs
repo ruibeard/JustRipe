@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace JustRipe.Data.Repositories
 {
-    public class CategoryRepository : SQLiteDb, IDisposable
+    public class CategoryRepository :  IDisposable
     {
         private readonly IRepository<CategoryDTO> repository;
         public CategoryRepository(IRepository<CategoryDTO> repository)

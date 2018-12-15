@@ -1,59 +1,48 @@
 ﻿using SQLite.Net;
 using System;
+using System.Configuration;
+using System.Windows;
 
 namespace JustRipe.Data
 {
-    public class SQLiteDatabase : IDisposable
-    {
-        private const string _DBFilePath = @"..\..\Data\";
-        private const string _DBFileName = "JustRipe.db";
+   public class SQLiteDatabase : IDisposable
+   {
+    
+      
+      //private const string _DBFilePath = @"..\..\Data\";
+      //private const string _DBFileName = "JustRipe.db";
 
-        private SQLiteConnection _Connection = null;
+      private SQLiteConnection _Connection = null;
 
+      public static SQLiteConnection Open()
+      {
 
-        /// </summary>
-        public SQLiteDatabase()
-        {
-
-        }
-
-        public static SQLiteConnection Open()
-        {
-            return new SQLiteConnection(new SQLite.Net.Platform.Win32.SQLitePlatformWin32(), DBFileNamePath);
-        }
+         return new SQLiteConnection(new SQLite.Net.Platform.Win32.SQLitePlatformWin32(), DBFileNamePath);
+      }
 
 
-        public static string DBFileNamePath
-        {
-            get
-            {
-                return System.IO.Path.Combine(_DBFilePath, _DBFileName);
-            }
-        }
+      public static string DBFileNamePath
+      {
 
-        public SQLiteConnection Connection
-        {
-            get
-            {
-                return _Connection;
-            }
-        }
+         /// Get the settings from the file JustRipe.exe.config
+         get { return JustRipe.Properties.Settings.Default.SqliteDbPath; }
 
-        public void OpenConnection(bool overwriteFile = false)
-        {
-        }
 
-        public void CloseConnection()
-        {
-            _Connection.Close();
-        }
+         //get { return System.IO.Path.Combine(_DBFilePath, _DBFileName); }
+      }
 
-       
 
-        public void Dispose()
-        {
-            CloseConnection();
-        }
-    }
+      public void CloseConnection()
+      {
+         _Connection.Close();
+      }
+
+
+
+      public void Dispose()
+      {
+         CloseConnection();
+      }
+   }
 }
 
