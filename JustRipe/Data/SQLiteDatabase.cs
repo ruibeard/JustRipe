@@ -8,7 +8,6 @@ namespace JustRipe.Data
    public class SQLiteDatabase : IDisposable
    {
     
-      
       //private const string _DBFilePath = @"..\..\Data\";
       //private const string _DBFileName = "JustRipe.db";
 
@@ -19,7 +18,6 @@ namespace JustRipe.Data
 
          return new SQLiteConnection(new SQLite.Net.Platform.Win32.SQLitePlatformWin32(), DBFileNamePath);
       }
-
 
       public static string DBFileNamePath
       {
@@ -36,8 +34,6 @@ namespace JustRipe.Data
       {
          _Connection.Close();
       }
-
-
 
       public void Dispose()
       {
