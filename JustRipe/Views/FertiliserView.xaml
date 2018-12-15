@@ -13,7 +13,7 @@
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="30 5">
         </StackPanel>
 
-      <DataGrid x:Name="gridStock" Margin="5" Padding="10" MaxHeight="380"
+      <DataGrid x:Name="gridStock" Margin="5" Padding="10" MaxHeight="380" IsReadOnly="True"
                   ItemsSource="{Binding FertiliserTable , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                   SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" AutoGenerateColumns="false" CanUserAddRows="False">
 

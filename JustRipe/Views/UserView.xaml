@@ -12,7 +12,7 @@
          <ToggleButton Command="{Binding ShowAllUsersToogleCommand}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" IsChecked="False" />
       </StackPanel>
 
-      <DataGrid x:Name="gridUser"  Margin="5" Padding="10" MaxHeight="380" 
+      <DataGrid x:Name="gridUser"  Margin="5" Padding="10" MaxHeight="380" IsReadOnly="True" 
                   ItemsSource="{Binding UserTable , Mode=TwoWay}" 
                   SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
                   AutoGenerateColumns="False" 

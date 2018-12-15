@@ -10,7 +10,7 @@
             >
    <StackPanel>
 
-      <DataGrid x:Name="gridVehicle" Margin="5 5 5 5" Padding="10" MaxHeight="380"
+      <DataGrid x:Name="gridVehicle" Margin="5 5 5 5" Padding="10" MaxHeight="380" IsReadOnly="True"
                   ItemsSource="{Binding VehicleTable , Mode=TwoWay}" 
                   SelectedItem="{Binding SelectedVehicle, Mode=TwoWay}"
                   AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" >
