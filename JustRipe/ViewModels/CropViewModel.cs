@@ -223,7 +223,10 @@ namespace JustRipe.ViewModels
             SelectedCrop = null;
          }
          ClearForm();
-         ShowCropsInCultivation();
+         if (ShowingAll)
+            ShowAllCrops();
+         else
+            ShowCropsInCultivation();
          HideForm();
       }
 
