@@ -8,24 +8,24 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
             >
-    <StackPanel >
+   <StackPanel >
 
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="30 5">
-        </StackPanel>
+      <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="30 5">
+      </StackPanel>
 
       <DataGrid x:Name="gridStock" Margin="5" Padding="10" MaxHeight="380" IsReadOnly="True"
                   ItemsSource="{Binding FertiliserTable , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                   SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" AutoGenerateColumns="false" CanUserAddRows="False">
 
 
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}"/>
-                <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
-                <DataGridTextColumn Header="Description" Binding="{Binding Path=Description}"/>
-                <DataGridTextColumn Header="Category" Binding="{Binding Path=CategoryName}"/>
-                <!--<DataGridTextColumn Header="Price" Binding="{Binding Path=Price}"/>-->
-                <DataGridTextColumn Header="Quantity" Binding="{Binding Path=Quantity}"/>
-                <DataGridTextColumn Header="Unit" Binding="{Binding Path=Unit}"/>
+         <DataGrid.Columns>
+            <DataGridTextColumn Header="ID" Binding="{Binding Path=Id}"/>
+            <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
+            <DataGridTextColumn Header="Description" Binding="{Binding Path=Description}"/>
+            <DataGridTextColumn Header="Category" Binding="{Binding Path=CategoryName}"/>
+            <!--<DataGridTextColumn Header="Price" Binding="{Binding Path=Price}"/>-->
+            <DataGridTextColumn Header="Quantity" Binding="{Binding Path=Quantity}"/>
+            <DataGridTextColumn Header="Unit" Binding="{Binding Path=Unit}"/>
             <DataGridTemplateColumn Header="">
                <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
@@ -55,9 +55,9 @@
                </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
          </DataGrid.Columns>
-        </DataGrid>
+      </DataGrid>
 
-      <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="42" Visibility="{Binding FormVisibility, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+      <!--<materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="42" Visibility="{Binding FormVisibility, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
                 <TextBox x:Name="Id" Visibility="Collapsed" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Id" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox x:Name="Name" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Name" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -65,7 +65,9 @@
                 <TextBox x:Name="CategoryName" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="CategoryName" Text="{Binding CategoryName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox x:Name="Quantity" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Quantity" Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                 <TextBox x:Name="Unit" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Unit" Text="{Binding Unit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <!--<TextBox x:Name="Price" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Price" Text="{Binding Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
+                -->
+      <!--<TextBox x:Name="Price" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Price" Text="{Binding Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
+      <!--
             <Button Margin="10 0" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateProductCommand}" >
                     <materialDesign:PackIcon Kind="Tick" Height="24" Width="24" />
                 </Button>
@@ -73,6 +75,42 @@
                     <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
                 </Button>
             </StackPanel>
-        </materialDesign:Card>
-    </StackPanel>
+        </materialDesign:Card>-->
+
+
+
+      <materialDesign:Card materialDesign:ShadowAssist.ShadowDepth="Depth4" Padding="10">
+         <Grid Visibility="{Binding FormVisibility, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}">
+            <Grid.ColumnDefinitions>
+               <ColumnDefinition Width="*"/>
+               <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+               <RowDefinition Height="*"/>
+               <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Column="0">
+               <TextBox x:Name="Id" Visibility="Collapsed"  Margin="10 0" materialDesign:HintAssist.Hint="Id" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Name"  Margin="10 0" materialDesign:HintAssist.Hint="Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Quantity"   Margin="10 0" materialDesign:HintAssist.Hint="Quantity" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="CategoryName"   Margin="10 0" materialDesign:HintAssist.Hint="CategoryName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding CategoryName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+            
+            <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Width="500" >
+               <TextBox x:Name="Description"  Margin="10 0" materialDesign:HintAssist.Hint="Description" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <TextBox x:Name="Unit"   Margin="10 0" materialDesign:HintAssist.Hint="Unit" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Unit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0 15">
+               <Button Margin="10 0" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateProductCommand}" >
+                  <materialDesign:PackIcon Kind="Tick" Height="24" Width="24" />
+               </Button>
+               <Button  Command="{Binding DeleteProductCommand}" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" ToolTip="MaterialDesignFloatingActionDarkButton">
+                  <materialDesign:PackIcon Kind="Delete" Height="24" Width="24" />
+               </Button>
+            </StackPanel>
+         </Grid>
+      </materialDesign:Card>
+   </StackPanel>
 </UserControl>
