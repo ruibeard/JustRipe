@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace JustRipe.Data.Repositories
 {
-   public class TaskRepository :IDisposable
+   public class TaskRepository : IDisposable
    {
       private readonly IRepository<TaskDTO> taskRepo;
       private readonly IRepository<CropDTO> cropRepo;
@@ -56,20 +56,18 @@ namespace JustRipe.Data.Repositories
                     LabourNeeded = task.LabourNeeded,
                  }).OrderByDescending(x => x.TaskDate);
       }
-
       public void UpdateTask(TaskDTO _task)
       {
          taskRepo.Update(_task);
-      }
-      public void DeleteTask(TaskDTO _task)
-      {
-         taskRepo.Delete(_task);
       }
       public void AddTask(TaskDTO _task)
       {
          taskRepo.Add(_task);
       }
-
+      public void DeleteTask(TaskDTO _task)
+      {
+         taskRepo.Delete(_task);
+      }
       public void Dispose()
       {
          taskRepo.Dispose();

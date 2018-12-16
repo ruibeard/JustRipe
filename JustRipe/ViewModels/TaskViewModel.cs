@@ -113,6 +113,7 @@ namespace JustRipe.ViewModels
 
       public RelayCommand AddUpdateTaskCommand { get; set; }
       public RelayCommand DeleteTaskCommand { get; private set; }
+      public RelayCommand AddCommand { get; set; }
 
       #endregion Properties
 
@@ -133,6 +134,7 @@ namespace JustRipe.ViewModels
          GetAllCrops();
          GetAllUsers();
          AddUpdateTaskCommand = new RelayCommand(AddUpdateTask);
+         AddCommand = new RelayCommand(ShowFormAndClear);
          DeleteTaskCommand = new RelayCommand(DeleteTask);
       }
       private CropRepository GetCropRepository()
@@ -185,7 +187,7 @@ namespace JustRipe.ViewModels
 
          foreach (var user in all_Users)
          {
-            UserList.Add(new User { Id = user.Id, FullName =  user.FullName});
+            UserList.Add(new User { Id = user.Id, FullName = user.FullName });
          }
       }
       private void FillAllTasks()
@@ -212,6 +214,17 @@ namespace JustRipe.ViewModels
          }
       }
 
+      private void ShowFormAndClear(object param = null)
+      {
+         ShowForm();
+         ClearForm();
+      }
+      private void ClearForm()
+      {
+         Name = Type = Type = "";
+         Id = UserId = CropId = LabourNeeded = 0;
+         TaskDate = "";
+      }
       private void AddUpdateTask(object parameter)
       {
          if (SelectedTask == null)
@@ -224,35 +237,37 @@ namespace JustRipe.ViewModels
          }
          FillAllTasks();
          HideForm();
-
       }
 
       void AddTask(object parameter)
       {
-         TaskDTO newTask = new TaskDTO
-         {
-            Name = Name,
-            Type = Type,
-            CropId = CropId,
-            UserId = UserId,
-            TaskDate = TaskDate
-         };
+         var newTask = NewTaskDTO();
          GetRepository().AddTask(newTask);
+         ClearForm();
       }
 
       void UpdateTask(object parameter)
       {
-         TaskDTO newTask = new TaskDTO
+         GetRepository().UpdateTask(NewTaskDTO());
+      }
+
+      private TaskDTO NewTaskDTO()
+      {
+         MessageBox.Show(Name);
+         MessageBox.Show(TaskDate);
+         MessageBox.Show(CropId.ToString());
+         MessageBox.Show(Type);
+         MessageBox.Show(UserId.ToString());
+         MessageBox.Show(LabourNeeded.ToString());
+         return new TaskDTO
          {
-            Id = Id,
             Name = Name,
+            TaskDate = TaskDate,
+            CropId = CropId,
             Type = Type,
             UserId = UserId,
-            CropId = CropId,
-            TaskDate = TaskDate,
-            LabourNeeded = LabourNeeded
+            LabourNeeded = LabourNeeded,
          };
-         GetRepository().UpdateTask(newTask);
       }
 
       private void DeleteTask(object parameter)
