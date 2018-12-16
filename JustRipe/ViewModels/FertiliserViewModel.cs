@@ -92,6 +92,8 @@ namespace JustRipe.ViewModels
       public RelayCommand AddUpdateProductCommand { get; set; }
       public RelayCommand DeleteProductCommand { get; set; }
       public RelayCommand ShowAllProductsCommand { get; set; }
+      public RelayCommand AddCommand { get; set; }
+
       #endregion Properties
 
       public FertiliserViewModel()
@@ -99,9 +101,22 @@ namespace JustRipe.ViewModels
          AddUpdateProductCommand = new RelayCommand(AddUpdateProduct);
          DeleteProductCommand = new RelayCommand(DeleteProduct);
          ShowAllProductsCommand = new RelayCommand(ShowFertilisers);
+         AddCommand = new RelayCommand(ShowFormAndClear);
          ShowFertilisers();
       }
+      private void ShowFormAndClear(object param = null)
+      {
+         ShowForm();
+         ClearForm();
+      }
 
+      private void ClearForm()
+      {
+         Name = Description = Unit = CategoryName = string.Empty;
+         Id = CategoryId = 0;
+         Price = Quantity = 0;
+
+      }
       void FillUpdateCreateForm()
       {
          ShowForm();
@@ -172,7 +187,10 @@ namespace JustRipe.ViewModels
       {
          FertiliserTable.Clear();
 
-         if (SelectedProduct == null) { AddProduct(parameter); }
+         if (SelectedProduct == null)
+         {
+            AddProduct(parameter);
+         }
          else
          {
             UpdateProduct(parameter);
@@ -210,7 +228,7 @@ namespace JustRipe.ViewModels
             Quantity = Quantity,
             Status = Status,
             Unit = Unit,
-            CategoryId = CategoryId,
+            CategoryId = 1,
          };
       }
 

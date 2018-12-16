@@ -20,7 +20,7 @@
             <ToggleButton Command="{Binding ShowAllCropsToogleCommand}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" IsChecked="True" />
          </StackPanel>
          <StackPanel Grid.Column="1" HorizontalAlignment="Right" >
-            <Button Margin="10 5" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddCropCommand}" >
+            <Button Margin="10 5" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddCropCommand}" >
                <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
             </Button>
          </StackPanel>

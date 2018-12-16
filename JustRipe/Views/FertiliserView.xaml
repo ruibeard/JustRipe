@@ -10,9 +10,20 @@
             >
    <StackPanel >
 
-      <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="30 5">
-      </StackPanel>
 
+      <Grid  Margin="30 5">
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+         </Grid.ColumnDefinitions>
+         <StackPanel VerticalAlignment="Center" Grid.Column="0" Orientation="Horizontal">
+         </StackPanel>
+         <StackPanel Grid.Column="1" HorizontalAlignment="Right" >
+            <Button Margin="10 5" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddCommand}" >
+               <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
+            </Button>
+         </StackPanel>
+      </Grid>
       <DataGrid x:Name="gridStock" Margin="5" Padding="10" MaxHeight="380" IsReadOnly="True"
                   ItemsSource="{Binding FertiliserTable , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                   SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" AutoGenerateColumns="false" CanUserAddRows="False">
@@ -94,7 +105,7 @@
                <TextBox x:Name="Id" Visibility="Collapsed"  Margin="10 0" materialDesign:HintAssist.Hint="Id" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="Name"  Margin="10 0" materialDesign:HintAssist.Hint="Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="Quantity"   Margin="10 0" materialDesign:HintAssist.Hint="Quantity" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               <TextBox x:Name="CategoryName"   Margin="10 0" materialDesign:HintAssist.Hint="CategoryName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding CategoryName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
             </StackPanel>
             
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Width="500" >

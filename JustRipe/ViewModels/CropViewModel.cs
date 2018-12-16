@@ -121,7 +121,6 @@ namespace JustRipe.ViewModels
          DeleteCropCommand = new RelayCommand(DeleteCrop);
          ShowAllCropsToogleCommand = new RelayCommand(ToogleTable);
          AddCropCommand = new RelayCommand(ShowFormAndClear);
-
          ShowCropsInCultivation();
          GetAllContainers();
 
@@ -211,7 +210,6 @@ namespace JustRipe.ViewModels
       {
          Name = Stage = Type = Area = StorageRequired = "";
          Id = NumContainers = 0;
-
       }
       private ProductRepository GetProductRepository()
       {
