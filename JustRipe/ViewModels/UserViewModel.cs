@@ -5,7 +5,6 @@ using JustRipe.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace JustRipe.ViewModels
@@ -17,8 +16,9 @@ namespace JustRipe.ViewModels
       {
          AddUpdateUserCommand = new RelayCommand(AddUpdateUser);
          DeleteUserCommand = new RelayCommand(DeleteUser);
-         //ShowAllUsersToogleCommand = new RelayCommand(ToogleTable);
+         GetAllRoles();
          ShowAllUsers();
+
       }
 
       private int _id;
@@ -32,7 +32,29 @@ namespace JustRipe.ViewModels
       private DateTime _dateOfBirth;
       private Decimal _annualWage;
       private bool _showingAll = false;
+      private List<Role> _roleList = new List<Role>();
       private User selectedItem;
+      private string _role;
+
+      private int _roleId;
+      public int RoleId
+      {
+         get { return _roleId; }
+         set { _roleId = value; OnPropertyChanged(nameof(RoleId)); }
+      }
+      private int _userRoleId;
+
+      public int UserRoleId
+      {
+         get { return _userRoleId; }
+         set { _userRoleId = value; OnPropertyChanged(nameof(RoleId)); }
+      }
+
+      public string Role
+      {
+         get { return _role; }
+         set { _role = value; OnPropertyChanged(nameof(UserName)); }
+      }
 
       public string UserName
       {
@@ -104,6 +126,7 @@ namespace JustRipe.ViewModels
          set { _showingAll = value; OnPropertyChanged(nameof(ShowingAll)); }
       }
       private ObservableCollection<Object> _userTable;
+
       public ObservableCollection<object> UserTable
       {
          get { return _userTable; }
@@ -122,25 +145,52 @@ namespace JustRipe.ViewModels
          Id = SelectedItem.Id;
          UserName = SelectedItem.Username;
          FirstName = SelectedItem.FirstName;
-         //Password = SelectedItem.Password;
          LastName = SelectedItem.LastName;
          Email = SelectedItem.Email;
          PhoneNumber = SelectedItem.PhoneNumber;
          Address = SelectedItem.Address;
          DateOfBirth = SelectedItem.DateOfBirth;
          AnnualWage = SelectedItem.AnnualWage;
+         Role = SelectedItem.Role;
+         RoleId = SelectedItem.RoleId;
+
+
       }
       public RelayCommand AddUpdateUserCommand { get; }
       public RelayCommand DeleteUserCommand { get; }
       public RelayCommand ShowAllUsersToogleCommand { get; }
       private UserRepository GetRepository()
       {
-         return new UserRepository(new Repository<UserDTO>());
+         return new UserRepository(new Repository<UserDTO>(), new Repository<RoleDTO>(), new Repository<UserRoleDTO>());
+      }
+     
+
+      private RoleRepository GetRoleRepository()
+      {
+         return new RoleRepository(new Repository<RoleDTO>());
+      }
+      public List<Role> RoleList
+      {
+         get { return _roleList; }
+         set
+         {
+            _roleList = value;
+            OnPropertyChanged(nameof(RoleList));
+         }
+      }
+
+      private void GetAllRoles()
+      {
+         var all_Roles = GetRoleRepository().GetAllRoles();
+         foreach (var r in all_Roles)
+         {
+            RoleList.Add(new Role { Id = r.Id, Name = r.Name });
+         }
       }
       private void ShowAllUsers()
       {
 
-         var users = GetRepository().GetAllUsers();
+         var users = GetRepository().GetAllUsersRoles();
          UserTable = new ObservableCollection<Object>();
          BuildTable(users);
       }
@@ -160,12 +210,14 @@ namespace JustRipe.ViewModels
                    Address = user.Address,
                    DateOfBirth = user.DateOfBirth,
                    AnnualWage = user.AnnualWage,
+                   Role = user.Role,
+                   RoleId = user.RoleId,
+                   UserRoleId = user.UserRoleId,
                 });
          }
       }
       private void AddUpdateUser(object parameter)
       {
-
          if (SelectedItem == null)
          {
             AddUser();
@@ -187,14 +239,13 @@ namespace JustRipe.ViewModels
 
       private void ClearForm()
       {
-         FirstName = LastName = Address = Email = UserName = PhoneNumber = "";
+         FirstName = LastName = Address = Email = UserName = PhoneNumber = Role = "";
          Id = 0;
          AnnualWage = 0;
 
       }
       void UpdateUser(object parameter)
       {
-
          var newUser = FillDTO(parameter);
          GetRepository().UpdateUser(newUser);
       }

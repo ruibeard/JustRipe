@@ -21,16 +21,12 @@ namespace JustRipe.ViewModels
       private int _productId;
       private Crop selectedCrop;
       private ObservableCollection<Object> _cropTable = new ObservableCollection<Object>();
-
       private List<Product> _productList = new List<Product>();
-
-
       private string _productName;
       #endregion Fields
 
       #region Properties
       private List<string> _stagesList = new List<string> { "Cultivating", "Harvested", "Seeds", "Planting" };
-
       public List<string> StagesList
       {
          get { return _stagesList; }
@@ -142,6 +138,10 @@ namespace JustRipe.ViewModels
       {
          return new CropRepository(new Repository<CropDTO>(), new Repository<ProductDTO>(), new Repository<CategoryDTO>());
       }
+      private ProductRepository GetProductRepository()
+      {
+         return new ProductRepository(new Repository<ProductDTO>(), new Repository<CategoryDTO>());
+      }
 
       private void ShowFormAndClear(object param = null)
       {
@@ -176,7 +176,6 @@ namespace JustRipe.ViewModels
       }
       private void BuildTable(IEnumerable<Crop> crops)
       {
-
          foreach (var crop in crops)
          {
             CropTable.Add(
@@ -210,10 +209,6 @@ namespace JustRipe.ViewModels
       {
          Name = Stage = Type = Area = StorageRequired = "";
          Id = NumContainers = 0;
-      }
-      private ProductRepository GetProductRepository()
-      {
-         return new ProductRepository(new Repository<ProductDTO>(), new Repository<CategoryDTO>());
       }
       private void GetAllContainers()
       {

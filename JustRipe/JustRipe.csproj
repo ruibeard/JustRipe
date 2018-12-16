@@ -122,7 +122,9 @@
     <Compile Include="Data\DTOs\VehicleDTO.cs" />
     <Compile Include="Data\Repositories\ContainerRepository.cs" />
     <Compile Include="Data\Repositories\CategoryRepository.cs" />
+    <Compile Include="Data\Repositories\RoleRepository.cs" />
     <Compile Include="Data\Repositories\TimeTableRepository.cs" />
+    <Compile Include="Data\Repositories\UserRoleRepository.cs" />
     <Compile Include="Data\Repositories\VehicleRepository.cs" />
     <Compile Include="Data\Repositories\ProductRepository.cs" />
     <Compile Include="Data\Repositories\UserRepository.cs" />
@@ -138,6 +140,7 @@
     <Compile Include="Models\Fertiliser.cs" />
     <Compile Include="Models\Crop.cs" />
     <Compile Include="Models\Harvest.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="ViewModels\ObservableObject.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\User.cs" />

@@ -3,7 +3,6 @@ using JustRipe.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
 
 namespace JustRipe.Data.Repositories
 {
@@ -43,14 +42,36 @@ namespace JustRipe.Data.Repositories
                    AnnualWage = user.AnnualWage,
                 };
       }
+         public IEnumerable<User> GetAllUsersRoles()
+      {
+         return from user in repositoryUser.GetAll()
+                join user_role in repositoryUserRole.GetAll() on user.Id equals user_role.UserId
+                join role in repositoryRole.GetAll() on user_role.RoleId equals role.Id
+                select new User()
+                {
+                   Id = user.Id,
+                   Username = user.Username,
+                   Password = user.Password,
+                   FirstName = user.FirstName,
+                   LastName = user.LastName,
+                   FullName = user.FirstName + " " + user.LastName,
+                   Email = user.Email,
+                   PhoneNumber = user.PhoneNumber,
+                   Address = user.Address,
+                   DateOfBirth = user.DateOfBirth,
+                   AnnualWage = user.AnnualWage,
+                   Role = role.Name,
+                   RoleId = role.Id,
+                   UserRoleId = user_role.Id
+                };
+      }
 
       public IEnumerable<User> CheckUserCredentials(string _username, string _password)
       {
          return from user in repositoryUser.GetAll()
                 join user_role in repositoryUserRole.GetAll() on user.Id equals user_role.UserId
                 join role in repositoryRole.GetAll() on user_role.RoleId equals role.Id
-                where user.Username == _username
-                where user.Password == _password
+                where user.Username == _username && user.Password == _password
                 select new User()
                 {
                    Id = user.Id,
@@ -70,8 +91,12 @@ namespace JustRipe.Data.Repositories
                 {
                    Id = user.Id,
                    FirstName = user.FirstName,
-                   Role = role.Name
+                   Role = role.Name,
                 };
+      }
+      public void UpdateUserRole(UserRoleDTO _userRole)
+      {
+         repositoryUserRole.Update(_userRole);
       }
 
       public void UpdateUser(UserDTO _user)

@@ -17,7 +17,7 @@
                   AutoGenerateColumns="False" 
                   CanUserAddRows="False" CanUserDeleteRows="False" >
          <DataGrid.Columns>
-            <DataGridTextColumn Header="Id" Binding="{Binding Path=Id}" />
+            <DataGridTextColumn Header="Id" Visibility="Collapsed" Binding="{Binding Path=Id}" />
             <DataGridTextColumn Header="Username" Binding="{Binding Path=Username}"/>
             <DataGridTextColumn Header="FirstName" Binding="{Binding Path=FirstName}"/>
             <DataGridTextColumn Header="LastName" Binding="{Binding Path=LastName}"/>
@@ -26,6 +26,7 @@
             <DataGridTextColumn Header="Address" Binding="{Binding Path=Address}"/>
             <DataGridTextColumn Header="Date Of Birth" Binding="{Binding Path=DateOfBirth}"/>
             <DataGridTextColumn Header="Annual Wage" Binding="{Binding Path=AnnualWage}"/>
+            <DataGridTextColumn Header="Role" Binding="{Binding Path=Role}"/>
             <DataGridTemplateColumn Header="">
                <DataGridTemplateColumn.CellTemplate>
                   <DataTemplate>
@@ -75,8 +76,13 @@
                <TextBox x:Name="UserName" Margin="10 5" materialDesign:HintAssist.Hint="UserName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding UserName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="PhoneNumber" Margin="10 5" materialDesign:HintAssist.Hint="PhoneNumber" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="DateOfBirth" Margin="10 5" materialDesign:HintAssist.Hint="DateOfBirth" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding DateOfBirth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            </StackPanel>
 
+
+               <ComboBox x:Name="Role" HorizontalAlignment="Stretch" Margin="10 5" IsEditable="True"
+                        Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Role" 
+                        ItemsSource="{Binding RoleList}" DisplayMemberPath="Name"
+                        SelectedValue="{Binding RoleId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Id"/>
+            </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Left" Width="500" >
                <TextBox x:Name="LastName" Margin="10 5" materialDesign:HintAssist.Hint="LastName" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding LastName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <PasswordBox x:Name="Password" Password=""

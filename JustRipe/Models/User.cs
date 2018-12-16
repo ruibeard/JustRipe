@@ -18,7 +18,6 @@ namespace JustRipe.Models
       public string Password { get; set; }
       public string FirstName { get; set; }
 
-
       private string _fullName;
 
       public string FullName
@@ -34,5 +33,8 @@ namespace JustRipe.Models
       public DateTime DateOfBirth { get; set; }
       public decimal AnnualWage { get; set; }
       public string Role { get; set; }
+      public int RoleId { get; set; }
+      public int UserRoleId { get; set; }
+
    }
 }
