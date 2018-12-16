@@ -16,8 +16,8 @@
             <ColumnDefinition Width="*"/>
          </Grid.ColumnDefinitions>
          <StackPanel VerticalAlignment="Center" Grid.Column="0" Orientation="Horizontal">
-            <TextBlock Text="Show all crops:" Margin="5 0"/>
-            <ToggleButton Command="{Binding ShowAllCropsToogleCommand}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" IsChecked="False" />
+            <TextBlock Text="Just Crops in Cultivation" Margin="5 0"/>
+            <ToggleButton Command="{Binding ShowAllCropsToogleCommand}" Style="{StaticResource MaterialDesignSwitchToggleButton}" ToolTip="MaterialDesignSwitchToggleButton" IsChecked="True" />
          </StackPanel>
          <StackPanel Grid.Column="1" HorizontalAlignment="Right" >
             <Button Margin="10 5" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddCropCommand}" >
@@ -85,7 +85,13 @@
             <StackPanel Grid.Column="0">
                <TextBox x:Name="Id" Visibility="Collapsed"  Margin="10 5" materialDesign:HintAssist.Hint="Id"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Id, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <TextBox x:Name="Name"  Margin="10 5" materialDesign:HintAssist.Hint="Name"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-               <TextBox x:Name="Stage"  Margin="10 5" materialDesign:HintAssist.Hint="Stage"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Stage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+               <ComboBox Margin="10 5"  HorizontalAlignment="Stretch"
+                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                  ItemsSource="{Binding StagesList}"
+                  SelectedValue="{Binding Stage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                  materialDesign:HintAssist.Hint="Stage" />
+
+               <!--<TextBox x:Name="Stage"  Margin="10 5" materialDesign:HintAssist.Hint="Stage"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Stage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>-->
                <TextBox x:Name="Type"  Margin="10 5" materialDesign:HintAssist.Hint="Type"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                <ComboBox x:Name="Container" HorizontalAlignment="Stretch" Margin="10 5" IsEditable="True"
                         Style="{StaticResource MaterialDesignFloatingHintComboBox}" materialDesign:HintAssist.Hint="Container" 

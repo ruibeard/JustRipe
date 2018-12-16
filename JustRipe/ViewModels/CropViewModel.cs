@@ -17,7 +17,7 @@ namespace JustRipe.ViewModels
       private string _type;
       private string _storageRequired;
       private int _numContainers;
-      private bool _showingAll = false;
+      private bool _showingAll = true;
       private int _productId;
       private Crop selectedCrop;
       private ObservableCollection<Object> _cropTable = new ObservableCollection<Object>();
@@ -28,8 +28,14 @@ namespace JustRipe.ViewModels
       private string _productName;
       #endregion Fields
 
-
       #region Properties
+      private List<string> _stagesList = new List<string> { "Cultivating", "Harvested", "Seeds", "Planting" };
+
+      public List<string> StagesList
+      {
+         get { return _stagesList; }
+         set { _stagesList = value; OnPropertyChanged(nameof(StagesList)); }
+      }
 
       public List<Product> ProductList
       {
@@ -115,7 +121,7 @@ namespace JustRipe.ViewModels
          DeleteCropCommand = new RelayCommand(DeleteCrop);
          ShowAllCropsToogleCommand = new RelayCommand(ToogleTable);
          AddCropCommand = new RelayCommand(ShowFormAndClear);
-         
+
          ShowCropsInCultivation();
          GetAllContainers();
 
@@ -149,12 +155,13 @@ namespace JustRipe.ViewModels
 
          if (ShowingAll == false)
          {
-            ShowAllCrops();
+            ShowCropsInCultivation();
+
             _showingAll = true;
          }
          else
          {
-            ShowCropsInCultivation();
+            ShowAllCrops();
             _showingAll = false;
          }
       }
@@ -170,6 +177,7 @@ namespace JustRipe.ViewModels
       }
       private void BuildTable(IEnumerable<Crop> crops)
       {
+
          foreach (var crop in crops)
          {
             CropTable.Add(
