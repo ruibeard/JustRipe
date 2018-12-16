@@ -106,6 +106,7 @@ namespace JustRipe.ViewModels
       public RelayCommand AddUpdateCropCommand { get; set; }
       public RelayCommand DeleteCropCommand { get; set; }
       public RelayCommand ShowAllCropsToogleCommand { get; set; }
+      public RelayCommand AddCropCommand { get; set; }
 
       #endregion Properties
       public CropViewModel()
@@ -113,6 +114,8 @@ namespace JustRipe.ViewModels
          AddUpdateCropCommand = new RelayCommand(AddUpdateCrop);
          DeleteCropCommand = new RelayCommand(DeleteCrop);
          ShowAllCropsToogleCommand = new RelayCommand(ToogleTable);
+         AddCropCommand = new RelayCommand(ShowFormAndClear);
+         
          ShowCropsInCultivation();
          GetAllContainers();
 
@@ -133,6 +136,12 @@ namespace JustRipe.ViewModels
       private CropRepository GetRepository()
       {
          return new CropRepository(new Repository<CropDTO>(), new Repository<ProductDTO>(), new Repository<CategoryDTO>());
+      }
+
+      private void ShowFormAndClear(object param = null)
+      {
+         ShowForm();
+         ClearForm();
       }
       private void ToogleTable(object param = null)
       {
@@ -215,7 +224,7 @@ namespace JustRipe.ViewModels
 
          if (SelectedCrop == null)
          {
-            AddCrop();
+            ShowFormAndClear();
          }
          else
          {
@@ -230,7 +239,7 @@ namespace JustRipe.ViewModels
          HideForm();
       }
 
-      void AddCrop()
+      void ShowFormAndClear()
       {
          var newCrop = NewCropDTO();
          GetRepository().AddCrop(newCrop);

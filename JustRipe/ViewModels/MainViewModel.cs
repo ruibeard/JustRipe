@@ -88,11 +88,8 @@ namespace JustRipe.ViewModels
          {
             LoggedUserName = "Welcome, " + LoggedUser.FirstName + " - " + LoggedUser.Role;
 
-
             MenuVisibility = LoggedUser.Role == "Manager" ? Visibility.Visible : Visibility.Collapsed;
          }
-
-
 
          /// Set the default View after login
          PageName = "Tasks";
