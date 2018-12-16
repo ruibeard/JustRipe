@@ -23,9 +23,7 @@ namespace JustRipe.ViewModels
 
       #endregion Fields
 
-
       #region Properties
-
       public Product SelectedContainer
       {
          get { return selectedContainer; }
@@ -51,19 +49,16 @@ namespace JustRipe.ViewModels
       }
 
       private string _description;
-
       public string Description
       {
          get { return _description; }
          set { _description = value; OnPropertyChanged(nameof(Description)); }
       }
-
       public double Quantity
       {
          get { return _quantity; }
          set { _quantity = value; OnPropertyChanged(nameof(Quantity)); }
       }
-
 
       public string Available
       {
@@ -160,9 +155,15 @@ namespace JustRipe.ViewModels
       }
       private void ClearForm()
       {
-         Name = Description = Status = Unit = "";
-         Id = CategoryId = 0;
+         Name = Description = Status = Unit = String.Empty;
+         Id = CategoryId = default(int);
          Quantity = 0;
+         //var props = this.GetType().GetProperties(System.Reflection.BindingFlags.Public);
+         //foreach (var i in props)
+         //{
+         //   var again = i.PropertyType;
+         //   i.SetValue(this, default());
+         //}
       }
       private void AddUpdateContainer(object parameter)
       {

@@ -38,7 +38,7 @@
                         SelectedValue="{Binding CategoryId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" SelectedValuePath="Id"/>
 
             <TextBox x:Name="Price" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Price"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Price,StringFormat={}{0}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <TextBox x:Name="Quantity" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Quantity"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Quantity,StringFormat={}{0}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBox x:Name="Quantity" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Quantity"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Quantity,StringFormat={}{0:#,#.000}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             <TextBox x:Name="Unit" Width="120"  Margin="10 0" materialDesign:HintAssist.Hint="Unit"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Text="{Binding Unit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
 
             <Button Margin="10 0" IsDefault="True" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Command="{Binding AddUpdateProductCommand}" >
