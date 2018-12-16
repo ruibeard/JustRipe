@@ -224,7 +224,7 @@ namespace JustRipe.ViewModels
 
          if (SelectedCrop == null)
          {
-            ShowFormAndClear();
+            AddCrop();
          }
          else
          {
@@ -239,7 +239,7 @@ namespace JustRipe.ViewModels
          HideForm();
       }
 
-      void ShowFormAndClear()
+      void AddCrop()
       {
          var newCrop = NewCropDTO();
          GetRepository().AddCrop(newCrop);

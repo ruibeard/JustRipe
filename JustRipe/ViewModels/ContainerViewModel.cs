@@ -4,6 +4,7 @@ using JustRipe.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows;
 
 namespace JustRipe.ViewModels
 {
@@ -15,7 +16,7 @@ namespace JustRipe.ViewModels
       private double _quantity;
       private string _unit;
       private string _available;
-      private int _categoryId;
+      private int _categoryId = 2;
       private string _status;
       private ObservableCollection<Object> _containerTable;
       private Product selectedContainer;
@@ -88,13 +89,22 @@ namespace JustRipe.ViewModels
       }
       public RelayCommand AddUpdateCommand { get; set; }
       public RelayCommand DeleteCommand { get; set; }
+      public RelayCommand AddCommand { get; set; }
 
       #endregion Properties
       public ContainerViewModel()
       {
          AddUpdateCommand = new RelayCommand(AddUpdateContainer);
          DeleteCommand = new RelayCommand(DeleteContainer);
+         AddCommand = new RelayCommand(ShowFormAndClear);
          ShowAllContainers();
+      }
+
+
+      private void ShowFormAndClear(object param = null)
+      {
+         ClearForm();
+         ShowForm();
       }
       void FillUpdateCreateForm()
       {
@@ -150,7 +160,9 @@ namespace JustRipe.ViewModels
       }
       private void ClearForm()
       {
-
+         Name = Description = Status = Unit = "";
+         Id = CategoryId = 0;
+         Quantity = 0;
       }
       private void AddUpdateContainer(object parameter)
       {
