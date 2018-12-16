@@ -21,7 +21,6 @@ namespace JustRipe.ViewModels
       public RelayCommand VehicleCommand { get; set; }
       public RelayCommand LabourCommand { get; set; }
 
-
       private static string _loggedUserRole;
 
       public static string LoggedUserRole
