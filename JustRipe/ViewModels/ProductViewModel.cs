@@ -51,9 +51,9 @@ namespace JustRipe.ViewModels
          set { _description = value; OnPropertyChanged(nameof(Description)); }
       }
 
-      private int _price;
+      private double _price;
 
-      public int Price
+      public double Price
       {
          get { return _price; }
          set { _price = value; OnPropertyChanged(nameof(Price)); }
@@ -130,6 +130,7 @@ namespace JustRipe.ViewModels
          Id = SelectedProduct.Id;
          Name = SelectedProduct.Name;
          Quantity = SelectedProduct.Quantity;
+         Price = SelectedProduct.Price;
          Unit = SelectedProduct.Unit;
          Description = selectedProduct.Description;
          CategoryName = SelectedProduct.CategoryName;
@@ -166,6 +167,7 @@ namespace JustRipe.ViewModels
                    Name = prod.Name,
                    Description = prod.Description,
                    Quantity = prod.Quantity,
+                   Price = prod.Price,
                    Unit = prod.Unit,
                    CategoryId = prod.CategoryId,
                    CategoryName = prod.CategoryName,

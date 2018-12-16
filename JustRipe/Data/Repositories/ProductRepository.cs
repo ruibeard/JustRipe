@@ -30,9 +30,9 @@ namespace JustRipe.Data.Repositories
                        CategoryName = cat.Name,
                        CategoryId = product.CategoryId,
                        Quantity = product.Quantity,
+                       Price = product.Price,
                        Unit = product.Unit,
                        Description = product.Description,
-                       Price = product.Price,
                        Status = product.Status
 
                    };

@@ -21,7 +21,7 @@ namespace JustRipe.Data.DTOs
         public string Unit { get; set; }
 
         [Column("price")]
-        public decimal Price { get; set; }
+        public double Price { get; set; }
 
         [Column("status")]
         public string Status{ get; set; }

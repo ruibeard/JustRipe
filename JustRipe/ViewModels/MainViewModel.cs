@@ -151,7 +151,7 @@ namespace JustRipe.ViewModels
       {
          PageName = "Products";
 
-         SelectedViewModel = new ProductViewModel();
+         //SelectedViewModel = new ProductViewModel();
       }
       private void OpenStock(object obj)
       {

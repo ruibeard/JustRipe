@@ -82,8 +82,8 @@ namespace JustRipe.ViewModels
          set { _unit = value; OnPropertyChanged(nameof(Unit)); }
       }
 
-      private decimal _price;
-      public decimal Price
+      private double _price;
+      public double Price
       {
          get { return _price; }
          set { _price = value; OnPropertyChanged(nameof(Price)); }
