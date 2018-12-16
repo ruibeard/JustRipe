@@ -130,7 +130,7 @@ namespace JustRipe.ViewModels
       }
       private void OpenFertiliser(object obj)
       {
-         PageName = "Fertilizer";
+         PageName = "Fertiliser";
 
          SelectedViewModel = new FertiliserViewModel();
       }
