@@ -54,7 +54,6 @@ namespace JustRipe.Data.Repositories
                        Description = product.Description,
                        Price = product.Price,
                        Status = product.Status
-
                    };
         }
 
