@@ -135,9 +135,7 @@
     <Compile Include="Data\SQLiteDatabase.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Task.cs" />
-    <Compile Include="Models\Labour.cs" />
     <Compile Include="Models\Container.cs" />
-    <Compile Include="Models\Fertiliser.cs" />
     <Compile Include="Models\Crop.cs" />
     <Compile Include="Models\Harvest.cs" />
     <Compile Include="Models\Role.cs" />

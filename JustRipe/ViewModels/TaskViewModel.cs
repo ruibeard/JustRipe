@@ -125,7 +125,6 @@ namespace JustRipe.ViewModels
          {
             _selectedCrop = value; OnPropertyChanged(nameof(SelectedCrop));
 
-            MessageBox.Show(SelectedCrop.Id.ToString());
          }
       }
       public TaskViewModel()
@@ -253,12 +252,6 @@ namespace JustRipe.ViewModels
 
       private TaskDTO NewTaskDTO()
       {
-         MessageBox.Show(Name);
-         MessageBox.Show(TaskDate);
-         MessageBox.Show(CropId.ToString());
-         MessageBox.Show(Type);
-         MessageBox.Show(UserId.ToString());
-         MessageBox.Show(LabourNeeded.ToString());
          return new TaskDTO
          {
             Name = Name,
