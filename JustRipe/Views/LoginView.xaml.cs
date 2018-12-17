@@ -15,7 +15,6 @@ namespace JustRipe.Views
         {
             InitializeComponent();
             LoginViewModel loginVM = new LoginViewModel();
-            loginVM.Username = "rtra";
             DataContext = loginVM;
 
             if (loginVM.CloseAction == null)
